@@ -1,0 +1,6 @@
+# CONFIG #
+##########
+node_modules/
+*.env
+.cache/
+.vscode/
