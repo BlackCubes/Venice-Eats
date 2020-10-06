@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/BlackCubes/Venice-Eats/issues"
   },
-  "homepage": "https://github.com/BlackCubes/Venice-Eats#readme"
+  "homepage": "https://github.com/BlackCubes/Venice-Eats#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.8",
+    "pug": "^3.0.0"
+  }
 }
