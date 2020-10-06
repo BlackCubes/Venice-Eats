@@ -1,7 +1,7 @@
 {
   "name": "venice-eats",
   "version": "1.0.0",
-  "description": "A Restaurant Website showing the location of Food Trucks, their availability, their menus, and their food wait time based on Venice's infamous event occuring every First Friday of the Month starting at 5pm on Abbot Kinney Boulevard.",
+  "description": "A Restaurant Website showing the location of Food Trucks, their availability, their menus, and their food wait time based on Venice's infamous event occurring every First Friday of the Month starting at 5pm on Abbot Kinney Boulevard.",
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
