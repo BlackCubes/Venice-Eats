@@ -47,3 +47,7 @@ const foodtruckSchema = new mongoose.Schema({
     select: false
   }
 });
+
+const Foodtrucks = mongoose.model('Foodtrucks', foodtruckSchema);
+
+module.exports = Foodtrucks;
