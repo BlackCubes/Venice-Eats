@@ -9,6 +9,19 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 
+const DB = process.env.DATABASE.replace(
+  "<PASSWORD>",
+  process.env.DATABASE_PASSWORD
+);
+
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("The DB has been successfully connected!"));
+
 const port = process.env.PORT || 3001;
 const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
