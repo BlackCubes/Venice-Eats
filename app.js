@@ -13,4 +13,48 @@ const cors = require("cors");
 
 const app = express();
 
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
+// Implement CORS
+app.use(cors());
+app.options("*", cors());
+
+// Display static files
+app.use(express.static(path.join(__dirname, "public")));
+
+// GLOBAL MIDDLEWARES
+// Helmet -- set security HTTP headers
+app.use(helmet());
+
+// Morgan -- development logging
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
+// Express-Rate-Limit -- limit requests from same API
+const limiter = rateLimit({
+  max: 20,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many requests from this IP, please try again in an hour.",
+});
+app.use("/api", limiter);
+
+// Body Parser -- reading data from the body into req.body
+app.use(express.json({ limit: "10kb" }));
+app.use(express.urlencoded({ limit: "10kb", extended: true }));
+app.use(cookieParser());
+
+// Data Sanitization
+// -- against NoSQL query injection
+app.use(mongoSanitize());
+
+// -- against XSS
+app.use(xss());
+
+// HPP -- prevent parameter pollution
+// nothing yet
+
+// app.use(compression());
+
 module.exports = app;
