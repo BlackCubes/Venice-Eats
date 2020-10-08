@@ -76,6 +76,16 @@ const foodtruckSchema = new mongoose.Schema({
   }
 });
 
+// VIRTUAL
+// -- add onSite if the geo has been updated/added
+
+// DOCUMENT MIDDLEWARE
+// -- slugify the food truck's name
+foodtruckSchema.pre('save', function(next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
 const Foodtrucks = mongoose.model('Foodtrucks', foodtruckSchema);
 
 module.exports = Foodtrucks;
