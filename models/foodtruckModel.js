@@ -34,10 +34,13 @@ const foodtruckSchema = new mongoose.Schema({
     }
   },
   menu: {
-    name: {
+    productName: {
       type: String,
-      required: [true, 'A foodtruck product needs to have a name!']
+      required: [true, 'A foodtruck product needs to have a name!'],
+      unique: true,
+      trim: true
     },
+    slug: String,
     description: String,
     ingredients: [String],
     cloudinaryPhoto: {
@@ -85,6 +88,30 @@ foodtruckSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true });
   next();
 });
+
+// -- slugify the product name
+foodtruckSchema.pre('save', function(next) {
+  this.menu.slug = slugify(`${this.menu.productName}--${this.name}`, {
+    lower: true
+  });
+  next();
+});
+
+// -- populate the geo json
+foodtruckSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'geo',
+    select: '-__v -id'
+  });
+
+  next();
+});
+
+// STATIC METHODS
+// -- find query in DB
+foodtruckSchema.statics.valueExists = function(query) {
+  return this.findOne(query).then(result => result);
+};
 
 const Foodtrucks = mongoose.model('Foodtrucks', foodtruckSchema);
 
