@@ -80,6 +80,11 @@ const foodtruckSchema = new mongoose.Schema({
 });
 
 // VIRTUAL
+// -- calculate wait time
+foodtruckSchema.virtual('menu.waitTime').get(function() {
+  return this.menu.orderSold * 60 * 5;
+});
+
 // -- add onSite if the geo has been updated/added
 
 // DOCUMENT MIDDLEWARE
