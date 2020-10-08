@@ -33,6 +33,34 @@ const foodtruckSchema = new mongoose.Schema({
       required: [true, 'A foodtruck image must have an image!']
     }
   },
+  menu: {
+    name: {
+      type: String,
+      required: [true, 'A foodtruck product needs to have a name!']
+    },
+    description: String,
+    ingredients: [String],
+    cloudinaryPhoto: {
+      cloudinaryId: String,
+      cloudinaryUrl: String
+    },
+    price: {
+      type: Number,
+      required: [true, 'A foodtruck product needs to have a price!']
+    },
+    orderLimit: {
+      type: Number,
+      required: [true, 'A foodtruck product needs to have an order limit!']
+    },
+    orderSold: {
+      type: Number,
+      default: 0
+    },
+    availability: {
+      type: Boolean,
+      required: [true, 'A foodtruck product needs to have an availability!']
+    }
+  },
   geo: {
     type: mongoose.Schema.ObjectId,
     ref: 'Geo'
