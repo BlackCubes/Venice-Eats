@@ -85,10 +85,15 @@ foodtruckSchema.index({ slug: 1 });
 // VIRTUAL
 // -- calculate wait time
 foodtruckSchema.virtual('menu.waitTime').get(function() {
-  return this.menu.orderSold * 60 * 5;
+  // The amount of time it takes to make each order for every 3 minutes (60 secs/min * 3 mins)
+  return this.menu.orderSold * 60 * 3;
 });
 
 // -- add onSite if the geo has been updated/added
+foodtruckSchema.virtual('onSite').get(function() {
+  // If a foodtruck has a location, update that it is on site. NOTE: !this.geo produces TRUE if there are none, and so doubly negate it to produce the deisre result
+  return !!this.geo;
+});
 
 // DOCUMENT MIDDLEWARE
 // -- slugify the food truck's name
