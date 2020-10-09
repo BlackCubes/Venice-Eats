@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const Geos = require('./geoModel');
 
 const foodtruckSchema = new mongoose.Schema({
   name: {
@@ -121,10 +122,49 @@ foodtruckSchema.pre(/^find/, function(next) {
 });
 
 // STATIC METHODS
+// -- update the geo model if the spot has been taken
+foodtruckSchema.statics.spotAvailable = async function(geoId) {
+  const spotAvailability = await this.aggregate([
+    {
+      $match: { geo: geoId }
+    },
+    {
+      $group: {
+        _id: '$geo',
+        boolSpot: { $toBool: !!this.geo }
+      }
+    }
+  ]);
+
+  if (spotAvailability.length > 0) {
+    await Geos.findByIdAndUpdate(geoId, {
+      'geo.free': spotAvailability[0].boolSpot
+    });
+  } else {
+    await Geos.findByIdAndUpdate(geoId, {
+      'geo.free': !!this.geo
+    });
+  }
+};
+
 // -- find query in DB
 foodtruckSchema.statics.valueExists = function(query) {
   return this.findOne(query).then(result => result);
 };
+
+// MIDDLEWARE FOR CURRENT FOODTRUCK/GEO-MODEL
+foodtruckSchema.post('save', function() {
+  this.constructor.spotAvailable(this.geo);
+});
+
+foodtruckSchema.pre(/^findOneAnd/, async function(next) {
+  this.s = await this.findOne();
+  next();
+});
+
+foodtruckSchema.post(/^findOneAnd/, async function() {
+  await this.s.constructor.spotAvailable(this.s.geo);
+});
 
 const Foodtrucks = mongoose.model('Foodtrucks', foodtruckSchema);
 
