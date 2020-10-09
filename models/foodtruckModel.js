@@ -78,6 +78,10 @@ const foodtruckSchema = new mongoose.Schema({
     default: Date.now(),
     select: false
   }
+},
+{
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
 // INDEXES
