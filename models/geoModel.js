@@ -19,10 +19,21 @@ const geoSchema = new mongoose.Schema({
     default: Date.now(),
     select: false
   }
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
 // INDEXES
 geoSchema.index({ geo: '2dsphere' });
+
+// VIRTUALS
+// -- populate foodtrucks
+geoSchema.virtual('foodtrucks', {
+  ref: 'Foodtrucks',
+  foreignField: 'geo',
+  localField: '_id'
+});
 
 const Geos = mongoose.model('Geo', geoSchema);
 
