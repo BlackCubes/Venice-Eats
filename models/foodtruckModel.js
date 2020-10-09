@@ -80,7 +80,7 @@ const foodtruckSchema = new mongoose.Schema({
 });
 
 // INDEXES
-foodtruckSchema.index({ slug: 1 })
+foodtruckSchema.index({ slug: 1 });
 
 // VIRTUAL
 // -- calculate wait time
