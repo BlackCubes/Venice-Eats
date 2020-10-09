@@ -2,87 +2,89 @@ const mongoose = require('mongoose');
 const slugify = require('slugify');
 const Geos = require('./geoModel');
 
-const foodtruckSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'A foodtruck must have a name!'],
-    unique: true,
-    trim: true
-  },
-  slug: String,
-  info: {
-    type: String,
-    trim: true
-  },
-  contact: {
-    phoneNumber: String,
-    email: String,
-    website: String,
-    social: {
-      url1: String,
-      url2: String,
-      url3: String
-    }
-  },
-  cloudinaryPhoto: {
-    cloudinaryId: {
+const foodtruckSchema = new mongoose.Schema(
+  {
+    name: {
       type: String,
-      required: [true, 'A foodtruck image needs to be in Cloudinary!']
-    },
-    cloudinaryUrl: {
-      type: String,
-      required: [true, 'A foodtruck image must have an image!']
-    }
-  },
-  menu: {
-    productName: {
-      type: String,
-      required: [true, 'A foodtruck product needs to have a name!'],
+      required: [true, 'A foodtruck must have a name!'],
       unique: true,
       trim: true
     },
     slug: String,
-    description: String,
-    ingredients: [String],
+    info: {
+      type: String,
+      trim: true
+    },
+    contact: {
+      phoneNumber: String,
+      email: String,
+      website: String,
+      social: {
+        url1: String,
+        url2: String,
+        url3: String
+      }
+    },
     cloudinaryPhoto: {
-      cloudinaryId: String,
-      cloudinaryUrl: String
+      cloudinaryId: {
+        type: String,
+        required: [true, 'A foodtruck image needs to be in Cloudinary!']
+      },
+      cloudinaryUrl: {
+        type: String,
+        required: [true, 'A foodtruck image must have an image!']
+      }
     },
-    price: {
-      type: Number,
-      required: [true, 'A foodtruck product needs to have a price!']
+    menu: {
+      productName: {
+        type: String,
+        required: [true, 'A foodtruck product needs to have a name!'],
+        unique: true,
+        trim: true
+      },
+      slug: String,
+      description: String,
+      ingredients: [String],
+      cloudinaryPhoto: {
+        cloudinaryId: String,
+        cloudinaryUrl: String
+      },
+      price: {
+        type: Number,
+        required: [true, 'A foodtruck product needs to have a price!']
+      },
+      orderLimit: {
+        type: Number,
+        required: [true, 'A foodtruck product needs to have an order limit!']
+      },
+      orderSold: {
+        type: Number,
+        default: 0
+      },
+      availability: {
+        type: Boolean,
+        required: [true, 'A foodtruck product needs to have an availability!']
+      }
     },
-    orderLimit: {
-      type: Number,
-      required: [true, 'A foodtruck product needs to have an order limit!']
+    geo: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Geo'
     },
-    orderSold: {
-      type: Number,
-      default: 0
+    duration: {
+      startDateTime: Date,
+      endDateTime: Date
     },
-    availability: {
-      type: Boolean,
-      required: [true, 'A foodtruck product needs to have an availability!']
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+      select: false
     }
   },
-  geo: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Geo'
-  },
-  duration: {
-    startDateTime: Date,
-    endDateTime: Date
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-    select: false
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
   }
-},
-{
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true }
-});
+);
 
 // INDEXES
 foodtruckSchema.index({ slug: 1 });
