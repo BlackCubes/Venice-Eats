@@ -1,4 +1,4 @@
 const Foodtruck = require('./foodtruckModel');
-const Geo = require('./geoModel');
+const Geos = require('./geoModel');
 
-module.exports = { Foodtruck, Geo };
+module.exports = { Foodtruck, Geos };
