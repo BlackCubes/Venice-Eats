@@ -79,6 +79,9 @@ const foodtruckSchema = new mongoose.Schema({
   }
 });
 
+// INDEXES
+foodtruckSchema.index({ slug: 1 })
+
 // VIRTUAL
 // -- calculate wait time
 foodtruckSchema.virtual('menu.waitTime').get(function() {
