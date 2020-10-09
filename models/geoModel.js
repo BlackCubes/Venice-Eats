@@ -24,6 +24,6 @@ const geoSchema = new mongoose.Schema({
 // INDEXES
 geoSchema.index({ geo: '2dsphere' });
 
-const Geo = mongoose.model('Geo', geoSchema);
+const Geos = mongoose.model('Geo', geoSchema);
 
-module.exports = Geo;
+module.exports = Geos;
