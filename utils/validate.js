@@ -2,6 +2,27 @@ const Validator = require('validatorjs');
 const Models = require('./../models');
 const capitalize = require('./capitalize');
 
+const regexPhone = /^[(]\d{3}[)]\s?\d{3}[-]\d{4}$/;
+const regexPrice = /^(?!0*\.0+$)\d*(?:\.\d+)?$/;
+
+Validator.register(
+  'regexArrString',
+  function(val) {
+    return val.every(el => typeof el === 'string');
+  },
+  'Please only provide non-numericals.'
+);
+Validator.register(
+  'regexPhone',
+  val => regexPhone.test(val),
+  'Please provide a valid phone number in the form of (###)###-#### or (###) ###-####.'
+);
+Validator.register(
+  'regexPrice',
+  val => regexPrice.test(val),
+  'Please provide a valid price with a minimum of 1.'
+);
+
 Validator.registerAsync('exist', function(value, attribute, req, passes) {
   if (!attribute)
     throw new Error('Specify Requirements i.e. fieldName: exist:Model, column');
