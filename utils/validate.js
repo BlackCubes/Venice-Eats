@@ -2,15 +2,30 @@ const Validator = require('validatorjs');
 const Models = require('./../models');
 const capitalize = require('./capitalize');
 
+const regexAddress = /^[A-Z0-9 ,#'/.]{3,96}$/iu;
+const regexLatitude = /^[+-]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/;
+const regexLongitude = /^[+-]?((1[0-7]|[1-9])?\d(\.\d+)?|180(\.0+)?)$/;
 const regexPhone = /^[(]\d{3}[)]\s?\d{3}[-]\d{4}$/;
 const regexPrice = /^(?!0*\.0+$)\d*(?:\.\d+)?$/;
 
+Validator.register(
+  'regexAddress',
+  val => regexAddress.test(val),
+  'Please provide a valid US street address.'
+);
 Validator.register(
   'regexArrString',
   function(val) {
     return val.every(el => typeof el === 'string');
   },
   'Please only provide non-numericals.'
+);
+Validator.register(
+  'regexGeo',
+  function(val) {
+    return regexLongitude.test(val[0]) && regexLatitude.test(val[1]);
+  },
+  'Please provide a valid longitude that is between -180 and 180 degrees, and/or a valid latitude that is between -90 and 90 degrees.'
 );
 Validator.register(
   'regexPhone',
