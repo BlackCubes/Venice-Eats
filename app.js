@@ -13,6 +13,7 @@ const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globaleErrorHandler = require('./controllers/errorController');
+const foodtruckRouter = require('./routes/foodtruckRoutes');
 
 const app = express();
 
@@ -59,6 +60,9 @@ app.use(xss());
 // nothing yet
 
 // app.use(compression());
+
+// Routers
+app.use('/api/v1/foodtrucks', foodtruckRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Could not find ${req.originalUrl} on this server!`, 404));
