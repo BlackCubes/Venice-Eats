@@ -60,3 +60,27 @@ exports.validateFoodtruck = catchAsync(async (req, res, next) => {
     next();
   });
 });
+
+exports.validateGeo = catchAsync(async (req, res, next) => {
+  let validationRule;
+
+  if (!req.params.id) {
+    validationRule = {
+      'geo.coordinates': 'required|array|regexGeo',
+      'geo.address': 'required|string|regexAddress',
+      free: 'boolean'
+    };
+  } else {
+    validationRule = {
+      'geo.coordinates': 'array|regexGeo',
+      'geo.address': 'string|regexAddress',
+      free: 'boolean'
+    };
+  }
+
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) return next(new AppError(`${errMessage(err.errors)}`, 400));
+
+    next();
+  });
+});
