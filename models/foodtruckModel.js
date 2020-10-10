@@ -51,7 +51,7 @@ const foodtruckSchema = new mongoose.Schema(
       productName: {
         type: String,
         required: [true, 'A foodtruck product needs to have a name!'],
-        unique: true,
+        // unique: true,
         trim: true,
         maxlength: [
           100,
