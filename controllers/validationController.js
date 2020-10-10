@@ -84,3 +84,19 @@ exports.validateGeo = catchAsync(async (req, res, next) => {
     next();
   });
 });
+
+exports.validateEvent = catchAsync(async (req, res, next) => {
+  let validationRule;
+
+  if (!req.params.id) {
+    validationRule = { eventDate: 'required|date' };
+  } else {
+    validationRule = { eventDate: 'required|date' };
+  }
+
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) return next(new AppError(`${errMessage(err.errors)}`, 400));
+
+    next();
+  });
+});
