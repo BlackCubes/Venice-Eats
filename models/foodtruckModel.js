@@ -180,11 +180,11 @@ foodtruckSchema.statics.spotAvailable = async function(geoId) {
 
   if (spotAvailability.length > 0) {
     await Geos.findByIdAndUpdate(geoId, {
-      'geo.free': spotAvailability[0].boolSpot
+      free: spotAvailability[0].boolSpot
     });
   } else {
     await Geos.findByIdAndUpdate(geoId, {
-      'geo.free': !!this.geo
+      free: !!this.geo
     });
   }
 };
