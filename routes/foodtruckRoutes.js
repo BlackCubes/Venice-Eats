@@ -1,12 +1,16 @@
 const express = require('express');
 const foodtruckController = require('./../controllers/foodtruckController');
+const validationController = require('./../controllers/validationController');
 
 const router = express.Router();
 
 router
   .route('/')
   .get(foodtruckController.getAllFoodtrucks)
-  .post(foodtruckController.createFoodtruck);
+  .post(
+    validationController.createFoodtruck,
+    foodtruckController.createFoodtruck
+  );
 
 router
   .route('/:id')
