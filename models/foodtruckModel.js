@@ -9,14 +9,23 @@ const foodtruckSchema = new mongoose.Schema(
       required: [true, 'A foodtruck must have a name!'],
       unique: true,
       trim: true,
-      maxlength: [100, 'A foodtruck must have a name less than or equal to 100 characters!'],
-      minlength: [6, 'A foodtruck must have a name more than or equal to 6 characters!']
+      maxlength: [
+        100,
+        'A foodtruck must have a name less than or equal to 100 characters!'
+      ],
+      minlength: [
+        6,
+        'A foodtruck must have a name more than or equal to 6 characters!'
+      ]
     },
     slug: String,
     info: {
       type: String,
       trim: true,
-      maxlength: [1000, 'The info for the foodtruck must be less than or equal to 1100 characters!']
+      maxlength: [
+        1000,
+        'The info for the foodtruck must be less than or equal to 1100 characters!'
+      ]
     },
     contact: {
       phoneNumber: String,
@@ -44,14 +53,23 @@ const foodtruckSchema = new mongoose.Schema(
         required: [true, 'A foodtruck product needs to have a name!'],
         unique: true,
         trim: true,
-        maxlength: [100, 'A foodtruck product name must be less than or equal to 100 characters!'],
-        minlength: [2, 'A foodtruck product name must be greater than or equal to 2 characters!']
+        maxlength: [
+          100,
+          'A foodtruck product name must be less than or equal to 100 characters!'
+        ],
+        minlength: [
+          2,
+          'A foodtruck product name must be greater than or equal to 2 characters!'
+        ]
       },
       slug: String,
       description: {
         type: String,
         trim: true,
-        maxlength: [183, 'A description for the foodtruck product must be less than or equal to 183 characters!']
+        maxlength: [
+          183,
+          'A description for the foodtruck product must be less than or equal to 183 characters!'
+        ]
       },
       ingredients: [String],
       cloudinaryPhoto: {
