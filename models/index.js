@@ -1,4 +1,5 @@
-const Foodtruck = require('./foodtruckModel');
+const Foodtrucks = require('./foodtruckModel');
 const Geos = require('./geoModel');
+const VeniceEvents = require('./eventModel');
 
-module.exports = { Foodtruck, Geos };
+module.exports = { Foodtrucks, Geos, VeniceEvents };
