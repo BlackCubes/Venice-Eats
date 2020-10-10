@@ -15,11 +15,11 @@ const geoSchema = new mongoose.Schema(
       address: {
         type: String,
         required: [true, 'A geo must have an address!']
-      },
-      free: {
-        type: Boolean,
-        default: true
       }
+    },
+    free: {
+      type: Boolean,
+      default: true
     },
     createdAt: {
       type: Date,
