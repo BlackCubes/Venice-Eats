@@ -8,12 +8,15 @@ const foodtruckSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A foodtruck must have a name!'],
       unique: true,
-      trim: true
+      trim: true,
+      maxlength: [100, 'A foodtruck must have a name less than or equal to 100 characters!'],
+      minlength: [6, 'A foodtruck must have a name more than or equal to 6 characters!']
     },
     slug: String,
     info: {
       type: String,
-      trim: true
+      trim: true,
+      maxlength: [1000, 'The info for the foodtruck must be less than or equal to 1100 characters!']
     },
     contact: {
       phoneNumber: String,
@@ -40,10 +43,16 @@ const foodtruckSchema = new mongoose.Schema(
         type: String,
         required: [true, 'A foodtruck product needs to have a name!'],
         unique: true,
-        trim: true
+        trim: true,
+        maxlength: [100, 'A foodtruck product name must be less than or equal to 100 characters!'],
+        minlength: [2, 'A foodtruck product name must be greater than or equal to 2 characters!']
       },
       slug: String,
-      description: String,
+      description: {
+        type: String,
+        trim: true,
+        maxlength: [183, 'A description for the foodtruck product must be less than or equal to 183 characters!']
+      },
       ingredients: [String],
       cloudinaryPhoto: {
         cloudinaryId: String,
@@ -51,11 +60,13 @@ const foodtruckSchema = new mongoose.Schema(
       },
       price: {
         type: Number,
-        required: [true, 'A foodtruck product needs to have a price!']
+        required: [true, 'A foodtruck product needs to have a price!'],
+        min: [1, 'A foodtruck product must have a minimum price of 1 dollar!']
       },
       orderLimit: {
         type: Number,
-        required: [true, 'A foodtruck product needs to have an order limit!']
+        required: [true, 'A foodtruck product needs to have an order limit!'],
+        min: [5, 'A foodtruck product must have a minimum limit of 5 orders!']
       },
       orderSold: {
         type: Number,
