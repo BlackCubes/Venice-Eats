@@ -8,14 +8,17 @@ router
   .route('/')
   .get(foodtruckController.getAllFoodtrucks)
   .post(
-    validationController.createFoodtruck,
+    validationController.validateFoodtruck,
     foodtruckController.createFoodtruck
   );
 
 router
   .route('/:id')
   .get(foodtruckController.getFoodtruck)
-  .patch(foodtruckController.updateFoodtruck)
+  .patch(
+    validationController.validateFoodtruck,
+    foodtruckController.updateFoodtruck
+  )
   .delete(foodtruckController.deleteFoodtruck);
 
 module.exports = router;
