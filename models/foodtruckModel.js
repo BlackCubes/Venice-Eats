@@ -131,6 +131,13 @@ foodtruckSchema.virtual('onSite').get(function() {
   return !!this.geo;
 });
 
+// -- populate venice events (for date participations)
+foodtruckSchema.virtual('veniceevents', {
+  ref: 'Events',
+  foreignField: 'foodtrucks',
+  localField: '_id'
+});
+
 // DOCUMENT MIDDLEWARE
 // -- slugify the food truck's name
 foodtruckSchema.pre('save', function(next) {
