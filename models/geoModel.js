@@ -8,8 +8,14 @@ const geoSchema = new mongoose.Schema(
         default: 'Point',
         enum: ['Point']
       },
-      coordinates: [Number],
-      address: String,
+      coordinates: {
+        type: [Number],
+        required: [true, 'A geo must have coordinates!']
+      },
+      address: {
+        type: String,
+        required: [true, 'A geo must have an address!']
+      },
       free: {
         type: Boolean,
         default: true
