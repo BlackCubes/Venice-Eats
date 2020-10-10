@@ -13,6 +13,7 @@ const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globaleErrorHandler = require('./controllers/errorController');
+const eventRouter = require('./routes/eventRoutes');
 const foodtruckRouter = require('./routes/foodtruckRoutes');
 const geoRouter = require('./routes/geoRoutes');
 
@@ -63,6 +64,7 @@ app.use(xss());
 // app.use(compression());
 
 // Routers
+app.use('/api/v1/veniceevents', eventRouter);
 app.use('/api/v1/foodtrucks', foodtruckRouter);
 app.use('/api/v1/geos', geoRouter);
 
