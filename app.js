@@ -16,6 +16,7 @@ const globaleErrorHandler = require('./controllers/errorController');
 const eventRouter = require('./routes/eventRoutes');
 const foodtruckRouter = require('./routes/foodtruckRoutes');
 const geoRouter = require('./routes/geoRoutes');
+const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
@@ -67,6 +68,7 @@ app.use(xss());
 app.use('/api/v1/veniceevents', eventRouter);
 app.use('/api/v1/foodtrucks', foodtruckRouter);
 app.use('/api/v1/geos', geoRouter);
+app.use('/api/v1/admins', userRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Could not find ${req.originalUrl} on this server!`, 404));
