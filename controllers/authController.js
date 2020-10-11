@@ -102,3 +102,38 @@ exports.verifyPassword = catchAsync(async (req, res, next) => {
 
   next();
 });
+
+exports.signup = catchAsync(async (req, res, next) => {
+  const query = {
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    password_confirmation: req.body.password_confirmation
+  };
+
+  const newUser = await Users.create(query);
+
+  createSendToken(newUser, 201, req, res);
+});
+
+exports.login = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !password)
+    return next(new AppError('Please provide and email and/or password', 400));
+
+  const user = await Users.findOne({ email }).select('+password');
+
+  if (!user || !(await user.correctPassword(password, user.password)))
+    return next(new AppError('Incorrect email or password!', 401));
+
+  createSendToken(user, 200, req, res);
+});
+
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true
+  });
+  res.status(200).json({ status: 'success' });
+};
