@@ -1,5 +1,6 @@
 const express = require('express');
 const authController = require('./../controllers/authController');
+const userController = require('./../controllers/userController');
 const validationController = require('./../controllers/validationController');
 
 const router = express.Router();
@@ -21,6 +22,14 @@ router.get(
   authController.protect,
   authController.restrictTo('admin'),
   authController.logout
+);
+
+router.get(
+  '/me',
+  authController.protect,
+  authController.restrictTo('admin'),
+  userController.getMe,
+  userController.getUser
 );
 
 module.exports = router;
