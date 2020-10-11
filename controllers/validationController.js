@@ -11,6 +11,34 @@ const errMessage = errObj => {
   return message.slice(0, -1);
 };
 
+exports.signup = catchAsync(async (req, res, next) => {
+  const validationRule = {
+    name: 'required|string|min:2|max:70|regexName',
+    email: 'required|email|exist:Users,email',
+    password: 'required|string|min:8|max:60|confirmed|regexPass',
+    password_confirmation: 'required|string'
+  };
+
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) return next(new AppError(`${errMessage(err.errors)}`, 400));
+
+    next();
+  });
+});
+
+exports.login = catchAsync(async (req, res, next) => {
+  const validationRule = {
+    email: 'required|email',
+    password: 'required|string|min:8|max:60|regexPass'
+  };
+
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) return next(new AppError(`${errMessage(err.errors)}`, 400));
+
+    next();
+  });
+});
+
 exports.validateFoodtruck = catchAsync(async (req, res, next) => {
   let validationRule;
 
