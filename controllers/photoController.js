@@ -45,19 +45,21 @@ exports.bufferSingle = key =>
   });
 
 // -- for buffering more than 1 photo
-exports.bufferPhoto = key =>
-  catchAsync(async (req, res, next) => {
-    const streamUpload = upload.fields([{ name: `${key}`, maxCount: 2 }]);
+exports.bufferArray = catchAsync(async (req, res, next) => {
+  const streamUpload = upload.fields([
+    { name: 'foodtruckPhoto', maxCount: 1 },
+    { name: 'menufoodPhoto', maxCount: 1 }
+  ]);
 
-    streamUpload(req, res, function(err) {
-      if (err instanceof multer.MulterError)
-        return next(new AppError(`${err.message}`, 400));
+  streamUpload(req, res, function(err) {
+    if (err instanceof multer.MulterError)
+      return next(new AppError(`${err.message}`, 400));
 
-      if (err) return next(new AppError(`${err.message}`, 400));
+    if (err) return next(new AppError(`${err.message}`, 400));
 
-      next();
-    });
+    next();
   });
+});
 
 // CONVERT THE BUFFER
 const formatBufferTo64 = file =>
