@@ -120,12 +120,8 @@ exports.uploadSinglePhoto = (preset, required = true) =>
   });
 
 // -- upload array
-exports.uploadPhoto = (...presets) =>
+exports.uploadArrayPhotos = (...presets) =>
   catchAsync(async (req, res, next) => {
-    const { foodtruckPhoto, menufoodPhoto } = req.files;
-    const foodtruckPreset = presets[0];
-    const menufoodPreset = presets[1];
-
     if (!foodtruckPhoto)
       return next(
         new AppError('You must provide an image for the foodtruck!', 400)
