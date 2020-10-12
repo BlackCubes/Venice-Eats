@@ -28,14 +28,26 @@ const upload = multer({
   fileFilter: multerFilter
 });
 
-// BUFFER THE PHOTO
-exports.bufferPhoto = (key1, key2) =>
+// BUFFER THE PHOTO(S)
+// -- for buffering 1 photo
+exports.bufferSingle = key =>
   catchAsync(async (req, res, next) => {
-    // const streamUpload = upload.single(`${key}`);
-    const streamUpload = upload.fields([
-      { name: `${key1}`, maxCount: 1 },
-      { name: `${key2}`, maxCount: 1 }
-    ]);
+    const streamUpload = upload.single(`${key}`);
+
+    streamUpload(req, res, function(err) {
+      if (err instanceof multer.MulterError)
+        return next(new AppError(`${err.message}`, 400));
+
+      if (err) return next(new AppError(`${err.message}`, 400));
+
+      next();
+    });
+  });
+
+// -- for buffering more than 1 photo
+exports.bufferPhoto = key =>
+  catchAsync(async (req, res, next) => {
+    const streamUpload = upload.fields([{ name: `${key}`, maxCount: 2 }]);
 
     streamUpload(req, res, function(err) {
       if (err instanceof multer.MulterError)
@@ -59,6 +71,55 @@ const cloudinaryUpload = (file, preset) =>
 const cloudinaryDelete = file => cloudinary.uploader.destroy(file);
 
 // UPLOAD
+// -- upload single
+exports.uploadSinglePhoto = (preset, required = true) =>
+  catchAsync(async (req, res, next) => {
+    if (!req.file && required)
+      return next(new AppError('You must provide an image!', 400));
+    if (!req.file && !required) return next();
+
+    const file64 = formatBufferTo64(req.file);
+
+    const cloudinaryResult = await cloudinaryUpload(file64.content, preset);
+
+    if (!cloudinaryResult)
+      return next(
+        new AppError(
+          'There is a problem uploading your image! Please contact the system admin.',
+          422
+        )
+      );
+
+    switch (required) {
+      case true: {
+        req.body.cloudinaryPhoto = {
+          cloudinaryId: cloudinaryResult.public_id,
+          cloudinaryUrl: cloudinaryResult.secure_url
+        };
+        break;
+      }
+      case false: {
+        req.body.menu.cloudinaryPhoto = {
+          cloudinaryId: cloudinaryResult.public_id,
+          cloudinaryUrl: cloudinaryResult.secure_url
+        };
+        break;
+      }
+      default: {
+        return next(
+          new AppError(
+            'There was a problem storing the image. Please contact the system admin.',
+            500
+          )
+        );
+        // break;
+      }
+    }
+
+    next();
+  });
+
+// -- upload array
 exports.uploadPhoto = (...presets) =>
   catchAsync(async (req, res, next) => {
     const { foodtruckPhoto, menufoodPhoto } = req.files;
