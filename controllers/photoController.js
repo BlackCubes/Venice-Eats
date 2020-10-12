@@ -91,6 +91,7 @@ exports.uploadPhoto = (...presets) =>
 
     if (menufoodPhoto) {
       const menufoodFile64 = formatBufferTo64(menufoodPhoto[0]);
+      console.log(menufoodFile64);
 
       const menufoodCloudinaryResult = await cloudinaryUpload(
         menufoodFile64.content,
