@@ -73,7 +73,7 @@ exports.uploadPhoto = (preset, required = true) =>
 
     const file64 = formatBufferTo64(foodtruckPhoto[0]);
     console.log('Foodtruck photo: ', foodtruckPhoto[0]);
-    console.log('File64: ', file64.content);
+    console.log('File64: ', file64);
 
     // const cloudinaryResult = await cloudinaryUpload(file64.content, preset);
 
