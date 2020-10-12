@@ -12,9 +12,9 @@ router
   .post(
     // authController.protect,
     // authController.restrictTo('admin'),
-    photoController.bufferPhoto('foodtruckPhoto', 'productPhoto')
+    photoController.bufferPhoto('foodtruckPhoto', 'productPhoto'),
     // validationController.validateFoodtruck,
-    // foodtruckController.createFoodtruck
+    foodtruckController.createFoodtruck
   );
 
 router
