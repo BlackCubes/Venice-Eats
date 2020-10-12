@@ -48,10 +48,8 @@ exports.bufferPhoto = (key1, key2) =>
   });
 
 // CONVERT THE BUFFER
-const formatBufferTo64 = (...files) =>
-  files.forEach(file =>
-    parser.format(path.extname(file.originalname).toString(), file.buffer)
-  );
+const formatBufferTo64 = file =>
+  parser.format(path.extname(file.originalname).toString(), file.buffer);
 
 // ClOUDINARY
 const cloudinaryUpload = (file, preset) =>
