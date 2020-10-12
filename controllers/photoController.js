@@ -62,8 +62,8 @@ const cloudinaryDelete = file => cloudinary.uploader.destroy(file);
 exports.uploadPhoto = (...presets) =>
   catchAsync(async (req, res, next) => {
     const { foodtruckPhoto, menufoodPhoto } = req.files;
-    const foodtruckPreset = presets[0],
-      menufoodPreset = presets[1];
+    const foodtruckPreset = presets[0];
+    const menufoodPreset = presets[1];
 
     if (!foodtruckPhoto)
       return next(
@@ -109,6 +109,8 @@ exports.uploadPhoto = (...presets) =>
         cloudinaryUrl: cloudinaryResult.secure_url
       };
     }
+
+    console.log('Req.body: ', req.body);
 
     next();
   });
