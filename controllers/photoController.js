@@ -59,33 +59,56 @@ const cloudinaryUpload = (file, preset) =>
 const cloudinaryDelete = file => cloudinary.uploader.destroy(file);
 
 // UPLOAD
-exports.uploadPhoto = (preset, required = true) =>
+exports.uploadPhoto = (...presets) =>
   catchAsync(async (req, res, next) => {
-    const { foodtruckPhoto, productPhoto } = req.files;
+    const { foodtruckPhoto, menufoodPhoto } = req.files;
+    const foodtruckPreset = presets[0],
+      menufoodPreset = presets[1];
 
-    if (!foodtruckPhoto && required)
+    if (!foodtruckPhoto)
       return next(
         new AppError('You must provide an image for the foodtruck!', 400)
       );
-    if (!foodtruckPhoto && !required) return next();
 
-    const file64 = formatBufferTo64(foodtruckPhoto[0]);
-    console.log('Foodtruck photo: ', foodtruckPhoto[0]);
-    console.log('File64: ', file64);
+    const foodtruckFile64 = formatBufferTo64(foodtruckPhoto[0]);
 
-    // const cloudinaryResult = await cloudinaryUpload(file64.content, preset);
+    let cloudinaryResult = await cloudinaryUpload(
+      foodtruckFile64.content,
+      foodtruckPreset
+    );
 
-    // if (!cloudinaryResult)
-    //   return next(
-    //     new AppError(
-    //       'There is a problem uploading your image! Please contact the system admin.'
-    //     )
-    //   );
+    if (!cloudinaryResult)
+      return next(
+        new AppError(
+          'There is a problem uploading your foodtruck image! Please contact the system admin.'
+        )
+      );
 
     req.body.cloudinaryPhoto = {
       cloudinaryId: cloudinaryResult.public_id,
       cloudinaryUrl: cloudinaryResult.secure_url
     };
+
+    if (menufoodPhoto) {
+      const menufoodFile64 = formatBufferTo64(menufoodPhoto[0]);
+
+      cloudinaryResult = await cloudinaryUpload(
+        menufoodFile64.content,
+        menufoodPreset
+      );
+
+      if (!cloudinaryResult)
+        return next(
+          new AppError(
+            'There is a problem uploading your menu food image! Please contact the system admin.'
+          )
+        );
+
+      req.body.menu.cloudinaryPhoto = {
+        cloudinaryId: cloudinaryResult.public_id,
+        cloudinaryUrl: cloudinaryResult.secure_url
+      };
+    }
 
     next();
   });
