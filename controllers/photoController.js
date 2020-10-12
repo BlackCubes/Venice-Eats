@@ -29,9 +29,13 @@ const upload = multer({
 });
 
 // BUFFER THE PHOTO
-exports.bufferPhoto = key =>
+exports.bufferPhoto = (key1, key2) =>
   catchAsync(async (req, res, next) => {
-    const streamUpload = upload.single(`${key}`);
+    // const streamUpload = upload.single(`${key}`);
+    const streamUpload = upload.fields([
+      { name: `${key1}`, maxCount: 1 },
+      { name: `${key2}`, maxCount: 1 }
+    ]);
 
     streamUpload(req, res, function(err) {
       if (err instanceof multer.MulterError)
