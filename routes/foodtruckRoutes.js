@@ -10,8 +10,8 @@ router
   .route('/')
   .get(foodtruckController.getAllFoodtrucks)
   .post(
-    authController.protect,
-    authController.restrictTo('admin'),
+    // authController.protect,
+    // authController.restrictTo('admin'),
     photoController.bufferPhoto('foodtruckPhoto', 'productPhoto')
     // validationController.validateFoodtruck,
     // foodtruckController.createFoodtruck
