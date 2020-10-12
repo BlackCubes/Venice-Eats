@@ -124,7 +124,7 @@ exports.uploadSinglePhoto = (preset, required = true) =>
 // -- upload array
 exports.uploadArrayPhotos = (...presets) =>
   catchAsync(async (req, res, next) => {
-    if (!foodtruckPhoto)
+    if (!req.files.foodtruckPhoto)
       return next(
         new AppError('You must provide an image for the foodtruck!', 400)
       );
