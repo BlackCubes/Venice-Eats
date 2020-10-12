@@ -37,8 +37,6 @@ exports.bufferPhoto = (key1, key2) =>
       { name: `${key2}`, maxCount: 1 }
     ]);
 
-    console.log('Stream upload: ', streamUpload);
-
     streamUpload(req, res, function(err) {
       if (err instanceof multer.MulterError)
         return next(new AppError(`${err.message}`, 400));
@@ -50,8 +48,10 @@ exports.bufferPhoto = (key1, key2) =>
   });
 
 // CONVERT THE BUFFER
-const formatBufferTo64 = file =>
-  parser.format(path.extname(file.originalname).toString(), file.buffer);
+const formatBufferTo64 = (...files) =>
+  files.forEach(file =>
+    parser.format(path.extname(file.originalname).toString(), file.buffer)
+  );
 
 // ClOUDINARY
 const cloudinaryUpload = (file, preset) =>
@@ -63,9 +63,13 @@ const cloudinaryDelete = file => cloudinary.uploader.destroy(file);
 // UPLOAD
 exports.uploadPhoto = (preset, required = true) =>
   catchAsync(async (req, res, next) => {
-    if (!req.file && required)
-      return next(new AppError('You must provide an image!', 400));
-    if (!req.file && !required) return next();
+    const { foodtruckPhoto, productPhoto } = req.files;
+
+    if (!foodtruckPhoto && required)
+      return next(
+        new AppError('You must provide an image for the foodtruck!', 400)
+      );
+    if (!foodtruckPhoto && !required) return next();
 
     const file64 = formatBufferTo64(req.file);
 
