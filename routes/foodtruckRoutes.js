@@ -1,6 +1,7 @@
 const express = require('express');
 const authController = require('./../controllers/authController');
 const foodtruckController = require('./../controllers/foodtruckController');
+const photoController = require('./../controllers/photoController');
 const validationController = require('./../controllers/validationController');
 
 const router = express.Router();
@@ -11,8 +12,9 @@ router
   .post(
     authController.protect,
     authController.restrictTo('admin'),
-    validationController.validateFoodtruck,
-    foodtruckController.createFoodtruck
+    photoController.bufferPhoto('foodtruckPhoto', 'productPhoto')
+    // validationController.validateFoodtruck,
+    // foodtruckController.createFoodtruck
   );
 
 router
