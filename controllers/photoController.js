@@ -72,12 +72,12 @@ exports.uploadPhoto = (...presets) =>
 
     const foodtruckFile64 = formatBufferTo64(foodtruckPhoto[0]);
 
-    let cloudinaryResult = await cloudinaryUpload(
+    const foodtruckCloudinaryResult = await cloudinaryUpload(
       foodtruckFile64.content,
       foodtruckPreset
     );
 
-    if (!cloudinaryResult)
+    if (!foodtruckCloudinaryResult)
       return next(
         new AppError(
           'There is a problem uploading your foodtruck image! Please contact the system admin.'
@@ -85,19 +85,19 @@ exports.uploadPhoto = (...presets) =>
       );
 
     req.body.cloudinaryPhoto = {
-      cloudinaryId: cloudinaryResult.public_id,
-      cloudinaryUrl: cloudinaryResult.secure_url
+      cloudinaryId: foodtruckCloudinaryResult.public_id,
+      cloudinaryUrl: foodtruckCloudinaryResult.secure_url
     };
 
     if (menufoodPhoto) {
       const menufoodFile64 = formatBufferTo64(menufoodPhoto[0]);
 
-      cloudinaryResult = await cloudinaryUpload(
+      const menufoodCloudinaryResult = await cloudinaryUpload(
         menufoodFile64.content,
         menufoodPreset
       );
 
-      if (!cloudinaryResult)
+      if (!menufoodCloudinaryResult)
         return next(
           new AppError(
             'There is a problem uploading your menu food image! Please contact the system admin.'
@@ -105,8 +105,8 @@ exports.uploadPhoto = (...presets) =>
         );
 
       req.body.menu.cloudinaryPhoto = {
-        cloudinaryId: cloudinaryResult.public_id,
-        cloudinaryUrl: cloudinaryResult.secure_url
+        cloudinaryId: menufoodCloudinaryResult.public_id,
+        cloudinaryUrl: menufoodCloudinaryResult.secure_url
       };
     }
 
