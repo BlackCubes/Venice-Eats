@@ -71,16 +71,17 @@ exports.uploadPhoto = (preset, required = true) =>
       );
     if (!foodtruckPhoto && !required) return next();
 
-    const file64 = formatBufferTo64(req.file);
+    const file64 = formatBufferTo64(foodtruckPhoto, productPhoto);
+    console.log(file64);
 
-    const cloudinaryResult = await cloudinaryUpload(file64.content, preset);
+    // const cloudinaryResult = await cloudinaryUpload(file64.content, preset);
 
-    if (!cloudinaryResult)
-      return next(
-        new AppError(
-          'There is a problem uploading your image! Please contact the system admin.'
-        )
-      );
+    // if (!cloudinaryResult)
+    //   return next(
+    //     new AppError(
+    //       'There is a problem uploading your image! Please contact the system admin.'
+    //     )
+    //   );
 
     req.body.cloudinaryPhoto = {
       cloudinaryId: cloudinaryResult.public_id,
