@@ -37,6 +37,8 @@ exports.bufferPhoto = (key1, key2) =>
       { name: `${key2}`, maxCount: 1 }
     ]);
 
+    console.log('Stream upload: ', streamUpload);
+
     streamUpload(req, res, function(err) {
       if (err instanceof multer.MulterError)
         return next(new AppError(`${err.message}`, 400));
