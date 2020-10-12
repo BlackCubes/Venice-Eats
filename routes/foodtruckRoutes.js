@@ -14,6 +14,7 @@ router
     // authController.restrictTo('admin'),
     photoController.bufferPhoto('foodtruckPhoto', 'productPhoto'),
     // validationController.validateFoodtruck,
+    photoController.uploadPhoto('veniceeats-foodtrucks'),
     foodtruckController.createFoodtruck
   );
 
