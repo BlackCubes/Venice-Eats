@@ -71,7 +71,7 @@ exports.uploadPhoto = (preset, required = true) =>
       );
     if (!foodtruckPhoto && !required) return next();
 
-    const file64 = formatBufferTo64(foodtruckPhoto[0]);
+    const file64 = formatBufferTo64(foodtruckPhoto[0].content);
     console.log('Foodtruck photo: ', foodtruckPhoto);
     console.log('File64: ', file64);
 
