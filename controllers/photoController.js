@@ -130,8 +130,8 @@ exports.uploadArrayPhotos = catchAsync(async (req, res, next) => {
       new AppError('You must provide an image for the foodtruck!', 400)
     );
 
-  req.body.cloudinaryPhoto = {};
-  req.body.menu.cloudinaryPhoto = {};
+  // req.body.cloudinaryPhoto = {};
+  // req.body.menu.cloudinaryPhoto = {};
 
   await Promise.all(
     Object.entries(req.files).map(async ([key, val]) => {
