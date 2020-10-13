@@ -162,8 +162,6 @@ exports.uploadArrayPhotos = catchAsync(async (req, res, next) => {
     })
   );
 
-  console.log('Req.body: ', req.body);
-
   next();
 });
 
