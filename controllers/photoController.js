@@ -137,15 +137,18 @@ exports.uploadArrayPhotos = catchAsync(async (req, res, next) => {
 
   await Promise.all(
     Object.entries(req.files).map(async ([key, val]) => {
-      const preset = `veniceeats-${key.split('P')[0]}s`;
+      const preset = key.split('P')[0];
       const file64 = formatBufferTo64(val[0]);
 
-      const cloudinaryResult = await cloudinaryUpload(file64.content, preset);
+      const cloudinaryResult = await cloudinaryUpload(
+        file64.content,
+        `veniceeats-${preset}s`
+      );
 
       if (!cloudinaryResult)
         return next(
           new AppError(
-            'There is a problem uploading your image! Please contact the system admin.'
+            `There is a problem uploading your ${preset} image! Please contact the system admin.`
           )
         );
 
