@@ -122,58 +122,46 @@ exports.uploadSinglePhoto = (preset, required = true) =>
   });
 
 // -- upload array
-exports.uploadArrayPhotos = (...presets) =>
-  catchAsync(async (req, res, next) => {
-    if (!req.files.foodtruckPhoto)
-      return next(
-        new AppError('You must provide an image for the foodtruck!', 400)
-      );
-
-    const foodtruckFile64 = formatBufferTo64(foodtruckPhoto[0]);
-
-    const foodtruckCloudinaryResult = await cloudinaryUpload(
-      foodtruckFile64.content,
-      foodtruckPreset
+exports.uploadArrayPhotos = catchAsync(async (req, res, next) => {
+  if (!req.files.foodtruckPhoto)
+    return next(
+      new AppError('You must provide an image for the foodtruck!', 400)
     );
 
-    if (!foodtruckCloudinaryResult)
-      return next(
-        new AppError(
-          'There is a problem uploading your foodtruck image! Please contact the system admin.'
-        )
-      );
+  req.body.cloudinaryPhoto = { cloudinaryId: '', cloudinaryUrl: '' };
+  req.body.menu.cloudinaryPhoto = { cloudinaryId: '', cloudinaryUrl: '' };
 
-    req.body.cloudinaryPhoto = {
-      cloudinaryId: foodtruckCloudinaryResult.public_id,
-      cloudinaryUrl: foodtruckCloudinaryResult.secure_url
-    };
+  await Promise.all(
+    Object.entries(req.files).map(async ([key, val]) => {
+      const preset = `veniceeats-${key.split('P')[0]}s`;
+      const file64 = formatBufferTo64(val[0]);
 
-    if (menufoodPhoto) {
-      const menufoodFile64 = formatBufferTo64(menufoodPhoto[0]);
-      console.log(menufoodFile64.content);
+      const cloudinaryResult = await cloudinaryUpload(file64.content, preset);
 
-      const menufoodCloudinaryResult = await cloudinaryUpload(
-        menufoodFile64.content,
-        menufoodPreset
-      );
-
-      if (!menufoodCloudinaryResult)
+      if (!cloudinaryResult)
         return next(
           new AppError(
-            'There is a problem uploading your menu food image! Please contact the system admin.'
+            'There is a problem uploading your image! Please contact the system admin.'
           )
         );
 
-      req.body.menu.cloudinaryPhoto = {
-        cloudinaryId: menufoodCloudinaryResult.public_id,
-        cloudinaryUrl: menufoodCloudinaryResult.secure_url
-      };
-    }
+      if (key === 'foodtruckPhoto')
+        req.body.cloudinaryPhoto = {
+          cloudinaryId: cloudinaryResult.public_id,
+          cloudinaryUrl: cloudinaryResult.secure_url
+        };
+      if (key === 'menufoodPhoto')
+        req.body.menu.cloudinaryPhoto = {
+          cloudinaryId: cloudinaryResult.public_id,
+          cloudinaryUrl: cloudinaryResult.secure_url
+        };
+    })
+  );
 
-    console.log('Req.body: ', req.body);
+  console.log('Req.body: ', req.body);
 
-    next();
-  });
+  next();
+});
 
 // DELETE
 exports.deletePhoto = photoType =>
