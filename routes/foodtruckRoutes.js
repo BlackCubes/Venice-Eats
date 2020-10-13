@@ -12,12 +12,9 @@ router
   .post(
     // authController.protect,
     // authController.restrictTo('admin'),
-    photoController.bufferPhoto('foodtruckPhoto', 'menufoodPhoto'),
+    photoController.bufferArray,
     // validationController.validateFoodtruck,
-    photoController.uploadPhoto(
-      'veniceeats-foodtrucks',
-      'veniceeats-menufoods'
-    ),
+    photoController.uploadArrayPhotos,
     foodtruckController.createFoodtruck
   );
 
