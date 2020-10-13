@@ -118,6 +118,8 @@ exports.uploadSinglePhoto = (preset, required = true) =>
       }
     }
 
+    console.log('Req.body: ', req.body);
+
     next();
   });
 
