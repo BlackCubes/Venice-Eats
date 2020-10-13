@@ -131,7 +131,9 @@ exports.uploadArrayPhotos = catchAsync(async (req, res, next) => {
     );
 
   req.body.cloudinaryPhoto = {};
-  // req.body.menu.cloudinaryPhoto = {};
+  req.body.menu = {
+    cloudinaryPhoto: {}
+  };
 
   await Promise.all(
     Object.entries(req.files).map(async ([key, val]) => {
