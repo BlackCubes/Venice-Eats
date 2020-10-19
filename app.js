@@ -70,7 +70,6 @@ app.use('/api/v1/veniceevents', eventRouter);
 app.use('/api/v1/foodtrucks', foodtruckRouter);
 app.use('/api/v1/geos', geoRouter);
 app.use('/api/v1/admins', userRouter);
-app.use('/', viewRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Could not find ${req.originalUrl} on this server!`, 404));
