@@ -17,7 +17,6 @@ const eventRouter = require('./routes/eventRoutes');
 const foodtruckRouter = require('./routes/foodtruckRoutes');
 const geoRouter = require('./routes/geoRoutes');
 const userRouter = require('./routes/userRoutes');
-const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
