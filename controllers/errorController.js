@@ -30,10 +30,10 @@ const sendErrorDev = (err, req, res) => {
     });
   }
   // RENDERED WEBSITE
-  return res.status(err.statusCode).render('error/error', {
-    title: '🤕 Uh Oh! Something is wrong! 🤕',
-    msg: err.message
-  });
+  // return res.status(err.statusCode).render('error/error', {
+  //   title: '🤕 Uh Oh! Something is wrong! 🤕',
+  //   msg: err.message
+  // });
 };
 
 const sendErrorProd = (err, req, res) => {
@@ -54,17 +54,17 @@ const sendErrorProd = (err, req, res) => {
     });
   }
   // FOR RENDERED WEBSITE
-  if (err.isOperational) {
-    return res.status(err.statusCode).render('error/error', {
-      title: '🤕 Uh Oh! Something is wrong! 🤕',
-      msg: err.message
-    });
-  }
+  // if (err.isOperational) {
+  //   return res.status(err.statusCode).render('error/error', {
+  //     title: '🤕 Uh Oh! Something is wrong! 🤕',
+  //     msg: err.message
+  //   });
+  // }
   console.error('ERROR!', err);
-  return res.status(err.statusCode).render('error/error', {
-    title: '🤕 Uh Oh! Something is wrong! 🤕',
-    msg: 'Please try again later!'
-  });
+  // return res.status(err.statusCode).render('error/error', {
+  //   title: '🤕 Uh Oh! Something is wrong! 🤕',
+  //   msg: 'Please try again later!'
+  // });
 };
 
 module.exports = (err, req, res, next) => {
