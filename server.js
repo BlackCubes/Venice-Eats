@@ -14,13 +14,13 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-// mongoose
-//   .connect(DB, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false
-//   })
-//   .then(() => console.log('The DB has been successfully connected!'));
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  })
+  .then(() => console.log('The DB has been successfully connected!'));
 
 const port = process.env.PORT || 3001;
 const server = app.listen(port, () => {
