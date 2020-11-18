@@ -13,14 +13,18 @@ class App extends Component {
     this.state = { apiResponse: '' };
   }
 
-  async componentDidMount() {
+  callApi = async () => {
     try {
       const data = await apiBaseUrl.get('/testApi');
-
-      this.setState({ apiResponse: data.apiTest });
+      return data;
     } catch (err) {
       console.log(`There was an error fetching the api: ${err.message}`);
     }
+  };
+
+  async componentDidMount() {
+    const testData = await this.callApi();
+    this.setState({ apiResponse: testData.apiTest });
   }
 
   render() {
