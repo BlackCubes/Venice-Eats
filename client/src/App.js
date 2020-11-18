@@ -23,8 +23,8 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const testData = await this.callApi();
-    this.setState({ apiResponse: testData.apiTest });
+    const { data } = await this.callApi();
+    this.setState({ apiResponse: data.apiTest });
   }
 
   render() {
