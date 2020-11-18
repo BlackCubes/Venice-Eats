@@ -3,7 +3,7 @@ import axios from 'axios';
 // import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 
 const apiBaseUrl = axios.create({
-  baseURL: 'http://localhost:3001/api',
+  baseURL: 'http://localhost:3001/api/v1',
   responseType: 'json'
 });
 
