@@ -7,7 +7,8 @@ export async function resolve(promise) {
   try {
     resolved.data = await promise;
   } catch (err) {
-    console.log(`There was an error on the promose: ${err}`);
+    // console.log(`There was an error on the promose: ${err}`);
+    resolved.error = err;
   }
 
   return resolved;
