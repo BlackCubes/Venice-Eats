@@ -1,5 +1,4 @@
 import React, { Component, useState } from 'react';
-// import axios from 'axios';
 import * as api from './api.js';
 // import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 
@@ -14,19 +13,10 @@ class App extends Component {
 
     if (testApi.error) this.setState({ error: testApi.error });
     else this.setState({ apiResponse: testApi.data });
-
-    // try {
-    //   const data = await apiBaseUrl.get('/testApi');
-    //   return data;
-    // } catch (err) {
-    //   console.log(`There was an error fetching the api: ${err.message}`);
-    // }
   };
 
   componentDidMount() {
     this.callApi();
-    // const { data } = await this.callApi();
-    // this.setState({ apiResponse: data.apiTest });
   }
 
   render() {
