@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { Login } from './containers/Login';
 import { Test } from './containers/Test';
 
-const AppTesting = () => {
+const App = () => {
   return (
     <Router>
       <Switch>
@@ -14,4 +14,4 @@ const AppTesting = () => {
   );
 };
 
-export default AppTesting;
+export default App;
