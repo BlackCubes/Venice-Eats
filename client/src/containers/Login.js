@@ -22,6 +22,8 @@ export class Login extends Component {
 
     const res = await login(data);
 
+    console.log(res);
+
     if (res.error) console.log(`Error: ${res.error}`);
     else console.log(`Success! ${res.data}`);
   }
