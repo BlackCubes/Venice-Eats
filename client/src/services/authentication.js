@@ -8,5 +8,7 @@ const apiUrl = axios.create({
 });
 
 export const login = async data => {
-  return await resolve(apiUrl.post('/admins', data).then(res => res.data));
+  return await resolve(
+    apiUrl.post('/admins/login', data).then(res => res.data)
+  );
 };
