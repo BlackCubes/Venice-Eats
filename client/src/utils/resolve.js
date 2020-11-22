@@ -9,7 +9,7 @@ export async function resolve(promise) {
     resolved.data = data;
   } catch (err) {
     // console.log(`There was an error on the promose: ${err}`);
-    resolved.error = err.message;
+    resolved.error = err.response.data.message;
   }
 
   return resolved;
