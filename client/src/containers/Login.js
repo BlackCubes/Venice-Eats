@@ -20,7 +20,8 @@ export class Login extends Component {
       password: this.state.password
     });
 
-    console.log(`Response for logging in: ${res}`);
+    if (res.error) console.log(`Error: ${res.error}`);
+    else console.log(`Success! ${res.data}`);
   }
 
   handleChange(e) {
