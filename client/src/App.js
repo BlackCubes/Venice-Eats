@@ -34,7 +34,6 @@ class App extends Component {
       <div className="App">
         Hello! This is a new test for Venice Eats!
         <p>{this.state.apiResponse}</p>
-        {/* <p>{this.state.error}</p> */}
       </div>
     );
   }
