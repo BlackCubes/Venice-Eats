@@ -45,7 +45,7 @@ export class Login extends Component {
           <Form.Control
             type="password"
             value={this.state.password}
-            onChange={e => this.handleChange({ password: e.target.password })}
+            onChange={e => this.handleChange({ password: e.target.value })}
           />
         </Form.Group>
         <Button block size="lg" type="submit">
