@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getTest } from './../services/api';
 
-export default class Test extends Component {
+export class Test extends Component {
   constructor(props) {
     super(props);
     this.state = { res: '' };
