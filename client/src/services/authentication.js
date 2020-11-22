@@ -3,7 +3,7 @@ import axios from 'axios';
 import { resolve } from './../utils/resolve';
 
 const apiUrl = axios.create({
-  baseUrl: 'http://localhost:3001/api/v1',
+  baseURL: 'http://localhost:3001/api/v1',
   responseType: 'json'
 });
 
