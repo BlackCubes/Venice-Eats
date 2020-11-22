@@ -5,6 +5,7 @@ const capitalize = require('./capitalize');
 const regexAddress = /^[A-Z0-9 ,#'/.]{3,96}$/iu;
 const regexLatitude = /^[+-]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/;
 const regexLongitude = /^[+-]?((1[0-7]|[1-9])?\d(\.\d+)?|180(\.0+)?)$/;
+const regexPass = /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[.#?!@$%^&*\\-_]).{8,60}$/;
 const regexPhone = /^[(]\d{3}[)]\s?\d{3}[-]\d{4}$/;
 const regexPrice = /^(?!0*\.0+$)\d*(?:\.\d+)?$/;
 
@@ -26,6 +27,11 @@ Validator.register(
     return regexLongitude.test(val[0]) && regexLatitude.test(val[1]);
   },
   'Please provide a valid longitude that is between -180 and 180 degrees, and/or a valid latitude that is between -90 and 90 degrees.'
+);
+Validator.register(
+  'regexPass',
+  val => regexPass.test(val),
+  'Please use at least one number, one special character, and one capital letter between 8 to 60 characters for the password.'
 );
 Validator.register(
   'regexPhone',
