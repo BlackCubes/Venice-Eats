@@ -10,6 +10,6 @@ export async function getTest() {
   return await resolve(apiUrl.get('/testApi').then(res => res.data));
 }
 
-export async function login(data) {
-  return await resolve(apiUrl.post('/admins', data).then(res => res.data));
-}
+// export async function login(data) {
+//   return await resolve(apiUrl.post('/admins', data).then(res => res.data));
+// }
