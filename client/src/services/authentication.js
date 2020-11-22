@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import axios from 'axios';
 import { resolve } from './../utils/resolve';
 
