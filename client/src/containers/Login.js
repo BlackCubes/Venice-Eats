@@ -30,7 +30,7 @@ export class Login extends Component {
 
   render() {
     return (
-      <Form onSubmit={handleLoginForm}>
+      <Form onSubmit={this.handleLoginForm}>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
