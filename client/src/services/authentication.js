@@ -7,6 +7,6 @@ const apiUrl = axios.create({
   responseType: 'json'
 });
 
-// export async function login(data) {
-//   return await resolve(apiUrl.post('/admins', data).then(res => res.data));
-// }
+export const login = async data => {
+  return await resolve(apiUrl.post('/admins', data).then(res => res.data));
+};
