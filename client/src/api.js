@@ -7,5 +7,5 @@ const apiUrl = axios.create({
 });
 
 export async function getTest() {
-  return await resolve(axios.get(`${apiUrl}/testApi`).then(res => res.data));
+  return await resolve(apiUrl.get(`/testApi`).then(res => res.data));
 }
