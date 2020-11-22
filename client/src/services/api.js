@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { resolve } from './utils/resolve.js';
+import { resolve } from './../utils/resolve';
 
 const apiUrl = axios.create({
   baseURL: 'http://localhost:3001/api/v1',
