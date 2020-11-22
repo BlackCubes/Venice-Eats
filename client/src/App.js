@@ -23,7 +23,7 @@ class App extends Component {
     // }
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.callApi();
     // const { data } = await this.callApi();
     // this.setState({ apiResponse: data.apiTest });
