@@ -11,5 +11,5 @@ export async function getTest() {
 }
 
 export async function login(data) {
-  return await resolve(apiUrl.post('/admins').then(res => res.data));
+  return await resolve(apiUrl.post('/admins', data).then(res => res.data));
 }
