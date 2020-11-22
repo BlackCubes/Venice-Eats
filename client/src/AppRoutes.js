@@ -7,7 +7,7 @@ const AppTesting = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/" component={Test} />
+        {/* <Route path="/" component={Test} /> */}
         <Route path="/login" component={Login} />
       </Switch>
     </Router>
