@@ -15,10 +15,12 @@ export class Login extends Component {
   async handleLoginForm(e) {
     e.preventDefault();
 
-    const res = await login({
+    const data = {
       email: this.state.email,
       password: this.state.password
-    });
+    };
+
+    const res = await login(data);
 
     if (res.error) console.log(`Error: ${res.error}`);
     else console.log(`Success! ${res.data}`);
