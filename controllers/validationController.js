@@ -13,7 +13,7 @@ const errMessage = errObj => {
 
 exports.signup = catchAsync(async (req, res, next) => {
   const validationRule = {
-    name: 'required|string|min:2|max:70|regexName',
+    name: 'required|string|min:2|max:70',
     email: 'required|email|exist:Users,email',
     password: 'required|string|min:8|max:60|confirmed|regexPass',
     password_confirmation: 'required|string'
