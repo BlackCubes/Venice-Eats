@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { login } from './../services/authentication';
 import { Alert } from './../components/Alert';
+import './Login.css';
 
 export class Login extends Component {
   constructor(props) {
