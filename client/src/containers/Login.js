@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { login } from './../services/authentication';
+import { Alert } from './../components/Alert';
 
 export class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '' };
+    this.state = { email: '', password: '', error: null };
 
     this.handleLoginForm = this.handleLoginForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -24,7 +25,7 @@ export class Login extends Component {
 
     console.log(res);
 
-    if (res.error) console.log(`Error: ${res.error}`);
+    if (res.error) this.setState({ error: res.error });
     else console.log(`Success! ${res.data}`);
   }
 
@@ -33,6 +34,10 @@ export class Login extends Component {
   }
 
   render() {
+    if (this.state.error) {
+      return <Alert message={this.state.error} />;
+    }
+
     return (
       <Form onSubmit={this.handleLoginForm}>
         <Form.Group size="lg" controlId="email">
