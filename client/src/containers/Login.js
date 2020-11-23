@@ -34,10 +34,6 @@ export class Login extends Component {
   }
 
   render() {
-    // if (this.state.error) {
-    //   return <Alert message={this.state.error} />;
-    // }
-
     return (
       <div className="form-container">
         {this.state.error && <Alert message={this.state.error} />}
