@@ -35,7 +35,7 @@ export class Login extends Component {
 
   render() {
     return (
-      <div className="form-container">
+      <div className="Login">
         {this.state.error && <Alert message={this.state.error} />}
 
         <Form onSubmit={this.handleLoginForm}>
