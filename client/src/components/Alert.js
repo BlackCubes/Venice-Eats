@@ -5,7 +5,7 @@ export const Alert = props => {
   return (
     <AlertBS variant="danger">
       <AlertBS.Heading>Oh no! 😱 You got errors! 🙅‍♀️</AlertBS.Heading>
-      <p>{props}</p>
+      <p>{props.message}</p>
     </AlertBS>
   );
 };
