@@ -1,3 +1,4 @@
+import React from 'react';
 import { Alert as AlertBS } from 'react-bootstrap/Alert';
 
 export const Alert = props => {
