@@ -3,7 +3,8 @@
     padding: 60px 0;
   }
 
-  .Login form {
+  .Login form,
+  .Login .alert {
     margin: 0 auto;
     max-width: 320px;
   }
