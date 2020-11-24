@@ -5,7 +5,6 @@ import { Form, Button } from 'react-bootstrap';
 import { login } from './../services/authentication';
 import { Alert } from './../components/Alert';
 import './Login.css';
-import { fromString } from 'html-to-text';
 
 const validationSchema = yup.object({
   email: yup
