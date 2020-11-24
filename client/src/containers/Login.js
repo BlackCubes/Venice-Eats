@@ -33,7 +33,7 @@ const Login = () => {
           }, 2000);
         }}
       >
-        {({ values, handleChange, handleBlur, handleSubmit }) => (
+        {({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <Form.Group size="lg" controlId="email">
               <Form.Label>Email</Form.Label>
@@ -57,7 +57,7 @@ const Login = () => {
                 onBlur={handleBlur}
               />
             </Form.Group>
-            <Button block size="lg" type="submit">
+            <Button block size="lg" type="submit" disabled={isSubmitting}>
               Login
             </Button>
           </Form>
