@@ -6,7 +6,7 @@ const apiUrl = axios.create({
   responseType: 'json'
 });
 
-export const login = async data => {
+export const loginApi = async data => {
   return await resolve(
     apiUrl.post('/admins/login', data).then(res => res.data)
   );

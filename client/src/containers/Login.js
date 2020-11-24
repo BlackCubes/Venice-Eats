@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
-import { login } from './../services/authentication';
+import { loginApi } from './../services/authentication';
 import { Alert } from './../components/Alert';
 import './Login.css';
 
