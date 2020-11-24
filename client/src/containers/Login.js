@@ -57,6 +57,9 @@ const Login = () => {
                 onBlur={handleBlur}
               />
             </Form.Group>
+            <Button block size="lg" type="submit">
+              Login
+            </Button>
           </Form>
         )}
       </Formik>
