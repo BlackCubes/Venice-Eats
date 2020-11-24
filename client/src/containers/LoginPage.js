@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
