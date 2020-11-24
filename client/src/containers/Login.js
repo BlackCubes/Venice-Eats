@@ -74,7 +74,7 @@ const Login = () => {
                 className={touched.email && errors.email ? 'error' : null}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                isInvalid={!!errors.email}
+                isInvalid={!!errors.email || !!apiError}
               />
               {touched.email && errors.email ? (
                 <Form.Control.Feedback type="invalid">
@@ -90,7 +90,7 @@ const Login = () => {
                 className={touched.password && errors.password ? 'error' : null}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                isInvalid={!!errors.password}
+                isInvalid={!!errors.password || !!apiError}
               />
               {touched.password && errors.password ? (
                 <Form.Control.Feedback type="invalid">
