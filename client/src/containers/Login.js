@@ -35,7 +35,7 @@ const Login = () => {
         }}
       >
         {({ values, isSubmitting, handleSubmit }) => (
-          <Form onSubmit={handleSubmit}>
+          <Form noValidate onSubmit={handleSubmit}>
             <Form.Group size="lg" controlId="email">
               <Field
                 autoFocus
