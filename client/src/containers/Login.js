@@ -24,7 +24,7 @@ const Login = () => {
     <div className="Login">
       <Formik
         initialValues={{ email: '', password: '' }}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         onSubmit={(data, { setSubmitting, resetForm }) => {
           setTimeout(() => {
             alert(JSON.stringify(data, null, 2));
