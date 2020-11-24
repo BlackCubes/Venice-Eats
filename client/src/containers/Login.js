@@ -43,7 +43,13 @@ const Login = () => {
 
   return (
     <div className="Login">
-      {apiError && <Alert message={apiError} />}
+      {apiError && (
+        <Alert
+          variant="danger"
+          heading="Oh no! 😱 You got errors! 🙅‍♀️"
+          message={apiError}
+        />
+      )}
 
       <Formik
         initialValues={initialValues}
