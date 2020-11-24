@@ -21,44 +21,46 @@ const validationSchema = yup.object({
 
 const Login = () => {
   return (
-    <Formik
-      initialValues={{ email: '', password: '' }}
-      validationSchema={validationSchema}
-      onSubmit={(data, { setSubmitting, resetForm }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(data, null, 2));
-          resetForm();
-          setSubmitting(false);
-        }, 5000);
-      }}
-    >
-      {({ values, handleChange, handleBlur, handleSubmit }) => (
-        <Form onSubmit={handleSubmit}>
-          <Form.Group size="lg" controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              autoFocus
-              type="email"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </Form.Group>
-          <Form.Group size="lg" controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              autoFocus
-              type="password"
-              name="password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </Form.Group>
-        </Form>
-      )}
-    </Formik>
+    <div className="Login">
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        validationSchema={validationSchema}
+        onSubmit={(data, { setSubmitting, resetForm }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(data, null, 2));
+            resetForm();
+            setSubmitting(false);
+          }, 5000);
+        }}
+      >
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
+          <Form onSubmit={handleSubmit}>
+            <Form.Group size="lg" controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                autoFocus
+                type="email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </Form.Group>
+            <Form.Group size="lg" controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                autoFocus
+                type="password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </Form.Group>
+          </Form>
+        )}
+      </Formik>
+    </div>
   );
 };
 
