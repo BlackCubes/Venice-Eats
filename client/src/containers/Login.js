@@ -7,6 +7,8 @@ import { Alert } from './../components/Alert';
 import './Login.css';
 
 const Login = () => {
+  const [apiError, setApiError] = React.useState(null);
+
   const initialValues = {
     email: '',
     password: ''
@@ -28,17 +30,23 @@ const Login = () => {
       .required('Required')
   });
 
-  const onSubmit = (data, { setSubmitting, resetForm }) => {
+  const onSubmit = async (data, { setSubmitting, resetForm }) => {
     setTimeout(() => {
       setSubmitting(true);
-      alert(JSON.stringify(data, null, 2));
+
+      const res = await loginApi(data);
+
+      if (res.error) setApiError(res.error);
+      else alert(JSON.stringify(data, null, 2));
       resetForm();
       setSubmitting(false);
-    }, 2000);
+    }, 1000);
   };
 
   return (
     <div className="Login">
+      {apiError && <Alert message={apiError} />}
+      
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
