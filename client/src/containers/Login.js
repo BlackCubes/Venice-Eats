@@ -30,7 +30,7 @@ const Login = () => {
             alert(JSON.stringify(data, null, 2));
             resetForm();
             setSubmitting(false);
-          }, 5000);
+          }, 2000);
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (
