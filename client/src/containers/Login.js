@@ -15,7 +15,10 @@ const validationSchema = yup.object({
     .string()
     .min(8, 'Must be at least 8 characteers long')
     .max(60, 'Must be at least 60 characters or less')
-    .matches(/^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[.#?!@$%^&*\\-_]).{8,60}$/)
+    .matches(
+      /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[.#?!@$%^&*\\-_]).{8,60}$/,
+      'Must use at least one number, one special character, and one capital letter'
+    )
     .required('Required')
 });
 
