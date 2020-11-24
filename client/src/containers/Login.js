@@ -37,8 +37,13 @@ const Login = () => {
         {({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <Form.Group size="lg" controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Field autoFocus name="email" type="email" as={Form.Control} />
+              <Field
+                autoFocus
+                placeholder="Email"
+                name="email"
+                type="email"
+                as={Form.Control}
+              />
               {/* <Form.Control
                 autoFocus
                 type="email"
@@ -49,8 +54,12 @@ const Login = () => {
               /> */}
             </Form.Group>
             <Form.Group size="lg" controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Field name="password" type="password" as={Form.Control} />
+              <Field
+                name="password"
+                placeholder="Password"
+                type="password"
+                as={Form.Control}
+              />
               {/* <Form.Control
                 autoFocus
                 type="password"
