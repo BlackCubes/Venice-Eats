@@ -27,6 +27,7 @@ const Login = () => {
         validationSchema={validationSchema}
         onSubmit={(data, { setSubmitting, resetForm }) => {
           setTimeout(() => {
+            setSubmitting(true);
             alert(JSON.stringify(data, null, 2));
             resetForm();
             setSubmitting(false);
