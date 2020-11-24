@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import Login from './containers/Login';
+import LoginPage from './containers/LoginPage';
 import { Test } from './containers/Test';
 
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route path="/" exact component={Test} />
-        <Route path="/login" exact component={Login} />
+        <Route path="/login" exact component={LoginPage} />
       </Switch>
     </Router>
   );
