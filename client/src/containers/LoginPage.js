@@ -40,7 +40,7 @@ const LoginPage = () => {
       setApiError(res.error);
     } else {
       console.log(res.data);
-      alert('It works!');
+      alert(`Welcome back, ${res.data.user.name.split(' ')[0]}`);
     }
 
     resetForm();
