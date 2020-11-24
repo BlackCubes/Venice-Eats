@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import { Login } from './containers/Login';
+import Login from './containers/Login';
 import { Test } from './containers/Test';
 
 const App = () => {
