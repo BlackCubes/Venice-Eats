@@ -31,22 +31,20 @@ const Login = () => {
   });
 
   const onSubmit = async (data, { setSubmitting, resetForm }) => {
-    setTimeout(() => {
-      setSubmitting(true);
+    setSubmitting(true);
 
-      const res = await loginApi(data);
+    const res = await loginApi(data);
 
-      if (res.error) setApiError(res.error);
-      else alert(JSON.stringify(data, null, 2));
-      resetForm();
-      setSubmitting(false);
-    }, 1000);
+    if (res.error) setApiError(res.error);
+    else alert(JSON.stringify(data, null, 2));
+
+    resetForm();
   };
 
   return (
     <div className="Login">
       {apiError && <Alert message={apiError} />}
-      
+
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
