@@ -5,6 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 import { login } from './../services/authentication';
 import { Alert } from './../components/Alert';
 import './Login.css';
+import { fromString } from 'html-to-text';
 
 const validationSchema = yup.object({
   email: yup
@@ -37,25 +38,27 @@ const Login = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Group size="lg" controlId="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control
+              <Field autoFocus name="email" type="email" as={Form.Control} />
+              {/* <Form.Control
                 autoFocus
                 type="email"
                 name="email"
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              />
+              /> */}
             </Form.Group>
             <Form.Group size="lg" controlId="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control
+              <Field name="password" type="password" as={Form.Control} />
+              {/* <Form.Control
                 autoFocus
                 type="password"
                 name="password"
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              />
+              /> */}
             </Form.Group>
             <Button block size="lg" type="submit" disabled={isSubmitting}>
               Login
