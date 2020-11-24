@@ -6,7 +6,7 @@ import { loginApi } from './../services/authentication';
 import { Alert } from './../components/Alert';
 import './Login.css';
 
-const Login = () => {
+const LoginPage = () => {
   const [apiError, setApiError] = React.useState(null);
 
   const initialValues = {
@@ -108,4 +108,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
