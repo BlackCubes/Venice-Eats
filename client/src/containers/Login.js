@@ -6,36 +6,43 @@ import { loginApi } from './../services/authentication';
 import { Alert } from './../components/Alert';
 import './Login.css';
 
-const validationSchema = yup.object({
-  email: yup
-    .string()
-    .email('Must provide a valid email')
-    .required('Required'),
-  password: yup
-    .string()
-    .min(8, 'Must be at least 8 characteers long')
-    .max(60, 'Must be at least 60 characters or less')
-    .matches(
-      /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[.#?!@$%^&*\\-_]).{8,60}$/,
-      'Must use at least one number, one special character, and one capital letter'
-    )
-    .required('Required')
-});
-
 const Login = () => {
+  const initialValues = {
+    email: '',
+    password: ''
+  };
+
+  const validationSchema = yup.object({
+    email: yup
+      .string()
+      .email('Must provide a valid email')
+      .required('Required'),
+    password: yup
+      .string()
+      .min(8, 'Must be at least 8 characteers long')
+      .max(60, 'Must be at least 60 characters or less')
+      .matches(
+        /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[.#?!@$%^&*\\-_]).{8,60}$/,
+        'Must use at least one number, one special character, and one capital letter'
+      )
+      .required('Required')
+  });
+
+  const onSubmit = (data, { setSubmitting, resetForm }) => {
+    setTimeout(() => {
+      setSubmitting(true);
+      alert(JSON.stringify(data, null, 2));
+      resetForm();
+      setSubmitting(false);
+    }, 2000);
+  };
+
   return (
     <div className="Login">
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(data, { setSubmitting, resetForm }) => {
-          setTimeout(() => {
-            setSubmitting(true);
-            alert(JSON.stringify(data, null, 2));
-            resetForm();
-            setSubmitting(false);
-          }, 2000);
-        }}
+        onSubmit={onSubmit}
       >
         {({
           values,
