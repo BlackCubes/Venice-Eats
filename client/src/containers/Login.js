@@ -34,24 +34,58 @@ const Login = () => {
           }, 2000);
         }}
       >
-        {({ values, isSubmitting, handleSubmit }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting
+        }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Group size="lg" controlId="email">
-              <Field
+              <Form.Control
+                type="email"
+                name="email"
+                placeholder="Email"
+                className={touched.email && errors.email ? 'error' : null}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.email && errors.email ? (
+                <Form.Control.Feedback type="invalid">
+                  {errors.email}
+                </Form.Control.Feedback>
+              ) : null}
+              {/* <Field
                 autoFocus
                 placeholder="Email"
                 name="email"
                 type="email"
                 as={Form.Control}
-              />
+              /> */}
             </Form.Group>
             <Form.Group size="lg" controlId="password">
-              <Field
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="password"
+                className={touched.password && errors.password ? 'error' : null}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.password && errors.password ? (
+                <Form.Control.Feedback type="invalid">
+                  {errors.password}
+                </Form.Control.Feedback>
+              ) : null}
+              {/* <Field
                 name="password"
                 placeholder="Password"
                 type="password"
                 as={Form.Control}
-              />
+              /> */}
             </Form.Group>
             <Button block size="lg" type="submit" disabled={isSubmitting}>
               Login
