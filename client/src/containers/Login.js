@@ -34,7 +34,7 @@ const Login = () => {
           }, 2000);
         }}
       >
-        {({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
+        {({ values, isSubmitting, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <Form.Group size="lg" controlId="email">
               <Field
@@ -44,14 +44,6 @@ const Login = () => {
                 type="email"
                 as={Form.Control}
               />
-              {/* <Form.Control
-                autoFocus
-                type="email"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              /> */}
             </Form.Group>
             <Form.Group size="lg" controlId="password">
               <Field
@@ -60,14 +52,6 @@ const Login = () => {
                 type="password"
                 as={Form.Control}
               />
-              {/* <Form.Control
-                autoFocus
-                type="password"
-                name="password"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              /> */}
             </Form.Group>
             <Button block size="lg" type="submit" disabled={isSubmitting}>
               Login
