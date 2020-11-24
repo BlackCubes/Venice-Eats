@@ -3,8 +3,8 @@ import { Alert as AlertBS } from 'react-bootstrap';
 
 export const Alert = props => {
   return (
-    <AlertBS variant="danger">
-      <AlertBS.Heading>Oh no! 😱 You got errors! 🙅‍♀️</AlertBS.Heading>
+    <AlertBS variant={props.variant}>
+      <AlertBS.Heading>{props.heading}</AlertBS.Heading>
       <p>{props.message}</p>
     </AlertBS>
   );
