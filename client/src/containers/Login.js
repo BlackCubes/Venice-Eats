@@ -62,19 +62,12 @@ const Login = () => {
                   {errors.email}
                 </Form.Control.Feedback>
               ) : null}
-              {/* <Field
-                autoFocus
-                placeholder="Email"
-                name="email"
-                type="email"
-                as={Form.Control}
-              /> */}
             </Form.Group>
             <Form.Group size="lg" controlId="password">
               <Form.Control
                 type="password"
                 name="password"
-                placeholder="password"
+                placeholder="Password"
                 className={touched.password && errors.password ? 'error' : null}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -85,12 +78,6 @@ const Login = () => {
                   {errors.password}
                 </Form.Control.Feedback>
               ) : null}
-              {/* <Field
-                name="password"
-                placeholder="Password"
-                type="password"
-                as={Form.Control}
-              /> */}
             </Form.Group>
             <Button block size="lg" type="submit" disabled={isSubmitting}>
               Login
