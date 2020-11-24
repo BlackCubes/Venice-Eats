@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
@@ -35,8 +36,12 @@ const LoginPage = () => {
 
     const res = await loginApi(data);
 
-    if (res.error) setApiError(res.error);
-    else alert(JSON.stringify(data, null, 2));
+    if (res.error) {
+      setApiError(res.error);
+    } else {
+      console.log(res.data);
+      alert('It works!');
+    }
 
     resetForm();
   };
