@@ -57,7 +57,9 @@ const LoginPage = () => {
           message={apiError}
         />
       )}
-      {apiData && <Modal show={true} title="Success!" body={apiData} />}
+      {apiData && (
+        <Modal show={true} title="Success!" body={`Welcome back, ${apiData}`} />
+      )}
 
       <Formik
         initialValues={initialValues}
