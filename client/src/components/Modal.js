@@ -3,7 +3,7 @@ import { Modal as ModalBS } from 'react-bootstrap';
 
 export const Modal = props => {
   return (
-    <ModalBS show={props.show}>
+    <ModalBS show={props.show} animation={false}>
       <ModalBS.Header>
         <ModalBS.Title>{props.title}</ModalBS.Title>
       </ModalBS.Header>
