@@ -4,6 +4,7 @@ import { Modal as ModalBS } from 'react-bootstrap';
 export const Modal = props => {
   return (
     <ModalBS
+      size={props.size}
       show={true}
       backdrop="static"
       keyboard={false}
