@@ -6,9 +6,11 @@ import { Form, Button } from 'react-bootstrap';
 import { loginApi } from './../services/authentication';
 import { Alert } from './../components/Alert';
 import './Login.css';
+import { Modal } from './../components/Modal';
 
 const LoginPage = () => {
   const [apiError, setApiError] = React.useState(null);
+  const [apiData, setApiData] = React.useState(null);
 
   const initialValues = {
     email: '',
@@ -39,8 +41,8 @@ const LoginPage = () => {
     if (res.error) {
       setApiError(res.error);
     } else {
-      console.log(res.data);
-      alert(`Welcome back, ${res.data.user.name.split(' ')[0]}!`);
+      setApiData(res.data.user.name.split(' ')[0]);
+      // alert(`Welcome back, ${res.data.user.name.split(' ')[0]}!`);
     }
 
     resetForm();
@@ -55,6 +57,7 @@ const LoginPage = () => {
           message={apiError}
         />
       )}
+      {apiData && <Modal show={true} title="Success!" body={apiData} />}
 
       <Formik
         initialValues={initialValues}
