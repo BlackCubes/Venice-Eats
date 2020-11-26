@@ -4,15 +4,15 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
 
-import { loginApi } from './../api/authentication';
+import { login } from './../actions/auth';
 import { Alert } from './../components/Alert';
 import { Modal } from './../components/Modal';
 
 import './Login.css';
 
-export default connect(null, { loginApi })(props => {
-  const [apiError, setApiError] = React.useState(null);
-  const [apiData, setApiData] = React.useState(null);
+export default connect(null, { login })(props => {
+  // const [apiError, setApiError] = React.useState(null);
+  // const [apiData, setApiData] = React.useState(null);
 
   const initialValues = {
     email: '',
@@ -38,28 +38,30 @@ export default connect(null, { loginApi })(props => {
   const onSubmit = async (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
 
-    const res = await props.loginApi(data);
+    props.login(data);
 
-    if (res.error) {
-      setApiError(res.error);
-    } else {
-      setApiData(res.data.user.name.split(' ')[0]);
-    }
+    // const res = await props.loginApi(data);
+
+    // if (res.error) {
+    //   setApiError(res.error);
+    // } else {
+    //   setApiData(res.data.user.name.split(' ')[0]);
+    // }
 
     resetForm();
   };
 
   return (
     <div className="Login">
-      {apiError && (
+      {props.error && (
         <Alert
           variant="danger"
           heading="Oh no! 😱 You got errors! 🙅‍♀️"
-          message={apiError}
+          message={props.error}
         />
       )}
-      {apiData && (
-        <Modal size="sm" title={`Welcome back, ${apiData}!`} body="..." />
+      {!props.error && (
+        <Modal size="sm" title={`Welcome back, ${props.user}!`} body="..." />
       )}
 
       <Formik
@@ -85,7 +87,7 @@ export default connect(null, { loginApi })(props => {
                 className={touched.email && errors.email ? 'error' : null}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                isInvalid={!!errors.email || !!apiError}
+                isInvalid={!!errors.email || !!props.error}
               />
               {touched.email && errors.email ? (
                 <Form.Control.Feedback type="invalid">
@@ -101,7 +103,7 @@ export default connect(null, { loginApi })(props => {
                 className={touched.password && errors.password ? 'error' : null}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                isInvalid={!!errors.password || !!apiError}
+                isInvalid={!!errors.password || !!props.error}
               />
               {touched.password && errors.password ? (
                 <Form.Control.Feedback type="invalid">
