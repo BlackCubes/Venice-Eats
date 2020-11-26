@@ -7,7 +7,7 @@ export const appMiddleware = () => next => action => {
     case LOGIN: {
       next(
         apiRequest({
-          url: `${process.env.SERVER_URL}/admins/login`,
+          url: `${process.env.REACT_APP_SERVER_URL}/admins/login`,
           method: 'POST',
           data: action.payload
         })
