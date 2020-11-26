@@ -1,18 +1,48 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+
+import reducer from './reducer';
+
+import { appMiddleware } from './middlewares/app';
+import { apiMiddleware } from './middlewares/core';
+
 import AdminPage from './containers/AdminPage';
 import LoginPage from './containers/LoginPage';
 import { Test } from './containers/Test';
 
+import AuthRoute from './components/AuthRoute';
+
+const createStoreWithMiddleware = applyMiddleware(
+  appMiddleware,
+  apiMiddleware
+)(createStore);
+
+const store = createStoreWithMiddleware(reducer);
+
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Test} />
-        <Route path="/login" exact component={LoginPage} />
-        <Route path="/admin" exact component={AdminPage} />
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Test} />
+          <AuthRoute path="/login" exact type="guest">
+            <LoginPage />
+          </AuthRoute>
+          <AuthRoute path="/admin" exact type="private">
+            <AdminPage />
+          </AuthRoute>
+        </Switch>
+      </Router>
+    </Provider>
+    // <Router>
+    //   <Switch>
+    //     <Route path="/" exact component={Test} />
+    //     <Route path="/login" exact component={LoginPage} />
+    //     <Route path="/admin" exact component={AdminPage} />
+    //   </Switch>
+    // </Router>
   );
 };
 
