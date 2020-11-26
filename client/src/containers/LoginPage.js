@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
+
 import { loginApi } from './../api/authentication';
 import { Alert } from './../components/Alert';
-import './Login.css';
 import { Modal } from './../components/Modal';
+
+import './Login.css';
 
 const LoginPage = () => {
   const [apiError, setApiError] = React.useState(null);
