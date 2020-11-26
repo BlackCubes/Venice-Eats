@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Formik, Field } from 'formik';
+import { connect } from 'react-redux';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
 
@@ -10,7 +10,7 @@ import { Modal } from './../components/Modal';
 
 import './Login.css';
 
-const LoginPage = () => {
+export default connect(null, { loginApi })(props => {
   const [apiError, setApiError] = React.useState(null);
   const [apiData, setApiData] = React.useState(null);
 
@@ -38,13 +38,12 @@ const LoginPage = () => {
   const onSubmit = async (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
 
-    const res = await loginApi(data);
+    const res = await props.loginApi(data);
 
     if (res.error) {
       setApiError(res.error);
     } else {
       setApiData(res.data.user.name.split(' ')[0]);
-      // alert(`Welcome back, ${res.data.user.name.split(' ')[0]}!`);
     }
 
     resetForm();
@@ -118,6 +117,4 @@ const LoginPage = () => {
       </Formik>
     </div>
   );
-};
-
-export default LoginPage;
+});
