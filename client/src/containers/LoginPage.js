@@ -10,7 +10,7 @@ import { Modal } from './../components/Modal';
 
 import './Login.css';
 
-export default connect(null, { login })(props => {
+export default connect(({ isLoading }) => isLoading, { login })(props => {
   // const [apiError, setApiError] = React.useState(null);
   // const [apiData, setApiData] = React.useState(null);
 
