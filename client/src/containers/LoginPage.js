@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
-import { loginApi } from './../services/authentication';
+import { loginApi } from './../api/authentication';
 import { Alert } from './../components/Alert';
 import './Login.css';
 import { Modal } from './../components/Modal';
