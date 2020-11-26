@@ -60,9 +60,9 @@ export default connect(({ isLoading }) => isLoading, { login })(props => {
           message={props.error}
         />
       )}
-      {!props.error && (
+      {/* {!props.error && (
         <Modal size="sm" title={`Welcome back, ${props.user}!`} body="..." />
-      )}
+      )} */}
 
       <Formik
         initialValues={initialValues}
