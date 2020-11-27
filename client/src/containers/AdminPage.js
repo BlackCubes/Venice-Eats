@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Table, Row, Col } from 'react-bootstrap';
-import AdminNavbar from './../components/AdminNavComponent';
+// import AdminNavbar from './../components/AdminNavComponent';
 
 const AdminPage = () => {
   return (
     <div>
-      <AdminNavbar />
+      {/* <AdminNavbar /> */}
 
       <h1>Welcome to the Admin Page!!!</h1>
       <Container fluid>
