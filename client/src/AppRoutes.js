@@ -12,6 +12,7 @@ import AdminPage from './containers/AdminPage';
 import LoginPage from './containers/LoginPage';
 import { Test } from './containers/Test';
 
+import AdminNavbar from './components/AdminNavComponent';
 import AuthRoute from './components/AuthRoute';
 
 const createStoreWithMiddleware = applyMiddleware(
@@ -31,6 +32,7 @@ const App = () => {
             <LoginPage />
           </AuthRoute>
           <AuthRoute path="/admin" exact type="private">
+            <AdminNavbar />
             <AdminPage />
           </AuthRoute>
         </Switch>
