@@ -36,13 +36,6 @@ const App = () => {
         </Switch>
       </Router>
     </Provider>
-    // <Router>
-    //   <Switch>
-    //     <Route path="/" exact component={Test} />
-    //     <Route path="/login" exact component={LoginPage} />
-    //     <Route path="/admin" exact component={AdminPage} />
-    //   </Switch>
-    // </Router>
   );
 };
 
