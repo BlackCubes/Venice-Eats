@@ -4,9 +4,9 @@ import { LOGOUT } from './actions/auth';
 
 export default (
   state = {
-    isAuthUser: !!localStorage.getItem('user'),
-    token: localStorage.getItem('token') || null,
-    user: JSON.parse(localStorage.getItem('user')) || {},
+    isAuthUser: !!localStorage.getItem('jwt'),
+    token: localStorage.getItem('jwt') || null,
+    user: null,
     isLoading: false,
     error: null
   },
@@ -14,14 +14,19 @@ export default (
 ) => {
   switch (action.type) {
     case API_SUCCESS:
-      localStorage.setItem('user', JSON.stringify(action.payload.user));
-      console.log(action.payload);
-      return { ...state, isAuthUser: true, user: action.payload.user };
+      // localStorage.setItem('user', JSON.stringify(action.payload.user));
+      localStorage.setItem('jwt', action.payload.token);
+      return {
+        ...state,
+        isAuthUser: true,
+        token: action.payload.token,
+        user: action.payload.data.user
+      };
     case API_ERROR:
       return { ...state, error: action.payload };
     case LOGOUT:
-      localStorage.removeItem('user');
-      return { ...state, isAuthUser: false, user: {} };
+      localStorage.removeItem('jwt');
+      return { ...state, isAuthUser: false, token: null, user: null };
     case SET_LOADER:
       return { ...state, isLoading: action.payload };
     default:
