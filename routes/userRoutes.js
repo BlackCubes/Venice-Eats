@@ -32,11 +32,12 @@ router.get(
   userController.getUser
 );
 
-router;
-route('/').get(
-  authController.protect,
-  authController.restrictTo('admin'),
-  userController.getAllUsers
-);
+router
+  .route('/')
+  .get(
+    authController.protect,
+    authController.restrictTo('admin'),
+    userController.getAllUsers
+  );
 
 module.exports = router;
