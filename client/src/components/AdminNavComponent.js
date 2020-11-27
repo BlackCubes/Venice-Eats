@@ -18,4 +18,6 @@ const AdminNavbar = props => {
   );
 };
 
-export default connect({ logout })(AdminNavbar);
+export default connect(({ isAuthUser }) => ({ isAuthUser }), { logout })(
+  AdminNavbar
+);
