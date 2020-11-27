@@ -14,7 +14,6 @@ export default (
 ) => {
   switch (action.type) {
     case API_SUCCESS:
-      // localStorage.setItem('user', JSON.stringify(action.payload.user));
       localStorage.setItem('jwt', action.payload.token);
       return {
         ...state,
