@@ -5,6 +5,7 @@ import { LOGOUT } from './actions/auth';
 export default (
   state = {
     isAuthUser: !!localStorage.getItem('user'),
+    token: localStorage.getItem('token') || null,
     user: JSON.parse(localStorage.getItem('user')) || {},
     isLoading: false,
     error: null
@@ -14,6 +15,7 @@ export default (
   switch (action.type) {
     case API_SUCCESS:
       localStorage.setItem('user', JSON.stringify(action.payload.user));
+      console.log(action.payload);
       return { ...state, isAuthUser: true, user: action.payload.user };
     case API_ERROR:
       return { ...state, error: action.payload };
