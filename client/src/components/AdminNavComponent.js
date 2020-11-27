@@ -12,7 +12,9 @@ const AdminNavbar = props => {
         <Link to="/admin">Admin Page</Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link onSelect={props.logout}>Logout</Nav.Link>
+        <Nav.Link onClick={props.logout} href="#">
+          Logout
+        </Nav.Link>
       </Nav.Item>
     </Nav>
   );
