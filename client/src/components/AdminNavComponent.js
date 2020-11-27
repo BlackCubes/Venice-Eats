@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from './../actions/auth';
 
-import Nav from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
 
 const AdminNavbar = props => {
   return (
