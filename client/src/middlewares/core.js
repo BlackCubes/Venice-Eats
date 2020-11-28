@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
-  API_POST_REQUEST,
+  API_AUTH_REQUEST,
   API_GET_ALL_REQUEST,
+  apiAuthSuccess,
   apiSuccess,
   apiError
 } from './../actions/api';
@@ -10,7 +11,7 @@ import { setLoader } from './../actions/ui';
 export const apiMiddleware = ({ dispatch }) => next => action => {
   next(action);
   switch (action.type) {
-    case API_POST_REQUEST: {
+    case API_AUTH_REQUEST: {
       dispatch(setLoader(true));
       const { url, method, data } = action.meta;
       axios({
@@ -18,7 +19,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         url,
         data
       })
-        .then(({ data }) => dispatch(apiSuccess({ response: data })))
+        .then(({ data }) => dispatch(apiAuthSuccess({ response: data })))
         .catch(error => {
           console.log(error);
           dispatch(apiError({ error: error.response.data }));

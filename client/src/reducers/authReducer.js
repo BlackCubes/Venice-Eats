@@ -1,5 +1,5 @@
 import { SET_LOADER } from './../actions/ui';
-import { API_SUCCESS, API_ERROR } from './../actions/api';
+import { API_AUTH_SUCCESS, API_ERROR } from './../actions/api';
 import { LOGOUT } from './../actions/auth';
 
 export default (
@@ -13,7 +13,7 @@ export default (
   action
 ) => {
   switch (action.type) {
-    case API_SUCCESS:
+    case API_AUTH_SUCCESS:
       localStorage.setItem('jwt', action.payload.token);
       return {
         ...state,
