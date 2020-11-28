@@ -23,7 +23,7 @@ export const appMiddleware = ({ getState }) => next => action => {
     case GET_USERS: {
       next(
         apiGetAllRequest({
-          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}/`,
+          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}`,
           method: 'GET',
           headers: tokenHeadersConfig(getState)
         })
