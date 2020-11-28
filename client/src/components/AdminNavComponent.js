@@ -9,12 +9,12 @@ const AdminNavbar = props => {
   return (
     <Nav className="bg-dark">
       <Nav.Item>
-        <Nav.Link to="/admin" exact as={NavLink}>
+        <Nav.Link className="text-white" to="/admin" exact as={NavLink}>
           Admin Page
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link onClick={props.logout} href="#">
+        <Nav.Link className="text-white" onClick={props.logout} href="#">
           Logout
         </Nav.Link>
       </Nav.Item>
