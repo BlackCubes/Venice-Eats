@@ -21,10 +21,10 @@ export const apiPostRequest = ({ url, method, data }) => {
   };
 };
 
-export const apiGetAllRequest = ({ url, method }) => {
+export const apiGetAllRequest = ({ url, method, headers }) => {
   return {
     type: API_GET_ALL_REQUEST,
-    meta: { url, method }
+    meta: { url, method, headers }
   };
 };
 
