@@ -6,14 +6,13 @@ import { getUsers } from './../actions/user';
 
 const AdminPage = ({ apiData, apiError, getUsers }) => {
   React.useEffect(() => {
-    console.log(`Users: ${apiData}`);
-    console.log(`Errors: ${apiError}`);
-    // getUsers();
-  });
+    getUsers();
+  }, [getUsers]);
 
   return (
     <div>
       <h1>Welcome to the Admin Page!!!</h1>
+      <pre>Your GET USERS list: {apiData}</pre>
       <Container fluid>
         <Row>
           <Col md={12}>
