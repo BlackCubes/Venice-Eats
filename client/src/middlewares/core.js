@@ -28,10 +28,11 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
     }
     case API_GET_ALL_REQUEST: {
       dispatch(setLoader(true));
-      const { url, method } = action.meta;
+      const { url, method, headers } = action.meta;
       axios({
         method,
-        url
+        url,
+        headers
       })
         .then(({ data }) => dispatch(apiSuccess({ response: data })))
         .catch(error => {
