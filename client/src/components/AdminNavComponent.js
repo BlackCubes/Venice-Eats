@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from './../actions/auth';
 
@@ -9,7 +9,9 @@ const AdminNavbar = props => {
   return (
     <Nav>
       <Nav.Item>
-        <Link to="/admin">Admin Page</Link>
+        <Nav.Link to="/admin" exact as={NavLink}>
+          Admin Page
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link onClick={props.logout} href="#">
