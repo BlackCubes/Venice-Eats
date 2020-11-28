@@ -1,6 +1,6 @@
-import { SET_LOADER } from './actions/ui';
-import { API_SUCCESS, API_ERROR } from './actions/api';
-import { LOGOUT } from './actions/auth';
+import { SET_LOADER } from './../actions/ui';
+import { API_SUCCESS, API_ERROR } from './../actions/api';
+import { LOGOUT } from './../actions/auth';
 
 export default (
   state = {
