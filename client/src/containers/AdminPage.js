@@ -12,7 +12,9 @@ const AdminPage = ({ apiData, apiError, getUsers }) => {
   return (
     <div>
       <h1>Welcome to the Admin Page!!!</h1>
-      <pre>Your GET USERS list: {apiData ? apiData : apiError}</pre>
+      <pre>
+        Your GET USERS list: {apiData ? JSON.stringify(apiData) : apiError}
+      </pre>
       <Container fluid>
         <Row>
           <Col md={12}>
