@@ -22,6 +22,6 @@ const AdminNavbar = props => {
   );
 };
 
-export default connect(({ isAuthUser }) => ({ isAuthUser }), { logout })(
-  AdminNavbar
-);
+export default connect(state => ({ isAuthUser: state.auth.isAuthUser }), {
+  logout
+})(AdminNavbar);

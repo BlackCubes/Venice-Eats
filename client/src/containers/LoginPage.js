@@ -10,7 +10,9 @@ import { Modal } from './../components/Modal';
 
 import './Login.css';
 
-export default connect(({ isLoading }) => ({ isLoading }), { login })(props => {
+export default connect(state => ({ isLoading: state.auth.isLoading }), {
+  login
+})(props => {
   // const [apiError, setApiError] = React.useState(null);
   // const [apiData, setApiData] = React.useState(null);
 
@@ -53,11 +55,11 @@ export default connect(({ isLoading }) => ({ isLoading }), { login })(props => {
 
   return (
     <div className="Login">
-      {props.error && (
+      {props.auth.error && (
         <Alert
           variant="danger"
           heading="Oh no! 😱 You got errors! 🙅‍♀️"
-          message={props.error}
+          message={props.auth.error}
         />
       )}
       {/* {!props.error && (
@@ -87,7 +89,7 @@ export default connect(({ isLoading }) => ({ isLoading }), { login })(props => {
                 className={touched.email && errors.email ? 'error' : null}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                isInvalid={!!errors.email || !!props.error}
+                isInvalid={!!errors.email || !!props.auth.error}
               />
               {touched.email && errors.email ? (
                 <Form.Control.Feedback type="invalid">
@@ -103,7 +105,7 @@ export default connect(({ isLoading }) => ({ isLoading }), { login })(props => {
                 className={touched.password && errors.password ? 'error' : null}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                isInvalid={!!errors.password || !!props.error}
+                isInvalid={!!errors.password || !!props.auth.error}
               />
               {touched.password && errors.password ? (
                 <Form.Control.Feedback type="invalid">
