@@ -4,7 +4,7 @@ import { Container, Table, Row, Col } from 'react-bootstrap';
 
 import { getUsers } from './../actions/user';
 
-const AdminPage = ({ apiData, apiError, getUsers }) => {
+const AdminPage = ({ apiData, apiError, getUsers, loadingUserApi }) => {
   React.useEffect(() => {
     getUsers();
   }, [getUsers]);
@@ -53,8 +53,9 @@ const AdminPage = ({ apiData, apiError, getUsers }) => {
 
 export default connect(
   state => ({
-    apiData: state.freeman.data,
-    apiError: state.freeman.error
+    apiData: state.apiUser.data,
+    apiError: state.apiUser.error,
+    loadingUserApi: state.apiUser.isLoading
   }),
   { getUsers }
 )(AdminPage);
