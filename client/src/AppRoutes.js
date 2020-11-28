@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 
-import reducer from './reducer';
+import reducer from './reducers/index';
 
 import { appMiddleware } from './middlewares/app';
 import { apiMiddleware } from './middlewares/core';
