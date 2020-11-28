@@ -15,3 +15,15 @@ export const logout = () => {
     type: LOGOUT
   };
 };
+
+export const tokenHeadersConfig = getState => {
+  const { token } = getState().auth;
+
+  const headersConfig = {
+    'Content-type': 'application/json'
+  };
+
+  if (token) headersConfig.Authorization = `Bearer ${token}`;
+
+  return headersConfig;
+};
