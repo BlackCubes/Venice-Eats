@@ -10,9 +10,12 @@ import { Modal } from './../components/Modal';
 
 import './Login.css';
 
-export default connect(state => ({ isLoading: state.auth.isLoading }), {
-  login
-})(props => {
+export default connect(
+  state => ({ isLoading: state.auth.isLoading, apiError: state.auth.error }),
+  {
+    login
+  }
+)(({ apiError, login }) => {
   // const [apiError, setApiError] = React.useState(null);
   // const [apiData, setApiData] = React.useState(null);
 
@@ -40,7 +43,7 @@ export default connect(state => ({ isLoading: state.auth.isLoading }), {
   const onSubmit = async (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
 
-    props.login(data);
+    login(data);
 
     // const res = await props.loginApi(data);
 
@@ -55,11 +58,11 @@ export default connect(state => ({ isLoading: state.auth.isLoading }), {
 
   return (
     <div className="Login">
-      {props.auth.error && (
+      {apiError && (
         <Alert
           variant="danger"
           heading="Oh no! 😱 You got errors! 🙅‍♀️"
-          message={props.auth.error}
+          message={apiError}
         />
       )}
       {/* {!props.error && (
@@ -89,7 +92,7 @@ export default connect(state => ({ isLoading: state.auth.isLoading }), {
                 className={touched.email && errors.email ? 'error' : null}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                isInvalid={!!errors.email || !!props.auth.error}
+                isInvalid={!!errors.email || !!apiError}
               />
               {touched.email && errors.email ? (
                 <Form.Control.Feedback type="invalid">
@@ -105,7 +108,7 @@ export default connect(state => ({ isLoading: state.auth.isLoading }), {
                 className={touched.password && errors.password ? 'error' : null}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                isInvalid={!!errors.password || !!props.auth.error}
+                isInvalid={!!errors.password || !!apiError}
               />
               {touched.password && errors.password ? (
                 <Form.Control.Feedback type="invalid">
