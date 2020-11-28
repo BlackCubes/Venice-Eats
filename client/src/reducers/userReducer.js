@@ -16,7 +16,7 @@ export default (
         data: action.payload.data.data
       };
     case API_ERROR:
-      return { ...state, error: action.payload };
+      return { ...state, error: action.payload.message };
     case SET_LOADER:
       return { ...state, isLoading: action.payload };
     default:

@@ -1,7 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Container, Table, Row, Col } from 'react-bootstrap';
 
-const AdminPage = () => {
+import { getUsers } from './../actions/user';
+
+const AdminPage = ({ apiData, apiError, getUsers }) => {
+  React.useEffect(() => {
+    console.log(`Users: ${apiData}`);
+    console.log(`Errors: ${apiError}`);
+    getUsers();
+    console.log(`Users: ${apiData}`);
+    console.log(`Errors: ${apiError}`);
+  });
+
   return (
     <div>
       <h1>Welcome to the Admin Page!!!</h1>
@@ -31,4 +42,10 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage;
+export default connect(
+  state => ({
+    apiData: state.freeman.data,
+    apiError: state.freeman.error
+  }),
+  { getUsers }
+)(AdminPage);
