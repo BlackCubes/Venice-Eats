@@ -1,12 +1,12 @@
 // ACTION TYPES
-export const API_REQUEST = 'API_REQUEST';
+export const API_POST_REQUEST = 'API_POST_REQUEST';
 export const API_SUCCESS = 'API_SUCCESS';
 export const API_ERROR = 'API_ERROR';
 
 // ACTION CREATORS
-export const apiRequest = ({ url, method, data }) => {
+export const apiPostRequest = ({ url, method, data }) => {
   return {
-    type: API_REQUEST,
+    type: API_POST_REQUEST,
     meta: { url, method, data }
   };
 };

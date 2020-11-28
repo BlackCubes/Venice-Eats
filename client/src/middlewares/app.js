@@ -1,4 +1,4 @@
-import { apiRequest } from './../actions/api';
+import { apiPostRequest } from './../actions/api';
 import { LOGIN } from './../actions/auth';
 
 export const appMiddleware = () => next => action => {
@@ -6,7 +6,7 @@ export const appMiddleware = () => next => action => {
   switch (action.type) {
     case LOGIN: {
       next(
-        apiRequest({
+        apiPostRequest({
           url: `${process.env.REACT_APP_SERVER_URL}/admins/login`,
           method: 'POST',
           data: action.payload
