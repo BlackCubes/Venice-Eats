@@ -12,7 +12,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
   next(action);
   switch (action.type) {
     case API_AUTH_REQUEST: {
-      dispatch(setLoader(true));
+      dispatch(setLoader({ state: true }));
       const { url, method, data } = action.meta;
       axios({
         method,
@@ -27,7 +27,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
       break;
     }
     case API_GET_ALL_REQUEST: {
-      dispatch(setLoader(true));
+      dispatch(setLoader({ state: true }));
       const { url, method, headers } = action.meta;
       axios({
         method,
