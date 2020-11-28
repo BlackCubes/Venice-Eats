@@ -36,10 +36,10 @@ const AdminPage = ({ apiData, apiError, getUsers, loadingUserApi }) => {
                   ))
                 ) : (
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
                   </tr>
                 )}
               </tbody>
