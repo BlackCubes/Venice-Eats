@@ -28,16 +28,14 @@ const AdminPage = ({ apiData, apiError, getUsers }) => {
                 </tr>
               </thead>
               <tbody>
-                {apiData.map(prop => {
-                  return (
-                    <tr key={prop._id}>
-                      <td>{prop._id}</td>
-                      <td>{prop.name}</td>
-                      <td>{prop.email}</td>
-                      <td>{prop.role}</td>
-                    </tr>
-                  );
-                })}
+                {apiData.map(prop => (
+                  <tr key={prop._id}>
+                    <td>{prop._id}</td>
+                    <td>{prop.name}</td>
+                    <td>{prop.email}</td>
+                    <td>{prop.role}</td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
           </Col>
