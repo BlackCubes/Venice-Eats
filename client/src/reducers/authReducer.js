@@ -22,7 +22,7 @@ export default (
         user: action.payload.data.user
       };
     case API_ERROR:
-      return { ...state, error: action.payload };
+      return { ...state, error: action.payload.message };
     case LOGOUT:
       localStorage.removeItem('jwt');
       return { ...state, isAuthUser: false, token: null, user: null };
