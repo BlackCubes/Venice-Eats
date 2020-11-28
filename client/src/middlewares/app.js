@@ -4,7 +4,7 @@ import { GET_USERS } from './../actions/user';
 
 const FOODTRUCK_ROUTE = 'foodtrucks';
 const GEO_ROUTE = 'geos';
-const USER_ROUTE = 'users';
+const USER_ROUTE = 'admins';
 const VENICEEVENT_ROUTE = 'veniceevents';
 
 export const appMiddleware = () => next => action => {
@@ -13,7 +13,7 @@ export const appMiddleware = () => next => action => {
     case LOGIN: {
       next(
         apiPostRequest({
-          url: `${process.env.REACT_APP_SERVER_URL}/admins/login`,
+          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}/login`,
           method: 'POST',
           data: action.payload
         })
@@ -27,6 +27,7 @@ export const appMiddleware = () => next => action => {
           method: 'GET'
         })
       );
+      break;
     }
     default:
       break;
