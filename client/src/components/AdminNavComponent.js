@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 
 const AdminNavbar = props => {
   return (
-    <Nav>
+    <Nav className="bg-dark">
       <Nav.Item>
         <Nav.Link to="/admin" exact as={NavLink}>
           Admin Page
