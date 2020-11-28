@@ -1,5 +1,5 @@
 import { apiAuthRequest, apiGetAllRequest } from './../actions/api';
-import { LOGIN } from './../actions/auth';
+import { LOGIN, tokenHeadersConfig } from './../actions/auth';
 import { GET_USERS } from './../actions/user';
 
 const FOODTRUCK_ROUTE = 'foodtrucks';
@@ -7,7 +7,7 @@ const GEO_ROUTE = 'geos';
 const USER_ROUTE = 'admins';
 const VENICEEVENT_ROUTE = 'veniceevents';
 
-export const appMiddleware = () => next => action => {
+export const appMiddleware = ({ getState }) => next => action => {
   next(action);
   switch (action.type) {
     case LOGIN: {
@@ -24,7 +24,8 @@ export const appMiddleware = () => next => action => {
       next(
         apiGetAllRequest({
           url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}/`,
-          method: 'GET'
+          method: 'GET',
+          headers: tokenHeadersConfig(getState)
         })
       );
       break;
