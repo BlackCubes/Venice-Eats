@@ -8,9 +8,7 @@ const AdminPage = ({ apiData, apiError, getUsers }) => {
   React.useEffect(() => {
     console.log(`Users: ${apiData}`);
     console.log(`Errors: ${apiError}`);
-    getUsers();
-    console.log(`Users: ${apiData}`);
-    console.log(`Errors: ${apiError}`);
+    // getUsers();
   });
 
   return (
