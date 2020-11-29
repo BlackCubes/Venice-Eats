@@ -62,7 +62,7 @@ const AdminUserPage = ({
               <Form.Control
                 type="text"
                 name="name"
-                defaultValue={!loadingUserApi ? apiSingleData.name : ''}
+                defaultValue={!loadingUserApi ? apiSingleData.name : '...'}
                 placeholder="Name"
                 className={touched.name && errors.name ? 'error' : null}
                 onChange={handleChange}
@@ -79,7 +79,7 @@ const AdminUserPage = ({
               <Form.Control
                 type="email"
                 name="email"
-                defaultValue={!loadingUserApi ? apiSingleData.email : ''}
+                defaultValue={!loadingUserApi ? apiSingleData.email : '...'}
                 placeholder="Email"
                 className={touched.email && errors.email ? 'error' : null}
                 onChange={handleChange}
