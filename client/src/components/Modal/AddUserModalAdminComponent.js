@@ -2,14 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { Form, Modal, Button } from 'react-bootstrap';
+import { Form, Modal, Button, Alert } from 'react-bootstrap';
 
 import { postUser } from './../../actions/user';
 
 const PostUserModal = ({ apiError, postUser }) => {
   const [openModal, setOpenModal] = React.useState(false);
+  const [apiErrorMsg, setApiErrorMsg] = React.useState(null);
 
-  const handleToggle = () => setOpenModal(!openModal);
+  const handleToggle = () => {
+    setApiErrorMsg(null);
+    setOpenModal(!openModal);
+  };
 
   const initialValues = {
     name: '',
@@ -50,6 +54,11 @@ const PostUserModal = ({ apiError, postUser }) => {
     resetForm();
   };
 
+  React.useEffect(() => {
+    if (apiError) setApiErrorMsg(apiError);
+    else setApiErrorMsg(null);
+  }, [apiError]);
+
   return (
     <div>
       <Button
@@ -65,6 +74,8 @@ const PostUserModal = ({ apiError, postUser }) => {
           <Modal.Title>Add a User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {apiErrorMsg ? <Alert variant="danger">{apiErrorMsg}</Alert> : null}
+
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
