@@ -4,13 +4,12 @@ const catchAsync = require('./../utils/catchAsync');
 
 exports.createOne = Model =>
   catchAsync(async (req, res, next) => {
-    // const doc = await Models[Model].create(req.body);
+    const doc = await Models[Model].create(req.body);
 
     res.status(201).json({
       status: 'success',
       data: {
-        // data: doc
-        data: 'Delete dis'
+        data: doc
       }
     });
   });
