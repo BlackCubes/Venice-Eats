@@ -56,7 +56,7 @@ const AdminUserPage = ({
           isSubmitting
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            {apiError ? <Alert variant="danger">{apiErrorMsg}</Alert> : null}
+            {apiError ? <Alert variant="danger">{apiError}</Alert> : null}
 
             <Form.Group controlId="name">
               <Form.Control
