@@ -3,6 +3,7 @@ export const API_AUTH_REQUEST = 'API_AUTH_REQUEST';
 export const API_POST_REQUEST = 'API_POST_REQUEST';
 export const API_GET_ALL_REQUEST = 'API_GET_ALL_REQUEST';
 export const API_AUTH_SUCCESS = 'API_AUTH_SUCCESS';
+export const API_POST_SUCCESS = 'API_POST_SUCCESS';
 export const API_SUCCESS = 'API_SUCCESS';
 export const API_ERROR = 'API_ERROR';
 
@@ -30,6 +31,11 @@ export const apiGetAllRequest = ({ url, method, headers }) => {
 
 export const apiAuthSuccess = ({ response }) => ({
   type: API_AUTH_SUCCESS,
+  payload: response
+});
+
+export const apiPostSuccess = ({ response }) => ({
+  type: API_POST_SUCCESS,
   payload: response
 });
 
