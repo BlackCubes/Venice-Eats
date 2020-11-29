@@ -32,10 +32,10 @@ export const apiGetAllRequest = ({ url, method, headers }) => {
   };
 };
 
-export const apiGetRequest = ({ url, method, headers, idSlug }) => {
+export const apiGetRequest = ({ url, method, headers }) => {
   return {
     type: API_GET_REQUEST,
-    meta: { url, method, headers, idSlug }
+    meta: { url, method, headers }
   };
 };
 
