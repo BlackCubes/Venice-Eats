@@ -5,21 +5,97 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
 
-import { getUser } from './../actions/user';
+import { getUser, updateUser } from './../actions/user';
 
-const AdminUserPage = ({ getUser, apiData, apiError, loadingUserApi }) => {
+const AdminUserPage = ({
+  getUser,
+  updateUser,
+  apiData,
+  apiError,
+  loadingUserApi
+}) => {
   const { params } = useParams();
 
   React.useEffect(() => {
     getUser(params);
   }, [getUser]);
 
+  const initialValues = {
+    name: '',
+    email: ''
+  };
+
+  const validationSchema = yup.object({
+    name: yup
+      .string()
+      .min(2, 'Must be at least 2 characters long')
+      .max(70, 'Must be at least 70 characters or less'),
+    email: yup.string().email('Must provide a valid email')
+  });
+
+  const onSubmit = (data, { setSubmitting, resetForm }) => {
+    setSubmitting(true);
+    updateUser(data);
+    resetForm();
+  };
+
   return (
     <div>
-      <pre>
-        Data: {apiData || !loadingUserApi ? JSON.stringify(apiData) : 'none'}
-      </pre>
-      <pre>Error: {apiError ? apiError : 'none'}</pre>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting
+        }) => (
+          <Form noValidate onSubmit={handleSubmit}>
+            <Form.Group controlId="name">
+              <Form.Control
+                type="text"
+                name="name"
+                value={!loadingUserApi ? apiData.name : ''}
+                placeholder="Name"
+                className={touched.name && errors.name ? 'error' : null}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                isInvalid={!!errors.name || !!apiError}
+              />
+              {touched.name && errors.name ? (
+                <Form.Control.Feedback type="invalid">
+                  {errors.name}
+                </Form.Control.Feedback>
+              ) : null}
+            </Form.Group>
+            <Form.Group controlId="email">
+              <Form.Control
+                type="email"
+                name="email"
+                value={!loadingUserApi ? apiData.email : ''}
+                placeholder="Email"
+                className={touched.email && errors.email ? 'error' : null}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                isInvalid={!!errors.email || !!apiError}
+              />
+              {touched.email && errors.email ? (
+                <Form.Control.Feedback type="invalid">
+                  {errors.email}
+                </Form.Control.Feedback>
+              ) : null}
+            </Form.Group>
+            <Button type="submit" disabled={isSubmitting}>
+              Update
+            </Button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
@@ -30,5 +106,5 @@ export default connect(
     apiError: state.apiUser.error,
     loadingUserApi: state.apiUser.isLoading
   }),
-  { getUser }
+  { getUser, updateUser }
 )(AdminUserPage);
