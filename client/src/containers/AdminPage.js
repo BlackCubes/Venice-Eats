@@ -2,12 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Table, Row, Col } from 'react-bootstrap';
 
-import { getUsers } from './../actions/user';
+import { getUsers, deleteUser } from './../actions/user';
 
-const AdminPage = ({ apiData, apiError, getUsers, loadingUserApi }) => {
+const AdminPage = ({
+  apiData,
+  apiError,
+  getUsers,
+  deleteUser,
+  loadingUserApi
+}) => {
   React.useEffect(() => {
     getUsers();
   }, [getUsers]);
+
+  const handleDelete = id => deleteUser(id);
 
   return (
     <div>
@@ -20,6 +28,7 @@ const AdminPage = ({ apiData, apiError, getUsers, loadingUserApi }) => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -30,10 +39,20 @@ const AdminPage = ({ apiData, apiError, getUsers, loadingUserApi }) => {
                     <td>{prop.name}</td>
                     <td>{prop.email}</td>
                     <td>{prop.role}</td>
+                    <td>
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => handleDelete(prop._id)}
+                      >
+                        {loadingUserApi ? '...' : 'DEL'}
+                      </Button>
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr>
+                  <td>...</td>
                   <td>...</td>
                   <td>...</td>
                   <td>...</td>
@@ -54,5 +73,5 @@ export default connect(
     apiError: state.apiUser.error,
     loadingUserApi: state.apiUser.isLoading
   }),
-  { getUsers }
+  { getUsers, deleteUser }
 )(AdminPage);
