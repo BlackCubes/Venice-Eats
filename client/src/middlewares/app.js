@@ -2,10 +2,11 @@ import {
   apiAuthRequest,
   apiPostRequest,
   apiGetAllRequest,
+  apiGetRequest,
   apiDeleteRequest
 } from './../actions/api';
 import { LOGIN, tokenHeadersConfig } from './../actions/auth';
-import { POST_USER, GET_USERS, DELETE_USER } from './../actions/user';
+import { POST_USER, GET_USERS, GET_USER, DELETE_USER } from './../actions/user';
 
 const FOODTRUCK_ROUTE = 'foodtrucks';
 const GEO_ROUTE = 'geos';
@@ -39,6 +40,16 @@ export const appMiddleware = ({ getState }) => next => action => {
       next(
         apiGetAllRequest({
           url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}`,
+          method: 'GET',
+          headers: tokenHeadersConfig(getState)
+        })
+      );
+      break;
+    }
+    case GET_USER: {
+      next(
+        apiGetRequest({
+          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}/${action.payload}`,
           method: 'GET',
           headers: tokenHeadersConfig(getState)
         })
