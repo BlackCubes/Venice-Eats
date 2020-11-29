@@ -1,15 +1,20 @@
 import { SET_LOADER } from './../actions/ui';
-import { API_SUCCESS, API_ERROR } from './../actions/api';
+import { API_POST_SUCCESS, API_SUCCESS, API_ERROR } from './../actions/api';
 
 export default (
   state = {
-    data: null,
+    data: [],
     isLoading: false,
     error: null
   },
   action
 ) => {
   switch (action.type) {
+    case API_POST_SUCCESS:
+      return {
+        ...state,
+        data: [...state.data, action.payload.data.data]
+      };
     case API_SUCCESS:
       return {
         ...state,
