@@ -8,8 +8,9 @@ import { Form, Button } from 'react-bootstrap';
 import { getUser } from './../actions/user';
 
 const AdminUserPage = ({ getUser, apiData, apiError, loadingUserApi }) => {
+  const { params } = useParams();
+
   React.useEffect(() => {
-    const { params } = useParams();
     getUser(params);
   }, [getUser]);
 
