@@ -94,6 +94,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
           dispatch(setLoader({ state: false }));
           dispatch(apiError({ error: error.response.data }));
         });
+      break;
     }
     case API_DELETE_REQUEST: {
       dispatch(setLoader({ state: true }));

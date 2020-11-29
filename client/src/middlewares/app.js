@@ -42,6 +42,7 @@ export const appMiddleware = ({ getState }) => next => action => {
           headers: tokenHeadersConfig(getState)
         })
       );
+      break;
     }
     case GET_USERS: {
       next(
