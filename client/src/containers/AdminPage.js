@@ -43,6 +43,7 @@ const AdminPage = ({
                       <Button
                         variant="danger"
                         size="sm"
+                        disabled={loadingUserApi}
                         onClick={() => handleDelete(prop._id)}
                       >
                         {loadingUserApi ? '...' : 'DEL'}
