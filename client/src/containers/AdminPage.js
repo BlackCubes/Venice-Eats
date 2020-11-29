@@ -18,7 +18,8 @@ const AdminPage = ({
 
   const handleDelete = id => deleteUser(id);
 
-  console.log(currentUser);
+  const currentUserId = currentUser ? currentUser : '';
+
   return (
     <div>
       <Row>
@@ -45,7 +46,7 @@ const AdminPage = ({
                       <Button
                         variant="danger"
                         size="sm"
-                        disabled={loadingUserApi}
+                        disabled={loadingUserApi || prop._id === currentUserId}
                         onClick={() => handleDelete(prop._id)}
                       >
                         {loadingUserApi ? '...' : 'DEL'}
