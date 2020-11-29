@@ -9,7 +9,8 @@ const AdminPage = ({
   apiError,
   getUsers,
   deleteUser,
-  loadingUserApi
+  loadingUserApi,
+  currentUser
 }) => {
   React.useEffect(() => {
     getUsers();
@@ -17,6 +18,7 @@ const AdminPage = ({
 
   const handleDelete = id => deleteUser(id);
 
+  console.log(currentUser);
   return (
     <div>
       <Row>
@@ -72,7 +74,8 @@ export default connect(
   state => ({
     apiData: state.apiUser.data,
     apiError: state.apiUser.error,
-    loadingUserApi: state.apiUser.isLoading
+    loadingUserApi: state.apiUser.isLoading,
+    currentUser: state.auth.user
   }),
   { getUsers, deleteUser }
 )(AdminPage);
