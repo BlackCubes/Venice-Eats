@@ -4,6 +4,8 @@ import { Container, Table, Row, Col } from 'react-bootstrap';
 
 import { getUsers } from './../actions/user';
 
+import PostUserModal from './../components/Modal/AddUserModalAdminComponent';
+
 const AdminPage = ({ apiData, apiError, getUsers, loadingUserApi }) => {
   React.useEffect(() => {
     getUsers();
@@ -13,6 +15,8 @@ const AdminPage = ({ apiData, apiError, getUsers, loadingUserApi }) => {
     <div>
       <h1>Welcome to the Admin Page!!!</h1>
       <Container fluid>
+        <PostUserModal />
+
         <Row>
           <Col md={12}>
             <Table striped hover>
