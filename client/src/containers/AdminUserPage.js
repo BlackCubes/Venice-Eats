@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 
 import { getUser, updateUser } from './../actions/user';
 
@@ -93,6 +93,9 @@ const AdminUserPage = ({
               ) : null}
             </Form.Group>
             <Button type="submit" disabled={isSubmitting}>
+              {loadingUserApi ? (
+                <Spinner as="span" animation="grow" size="sm" role="status" />
+              ) : null}
               Update
             </Button>
           </Form>
