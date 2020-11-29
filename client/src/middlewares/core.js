@@ -8,7 +8,9 @@ import {
   API_DELETE_REQUEST,
   apiAuthSuccess,
   apiPostSuccess,
-  apiSuccess,
+  apiGetAllSuccess,
+  apiGetSuccess,
+  apiUpdateSuccess,
   apiDeleteSuccess,
   apiError
 } from './../actions/api';
@@ -56,7 +58,25 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         });
       break;
     }
-    case API_GET_ALL_REQUEST:
+    case API_GET_ALL_REQUEST: {
+      dispatch(setLoader({ state: true }));
+      const { url, method, headers } = action.meta;
+      axios({
+        method,
+        url,
+        headers
+      })
+        .then(({ data }) => {
+          dispatch(setLoader({ state: false }));
+          dispatch(apiGetAllSuccess({ response: data }));
+        })
+        .catch(error => {
+          console.log(error.response.data);
+          dispatch(setLoader({ state: false }));
+          dispatch(apiError({ error: error.response.data }));
+        });
+      break;
+    }
     case API_GET_REQUEST: {
       dispatch(setLoader({ state: true }));
       const { url, method, headers } = action.meta;
@@ -67,7 +87,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
       })
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
-          dispatch(apiSuccess({ response: data }));
+          dispatch(apiGetSuccess({ response: data }));
         })
         .catch(error => {
           console.log(error.response.data);
@@ -87,7 +107,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
       })
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
-          dispatch(apiSuccess({ response: data }));
+          dispatch(apiUpdateSuccess({ response: data }));
         })
         .catch(error => {
           console.log(error.response.data);

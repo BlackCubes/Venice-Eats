@@ -5,9 +5,12 @@ export const API_GET_ALL_REQUEST = 'API_GET_ALL_REQUEST';
 export const API_GET_REQUEST = 'API_GET_REQUEST';
 export const API_UPDATE_REQUEST = 'API_UPDATE_REQUEST';
 export const API_DELETE_REQUEST = 'API_DELETE_REQUEST';
+
 export const API_AUTH_SUCCESS = 'API_AUTH_SUCCESS';
 export const API_POST_SUCCESS = 'API_POST_SUCCESS';
-export const API_SUCCESS = 'API_SUCCESS';
+export const API_GET_ALL_SUCCESS = 'API_SUCCESS';
+export const API_GET_SUCCESS = 'API_GET_SUCCESS';
+export const API_UPDATE_SUCCESS = 'API_UPDATE_SUCCESS';
 export const API_DELETE_SUCCESS = 'API_DELETE_SUCCESS';
 export const API_ERROR = 'API_ERROR';
 
@@ -64,8 +67,18 @@ export const apiPostSuccess = ({ response }) => ({
   payload: response
 });
 
-export const apiSuccess = ({ response }) => ({
-  type: API_SUCCESS,
+export const apiGetAllSuccess = ({ response }) => ({
+  type: API_GET_ALL_SUCCESS,
+  payload: response
+});
+
+export const apiGetSuccess = ({ response }) => ({
+  type: API_GET_SUCCESS,
+  payload: response
+});
+
+export const apiUpdateSuccess = ({ response }) => ({
+  type: API_UPDATE_SUCCESS,
   payload: response
 });
 
