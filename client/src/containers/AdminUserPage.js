@@ -18,7 +18,7 @@ const AdminUserPage = ({
 
   React.useEffect(() => {
     getUser(params);
-  }, [getUser]);
+  }, [getUser, params]);
 
   const initialValues = {
     name: '',
