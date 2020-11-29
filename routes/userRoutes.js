@@ -48,6 +48,11 @@ router
 
 router
   .route('/:id')
+  .get(
+    authController.protect,
+    authController.restrictTo('admin'),
+    userController.getUser
+  )
   .delete(
     authController.protect,
     authController.restrictTo('admin'),
