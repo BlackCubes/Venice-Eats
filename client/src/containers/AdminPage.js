@@ -9,16 +9,13 @@ const AdminPage = ({
   apiError,
   getUsers,
   deleteUser,
-  loadingUserApi,
-  currentUser
+  loadingUserApi
 }) => {
   React.useEffect(() => {
     getUsers();
   }, [getUsers]);
 
   const handleDelete = id => deleteUser(id);
-
-  const currentUserId = currentUser ? currentUser : '';
 
   return (
     <div>
@@ -46,7 +43,7 @@ const AdminPage = ({
                       <Button
                         variant="danger"
                         size="sm"
-                        disabled={loadingUserApi || prop._id === currentUserId}
+                        disabled={loadingUserApi}
                         onClick={() => handleDelete(prop._id)}
                       >
                         {loadingUserApi ? '...' : 'DEL'}
@@ -75,8 +72,7 @@ export default connect(
   state => ({
     apiData: state.apiUser.data,
     apiError: state.apiUser.error,
-    loadingUserApi: state.apiUser.isLoading,
-    currentUser: state.auth.user
+    loadingUserApi: state.apiUser.isLoading
   }),
   { getUsers, deleteUser }
 )(AdminPage);
