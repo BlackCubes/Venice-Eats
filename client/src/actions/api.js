@@ -40,10 +40,10 @@ export const apiGetRequest = ({ url, method, headers }) => {
   };
 };
 
-export const apiUpdateRequest = ({ url, method, data, headers, id }) => {
+export const apiUpdateRequest = ({ url, method, data, headers }) => {
   return {
     type: API_UPDATE_REQUEST,
-    meta: { url, method, data, headers, id }
+    meta: { url, method, data, headers }
   };
 };
 
