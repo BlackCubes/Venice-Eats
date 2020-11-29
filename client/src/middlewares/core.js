@@ -4,6 +4,7 @@ import {
   API_POST_REQUEST,
   API_GET_ALL_REQUEST,
   apiAuthSuccess,
+  apiPostSuccess,
   apiSuccess,
   apiError
 } from './../actions/api';
@@ -36,7 +37,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         data,
         headers
       })
-        .then(({ data }) => dispatch(apiSuccess({ response: data })))
+        .then(({ data }) => dispatch(apiPostSuccess({ response: data })))
         .catch(error => {
           console.log(error);
           dispatch(apiError({ error: error.response.data }));
