@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Table, Row, Col } from 'react-bootstrap';
+import { Table, Row, Col, Button } from 'react-bootstrap';
 
 import { getUsers, deleteUser } from './../actions/user';
 
