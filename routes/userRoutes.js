@@ -38,6 +38,12 @@ router
     authController.protect,
     authController.restrictTo('admin'),
     userController.getAllUsers
+  )
+  .post(
+    authController.protect,
+    authController.restrictTo('admin'),
+    validationController.signup,
+    userController.createUser
   );
 
 module.exports = router;
