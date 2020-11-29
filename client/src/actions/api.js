@@ -15,10 +15,10 @@ export const apiAuthRequest = ({ url, method, data }) => {
   };
 };
 
-export const apiPostRequest = ({ url, method, data }) => {
+export const apiPostRequest = ({ url, method, data, headers }) => {
   return {
     type: API_POST_REQUEST,
-    meta: { url, method, data }
+    meta: { url, method, data, headers }
   };
 };
 
