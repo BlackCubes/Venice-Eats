@@ -1,5 +1,10 @@
 import { SET_LOADER } from './../actions/ui';
-import { API_POST_SUCCESS, API_SUCCESS, API_ERROR } from './../actions/api';
+import {
+  API_POST_SUCCESS,
+  API_SUCCESS,
+  API_DELETE_SUCCESS,
+  API_ERROR
+} from './../actions/api';
 
 export default (
   state = {
@@ -19,6 +24,11 @@ export default (
       return {
         ...state,
         data: action.payload.data.data
+      };
+    case API_DELETE_SUCCESS:
+      return {
+        ...state,
+        data: state.data.filter(el => el._id !== action.payload)
       };
     case API_ERROR:
       return { ...state, error: action.payload.message };
