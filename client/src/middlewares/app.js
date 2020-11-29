@@ -1,6 +1,10 @@
-import { apiAuthRequest, apiGetAllRequest } from './../actions/api';
+import {
+  apiAuthRequest,
+  apiPostRequest,
+  apiGetAllRequest
+} from './../actions/api';
 import { LOGIN, tokenHeadersConfig } from './../actions/auth';
-import { GET_USERS } from './../actions/user';
+import { POST_USER, GET_USERS } from './../actions/user';
 
 const FOODTRUCK_ROUTE = 'foodtrucks';
 const GEO_ROUTE = 'geos';
@@ -19,6 +23,16 @@ export const appMiddleware = ({ getState }) => next => action => {
         })
       );
       break;
+    }
+    case POST_USER: {
+      next(
+        apiPostRequest({
+          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}`,
+          method: 'POST',
+          data: action.payload,
+          headers: tokenHeadersConfig(getState)
+        })
+      );
     }
     case GET_USERS: {
       next(
