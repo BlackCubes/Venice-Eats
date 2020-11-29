@@ -32,7 +32,7 @@ const AdminPage = ({
               </tr>
             </thead>
             <tbody>
-              {apiData ? (
+              {!loadingUserApi ? (
                 apiData.map(prop => (
                   <tr key={prop._id}>
                     <td>{prop._id}</td>
