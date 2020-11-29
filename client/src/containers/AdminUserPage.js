@@ -21,8 +21,8 @@ const AdminUserPage = ({
   }, [getUser, params]);
 
   const initialValues = {
-    name: '',
-    email: ''
+    name: apiSingleData ? apiSingleData.name : '',
+    email: apiSingleData ? apiSingleData.email : ''
   };
 
   const validationSchema = yup.object({
