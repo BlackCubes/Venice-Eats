@@ -3,9 +3,11 @@ import {
   API_AUTH_REQUEST,
   API_POST_REQUEST,
   API_GET_ALL_REQUEST,
+  API_DELETE_REQUEST,
   apiAuthSuccess,
   apiPostSuccess,
   apiSuccess,
+  apiDeleteSuccess,
   apiError
 } from './../actions/api';
 import { setLoader } from './../actions/ui';
@@ -55,6 +57,21 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         .then(({ data }) => dispatch(apiSuccess({ response: data })))
         .catch(error => {
           console.log(error);
+          dispatch(apiError({ error: error.response.data }));
+        });
+      break;
+    }
+    case API_DELETE_REQUEST: {
+      dispatch(setLoader({ state: true }));
+      const { url, method, headers } = action.meta;
+      axios({
+        method,
+        url,
+        headers
+      })
+        .then(({ status }) => dispatch(apiSuccess({ response: status })))
+        .catch(error => {
+          console.log(error.response.data);
           dispatch(apiError({ error: error.response.data }));
         });
       break;
