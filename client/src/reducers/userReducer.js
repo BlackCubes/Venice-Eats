@@ -11,7 +11,7 @@ import {
 export default (
   state = {
     data: [],
-    singleData: null,
+    singleData: {},
     isLoading: false,
     error: null
   },
