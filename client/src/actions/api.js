@@ -31,10 +31,10 @@ export const apiGetAllRequest = ({ url, method, headers }) => {
   };
 };
 
-export const apiDeleteRequest = ({ url, method, data, headers }) => {
+export const apiDeleteRequest = ({ url, method, headers }) => {
   return {
     type: API_DELETE_REQUEST,
-    meta: { url, method, data, headers }
+    meta: { url, method, headers }
   };
 };
 
