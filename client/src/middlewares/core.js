@@ -4,6 +4,7 @@ import {
   API_POST_REQUEST,
   API_GET_ALL_REQUEST,
   API_GET_REQUEST,
+  API_UPDATE_REQUEST,
   API_DELETE_REQUEST,
   apiAuthSuccess,
   apiPostSuccess,
@@ -55,25 +56,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         });
       break;
     }
-    case API_GET_ALL_REQUEST: {
-      dispatch(setLoader({ state: true }));
-      const { url, method, headers } = action.meta;
-      axios({
-        method,
-        url,
-        headers
-      })
-        .then(({ data }) => {
-          dispatch(setLoader({ state: false }));
-          dispatch(apiSuccess({ response: data }));
-        })
-        .catch(error => {
-          console.log(error.response.data);
-          dispatch(setLoader({ state: false }));
-          dispatch(apiError({ error: error.response.data }));
-        });
-      break;
-    }
+    case API_GET_ALL_REQUEST:
     case API_GET_REQUEST: {
       dispatch(setLoader({ state: true }));
       const { url, method, headers } = action.meta;
@@ -92,6 +75,25 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
           dispatch(apiError({ error: error.response.data }));
         });
       break;
+    }
+    case API_UPDATE_REQUEST: {
+      dispatch(setLoader({ state: true }));
+      const { url, method, data, headers } = action.meta;
+      axios({
+        method,
+        url,
+        data,
+        headers
+      })
+        .then(({ data }) => {
+          dispatch(setLoader({ state: false }));
+          dispatch(apiSuccess({ response: data }));
+        })
+        .catch(error => {
+          console.log(error.response.data);
+          dispatch(setLoader({ state: false }));
+          dispatch(apiError({ error: error.response.data }));
+        });
     }
     case API_DELETE_REQUEST: {
       dispatch(setLoader({ state: true }));
