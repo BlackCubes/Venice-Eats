@@ -60,7 +60,7 @@ const PostUserModal = ({ apiError, postUser }) => {
         Add User
       </Button>
 
-      <Modal show={openModal} onHide={handleToggle}>
+      <Modal show={openModal} animation={false} onHide={handleToggle}>
         <Modal.Header onHide={handleToggle}>
           <Modal.Title>Add a User</Modal.Title>
         </Modal.Header>
