@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
 
-import { getUser } from './../actions/auth';
+import { getUser } from './../actions/user';
 
 const AdminUserPage = ({ getUser, apiData, apiError, loadingUserApi }) => {
   // React.useEffect(() => {
