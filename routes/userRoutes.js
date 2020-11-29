@@ -53,6 +53,12 @@ router
     authController.restrictTo('admin'),
     userController.getUser
   )
+  .patch(
+    authController.protect,
+    authController.restrictTo('admin'),
+    validationController.updateUser,
+    userController.updateUser
+  )
   .delete(
     authController.protect,
     authController.restrictTo('admin'),
