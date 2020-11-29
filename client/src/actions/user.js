@@ -18,10 +18,10 @@ export const getUsers = () => {
   };
 };
 
-export const getUser = idSlug => {
+export const getUser = params => {
   return {
     type: GET_USER,
-    payload: idSlug
+    payload: params
   };
 };
 
