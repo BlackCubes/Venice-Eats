@@ -73,22 +73,52 @@ const AdminPage = ({
               ) : (
                 <tr>
                   <td>
-                    <Spinner as="span" animation="border" role="status" />
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                    />
                   </td>
                   <td>
-                    <Spinner as="span" animation="border" role="status" />
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                    />
                   </td>
                   <td>
-                    <Spinner as="span" animation="border" role="status" />
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                    />
                   </td>
                   <td>
-                    <Spinner as="span" animation="border" role="status" />
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                    />
                   </td>
                   <td>
-                    <Spinner as="span" animation="border" role="status" />
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                    />
                   </td>
                   <td>
-                    <Spinner as="span" animation="border" role="status" />
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                    />
                   </td>
                 </tr>
               )}
