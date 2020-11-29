@@ -9,6 +9,7 @@ import { postUser } from './../../actions/user';
 const PostUserModal = ({ apiError, postUser }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [apiErrorMsg, setApiErrorMsg] = React.useState(null);
+  const [apiSuccess, setApiSuccess] = React.useState(false);
 
   const handleToggle = () => {
     setApiErrorMsg(null);
@@ -50,14 +51,20 @@ const PostUserModal = ({ apiError, postUser }) => {
   const onSubmit = (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
     postUser(data);
-    handleToggle();
+    setApiSuccess(true);
     resetForm();
   };
 
   React.useEffect(() => {
     if (apiError) setApiErrorMsg(apiError);
     else setApiErrorMsg(null);
-  }, [apiError]);
+
+    if (openModal) {
+      if (apiSuccess) {
+        handleToggle();
+      }
+    }
+  }, [apiError, apiSuccess, handleToggle, openModal]);
 
   return (
     <div>
