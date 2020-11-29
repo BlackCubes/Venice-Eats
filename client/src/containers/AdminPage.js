@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Table, Row, Col, Button } from 'react-bootstrap';
+import { Table, Row, Col, Button, Spinner } from 'react-bootstrap';
 
 import { getUsers, deleteUser } from './../actions/user';
 
@@ -47,7 +47,16 @@ const AdminPage = ({
                         disabled={loadingUserApi}
                         onClick={() => handleDelete(prop._id)}
                       >
-                        {loadingUserApi ? '...' : 'DEL'}
+                        {loadingUserApi ? (
+                          <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                          />
+                        ) : (
+                          'DEL'
+                        )}
                       </Button>
                     </td>
                     <td>
@@ -63,12 +72,24 @@ const AdminPage = ({
                 ))
               ) : (
                 <tr>
-                  <td>...</td>
-                  <td>...</td>
-                  <td>...</td>
-                  <td>...</td>
-                  <td>...</td>
-                  <td>...</td>
+                  <td>
+                    <Spinner as="span" animation="border" role="status" />
+                  </td>
+                  <td>
+                    <Spinner as="span" animation="border" role="status" />
+                  </td>
+                  <td>
+                    <Spinner as="span" animation="border" role="status" />
+                  </td>
+                  <td>
+                    <Spinner as="span" animation="border" role="status" />
+                  </td>
+                  <td>
+                    <Spinner as="span" animation="border" role="status" />
+                  </td>
+                  <td>
+                    <Spinner as="span" animation="border" role="status" />
+                  </td>
                 </tr>
               )}
             </tbody>
