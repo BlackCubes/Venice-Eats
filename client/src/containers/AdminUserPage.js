@@ -60,7 +60,7 @@ const AdminUserPage = ({
               <Form.Control
                 type="text"
                 name="name"
-                value={!loadingUserApi ? apiData.name : ''}
+                defaultValue={!loadingUserApi ? apiData.name : ''}
                 placeholder="Name"
                 className={touched.name && errors.name ? 'error' : null}
                 onChange={handleChange}
@@ -77,7 +77,7 @@ const AdminUserPage = ({
               <Form.Control
                 type="email"
                 name="email"
-                value={!loadingUserApi ? apiData.email : ''}
+                defaultValue={!loadingUserApi ? apiData.email : ''}
                 placeholder="Email"
                 className={touched.email && errors.email ? 'error' : null}
                 onChange={handleChange}
