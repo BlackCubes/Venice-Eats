@@ -51,8 +51,10 @@ const PostUserModal = ({ apiError, postUser }) => {
   const onSubmit = (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
     postUser(data);
-    setApiSuccess(true);
-    resetForm();
+    if (!apiError) {
+      setApiSuccess(true);
+      resetForm();
+    }
   };
 
   React.useEffect(() => {
