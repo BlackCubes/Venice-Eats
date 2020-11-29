@@ -2,9 +2,11 @@
 export const API_AUTH_REQUEST = 'API_AUTH_REQUEST';
 export const API_POST_REQUEST = 'API_POST_REQUEST';
 export const API_GET_ALL_REQUEST = 'API_GET_ALL_REQUEST';
+export const API_DELETE_REQUEST = 'API_DELETE_REQUEST';
 export const API_AUTH_SUCCESS = 'API_AUTH_SUCCESS';
 export const API_POST_SUCCESS = 'API_POST_SUCCESS';
 export const API_SUCCESS = 'API_SUCCESS';
+export const API_DELETE_SUCCESS = 'API_DELETE_SUCCESS';
 export const API_ERROR = 'API_ERROR';
 
 // ACTION CREATORS
@@ -29,6 +31,13 @@ export const apiGetAllRequest = ({ url, method, headers }) => {
   };
 };
 
+export const apiDeleteRequest = ({ url, method, data, headers }) => {
+  return {
+    type: API_DELETE_REQUEST,
+    meta: { url, method, data, headers }
+  };
+};
+
 export const apiAuthSuccess = ({ response }) => ({
   type: API_AUTH_SUCCESS,
   payload: response
@@ -41,6 +50,11 @@ export const apiPostSuccess = ({ response }) => ({
 
 export const apiSuccess = ({ response }) => ({
   type: API_SUCCESS,
+  payload: response
+});
+
+export const apiDeleteSuccess = ({ response }) => ({
+  type: API_DELETE_SUCCESS,
   payload: response
 });
 
