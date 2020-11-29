@@ -23,9 +23,13 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         url,
         data
       })
-        .then(({ data }) => dispatch(apiAuthSuccess({ response: data })))
+        .then(({ data }) => {
+          dispatch(setLoader({ state: false }));
+          dispatch(apiAuthSuccess({ response: data }));
+        })
         .catch(error => {
-          console.log(error);
+          console.log(error.response.data);
+          dispatch(setLoader({ state: false }));
           dispatch(apiError({ error: error.response.data }));
         });
       break;
@@ -39,9 +43,13 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         data,
         headers
       })
-        .then(({ data }) => dispatch(apiPostSuccess({ response: data })))
+        .then(({ data }) => {
+          dispatch(setLoader({ state: false }));
+          dispatch(apiPostSuccess({ response: data }));
+        })
         .catch(error => {
-          console.log(error);
+          console.log(error.response.data);
+          dispatch(setLoader({ state: false }));
           dispatch(apiError({ error: error.response.data }));
         });
       break;
@@ -54,9 +62,13 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         url,
         headers
       })
-        .then(({ data }) => dispatch(apiSuccess({ response: data })))
+        .then(({ data }) => {
+          dispatch(setLoader({ state: false }));
+          dispatch(apiSuccess({ response: data }));
+        })
         .catch(error => {
-          console.log(error);
+          console.log(error.response.data);
+          dispatch(setLoader({ state: false }));
           dispatch(apiError({ error: error.response.data }));
         });
       break;
@@ -69,9 +81,13 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         url,
         headers
       })
-        .then(res => dispatch(apiDeleteSuccess({ response: id })))
+        .then(res => {
+          dispatch(setLoader({ state: false }));
+          dispatch(apiDeleteSuccess({ response: id }));
+        })
         .catch(error => {
           console.log(error.response.data);
+          dispatch(setLoader({ state: false }));
           dispatch(apiError({ error: error.response.data }));
         });
       break;
