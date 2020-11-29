@@ -9,12 +9,8 @@ import { postUser } from './../../actions/user';
 const PostUserModal = ({ apiError, postUser }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [apiErrorMsg, setApiErrorMsg] = React.useState(null);
-  const [apiSuccess, setApiSuccess] = React.useState(false);
 
-  const handleToggle = () => {
-    setApiErrorMsg(null);
-    setOpenModal(!openModal);
-  };
+  const handleToggle = () => setOpenModal(!openModal);
 
   const initialValues = {
     name: '',
@@ -52,7 +48,6 @@ const PostUserModal = ({ apiError, postUser }) => {
     setSubmitting(true);
     postUser(data);
     if (!apiError) {
-      setApiSuccess(true);
       resetForm();
     }
   };
@@ -60,13 +55,7 @@ const PostUserModal = ({ apiError, postUser }) => {
   React.useEffect(() => {
     if (apiError) setApiErrorMsg(apiError);
     else setApiErrorMsg(null);
-
-    if (openModal) {
-      if (apiSuccess) {
-        handleToggle();
-      }
-    }
-  }, [apiError, apiSuccess, handleToggle, openModal]);
+  }, [apiError]);
 
   return (
     <div>
