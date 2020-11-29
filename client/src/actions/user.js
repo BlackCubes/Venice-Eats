@@ -26,10 +26,10 @@ export const getUser = params => {
   };
 };
 
-export const updateUser = id => {
+export const updateUser = (id, data) => {
   return {
     type: UPDATE_USER,
-    payload: id
+    payload: { id, data }
   };
 };
 
