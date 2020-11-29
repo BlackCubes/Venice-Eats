@@ -95,8 +95,9 @@ const AdminUserPage = ({
             <Button type="submit" disabled={isSubmitting}>
               {loadingUserApi ? (
                 <Spinner as="span" animation="grow" size="sm" role="status" />
-              ) : null}
-              Update
+              ) : (
+                'Update'
+              )}
             </Button>
           </Form>
         )}
