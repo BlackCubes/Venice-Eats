@@ -10,6 +10,7 @@ import { appMiddleware } from './middlewares/app';
 import { apiMiddleware } from './middlewares/core';
 
 import AdminPage from './containers/AdminPage';
+import AdminUserPage from './containers/AdminUserPage';
 import LoginPage from './containers/LoginPage';
 import { Test } from './containers/Test';
 
@@ -38,6 +39,12 @@ const App = () => {
             <Container fluid>
               <PostUserModal />
               <AdminPage />
+            </Container>
+          </AuthRoute>
+          <AuthRoute path="/admin/user/:params" exact type="private">
+            <AdminNavbar />
+            <Container fluid>
+              <AdminUserPage />
             </Container>
           </AuthRoute>
         </Switch>
