@@ -8,14 +8,19 @@ import { Form, Button } from 'react-bootstrap';
 import { getUser } from './../actions/user';
 
 const AdminUserPage = ({ getUser, apiData, apiError, loadingUserApi }) => {
-  // React.useEffect(() => {
-  //   const { params } = useParams();
-  //   getUser(params);
-  // }, [getUser]);
+  React.useEffect(() => {
+    const { params } = useParams();
+    getUser(params);
+  }, [getUser]);
 
-  const { params } = useParams();
-
-  return <pre>{params}</pre>;
+  return (
+    <div>
+      <pre>
+        Data: {apiData || !loadingUserApi ? JSON.stringify(apiData) : 'none'}
+      </pre>
+      <pre>Error: {apiError ? apiError : 'none'}</pre>
+    </div>
+  );
 };
 
 export default connect(
