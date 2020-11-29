@@ -2,6 +2,7 @@
 export const API_AUTH_REQUEST = 'API_AUTH_REQUEST';
 export const API_POST_REQUEST = 'API_POST_REQUEST';
 export const API_GET_ALL_REQUEST = 'API_GET_ALL_REQUEST';
+export const API_GET_REQUEST = 'API_GET_REQUEST';
 export const API_DELETE_REQUEST = 'API_DELETE_REQUEST';
 export const API_AUTH_SUCCESS = 'API_AUTH_SUCCESS';
 export const API_POST_SUCCESS = 'API_POST_SUCCESS';
@@ -28,6 +29,13 @@ export const apiGetAllRequest = ({ url, method, headers }) => {
   return {
     type: API_GET_ALL_REQUEST,
     meta: { url, method, headers }
+  };
+};
+
+export const apiGetRequest = ({ url, method, headers, idSlug }) => {
+  return {
+    type: API_GET_REQUEST,
+    meta: { url, method, headers, idSlug }
   };
 };
 
