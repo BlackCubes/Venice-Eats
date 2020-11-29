@@ -10,7 +10,7 @@ import { getUser, updateUser } from './../actions/user';
 const AdminUserPage = ({
   getUser,
   updateUser,
-  apiData,
+  apiSingleData,
   apiError,
   loadingUserApi
 }) => {
@@ -62,7 +62,7 @@ const AdminUserPage = ({
               <Form.Control
                 type="text"
                 name="name"
-                defaultValue={!loadingUserApi ? apiData.name : ''}
+                defaultValue={!loadingUserApi ? apiSingleData.name : ''}
                 placeholder="Name"
                 className={touched.name && errors.name ? 'error' : null}
                 onChange={handleChange}
@@ -79,7 +79,7 @@ const AdminUserPage = ({
               <Form.Control
                 type="email"
                 name="email"
-                defaultValue={!loadingUserApi ? apiData.email : ''}
+                defaultValue={!loadingUserApi ? apiSingleData.email : ''}
                 placeholder="Email"
                 className={touched.email && errors.email ? 'error' : null}
                 onChange={handleChange}
@@ -104,7 +104,7 @@ const AdminUserPage = ({
 
 export default connect(
   state => ({
-    apiData: state.apiUser.data,
+    apiSingleData: state.apiUser.singleData,
     apiError: state.apiUser.error,
     loadingUserApi: state.apiUser.isLoading
   }),
