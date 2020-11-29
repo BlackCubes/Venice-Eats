@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 
 import { getUser, updateUser } from './../actions/user';
 
@@ -40,7 +40,7 @@ const AdminUserPage = ({
   };
 
   return (
-    <div>
+    <div className="Login">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -56,6 +56,8 @@ const AdminUserPage = ({
           isSubmitting
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
+            {apiError ? <Alert variant="danger">{apiErrorMsg}</Alert> : null}
+
             <Form.Group controlId="name">
               <Form.Control
                 type="text"
