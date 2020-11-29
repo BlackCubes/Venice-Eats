@@ -29,6 +29,7 @@ const AdminPage = ({
                 <th>Email</th>
                 <th>Role</th>
                 <th>Delete</th>
+                <th>View</th>
               </tr>
             </thead>
             <tbody>
@@ -49,10 +50,20 @@ const AdminPage = ({
                         {loadingUserApi ? '...' : 'DEL'}
                       </Button>
                     </td>
+                    <td>
+                      <Button
+                        variant="info"
+                        href={`/admin/users/${prop._id}`}
+                        type="button"
+                      >
+                        View
+                      </Button>
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr>
+                  <td>...</td>
                   <td>...</td>
                   <td>...</td>
                   <td>...</td>
