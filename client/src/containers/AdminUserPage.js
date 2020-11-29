@@ -35,7 +35,7 @@ const AdminUserPage = ({
 
   const onSubmit = (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-    updateUser(data);
+    updateUser(params, data);
     resetForm();
   };
 
