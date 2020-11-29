@@ -39,6 +39,19 @@ exports.login = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.updateUser = catchAsync(async (req, res, next) => {
+  const validationRule = {
+    name: 'string|min:2|max:70',
+    email: 'email|exist:Users,email'
+  };
+
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) return next(new AppError(`${errMessage(err.errors)}`, 400));
+
+    next();
+  });
+});
+
 exports.validateFoodtruck = catchAsync(async (req, res, next) => {
   let validationRule;
 
