@@ -2,7 +2,7 @@
 export const POST_USER = 'POST_USER';
 export const GET_USERS = 'GET_USERS';
 export const GET_USER = 'GET_USER';
-export const PATCH_USER = 'PATCH_USER';
+export const UPDATE_USER = 'UPDATE_USER';
 export const DELETE_USER = 'DELETE_USER';
 
 // ACTION CREATORS
@@ -28,7 +28,7 @@ export const getUser = params => {
 
 export const updateUser = (id, data) => {
   return {
-    type: PATCH_USER,
+    type: UPDATE_USER,
     payload: { id, data }
   };
 };
