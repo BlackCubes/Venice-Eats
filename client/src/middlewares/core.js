@@ -63,13 +63,13 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
     }
     case API_DELETE_REQUEST: {
       dispatch(setLoader({ state: true }));
-      const { url, method, headers } = action.meta;
+      const { url, method, headers, id } = action.meta;
       axios({
         method,
         url,
         headers
       })
-        .then(({ status }) => dispatch(apiSuccess({ response: status })))
+        .then(res => dispatch(apiDeleteSuccess({ response: id })))
         .catch(error => {
           console.log(error.response.data);
           dispatch(apiError({ error: error.response.data }));

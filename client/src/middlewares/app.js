@@ -50,7 +50,8 @@ export const appMiddleware = ({ getState }) => next => action => {
         apiDeleteRequest({
           url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}/${action.payload}`,
           method: 'DELETE',
-          headers: tokenHeadersConfig(getState)
+          headers: tokenHeadersConfig(getState),
+          id: action.payload
         })
       );
       break;
