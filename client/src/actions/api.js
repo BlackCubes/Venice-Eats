@@ -3,7 +3,7 @@ export const API_AUTH_REQUEST = 'API_AUTH_REQUEST';
 export const API_POST_REQUEST = 'API_POST_REQUEST';
 export const API_GET_ALL_REQUEST = 'API_GET_ALL_REQUEST';
 export const API_GET_REQUEST = 'API_GET_REQUEST';
-export const API_PATCH_REQUEST = 'API_PATCH_REQUEST';
+export const API_UPDATE_REQUEST = 'API_UPDATE_REQUEST';
 export const API_DELETE_REQUEST = 'API_DELETE_REQUEST';
 export const API_AUTH_SUCCESS = 'API_AUTH_SUCCESS';
 export const API_POST_SUCCESS = 'API_POST_SUCCESS';
@@ -40,9 +40,9 @@ export const apiGetRequest = ({ url, method, headers }) => {
   };
 };
 
-export const apiPatchRequest = ({ url, method, data, headers, id }) => {
+export const apiUpdateRequest = ({ url, method, data, headers, id }) => {
   return {
-    type: API_PATCH_REQUEST,
+    type: API_UPDATE_REQUEST,
     meta: { url, method, data, headers, id }
   };
 };
