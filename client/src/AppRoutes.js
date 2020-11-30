@@ -15,6 +15,7 @@ import LoginPage from './containers/LoginPage';
 import { Test } from './containers/Test';
 
 import AdminNavbar from './components/AdminNavComponent';
+import AdminSecondNavbar from './components/AdminSecNavComponent';
 import AuthRoute from './components/AuthRoute';
 import PostUserModal from './components/Modal/AddUserModalAdminComponent';
 
@@ -37,6 +38,7 @@ const App = () => {
           <AuthRoute path="/admin" exact type="private">
             <AdminNavbar />
             <Container fluid>
+              <AdminSecondNavbar />
               <PostUserModal />
               <AdminPage />
             </Container>
@@ -44,6 +46,7 @@ const App = () => {
           <AuthRoute path="/admin/users/:params" exact type="private">
             <AdminNavbar />
             <Container fluid>
+              <AdminSecondNavbar />
               <AdminUserPage />
             </Container>
           </AuthRoute>
