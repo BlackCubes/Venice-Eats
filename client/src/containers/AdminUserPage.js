@@ -40,68 +40,74 @@ const AdminUserPage = ({
   };
 
   return (
-    <div className="Login">
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting
-        }) => (
-          <Form noValidate onSubmit={handleSubmit}>
-            {apiError ? <Alert variant="danger">{apiError}</Alert> : null}
+    <div>
+      <Button variant="outline-info" href="/admin" type="button">
+        &laquo;
+      </Button>
 
-            <Form.Group controlId="name">
-              <Form.Control
-                type="text"
-                name="name"
-                defaultValue={!loadingUserApi ? apiSingleData.name : '...'}
-                placeholder="Name"
-                className={touched.name && errors.name ? 'error' : null}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                isInvalid={!!errors.name || !!apiError}
-              />
-              {touched.name && errors.name ? (
-                <Form.Control.Feedback type="invalid">
-                  {errors.name}
-                </Form.Control.Feedback>
-              ) : null}
-            </Form.Group>
-            <Form.Group controlId="email">
-              <Form.Control
-                type="email"
-                name="email"
-                defaultValue={!loadingUserApi ? apiSingleData.email : '...'}
-                placeholder="Email"
-                className={touched.email && errors.email ? 'error' : null}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                isInvalid={!!errors.email || !!apiError}
-              />
-              {touched.email && errors.email ? (
-                <Form.Control.Feedback type="invalid">
-                  {errors.email}
-                </Form.Control.Feedback>
-              ) : null}
-            </Form.Group>
-            <Button type="submit" disabled={isSubmitting}>
-              {loadingUserApi ? (
-                <Spinner as="span" animation="grow" size="sm" role="status" />
-              ) : (
-                'Update'
-              )}
-            </Button>
-          </Form>
-        )}
-      </Formik>
+      <div className="Login">
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting
+          }) => (
+            <Form noValidate onSubmit={handleSubmit}>
+              {apiError ? <Alert variant="danger">{apiError}</Alert> : null}
+
+              <Form.Group controlId="name">
+                <Form.Control
+                  type="text"
+                  name="name"
+                  defaultValue={!loadingUserApi ? apiSingleData.name : '...'}
+                  placeholder="Name"
+                  className={touched.name && errors.name ? 'error' : null}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isInvalid={!!errors.name || !!apiError}
+                />
+                {touched.name && errors.name ? (
+                  <Form.Control.Feedback type="invalid">
+                    {errors.name}
+                  </Form.Control.Feedback>
+                ) : null}
+              </Form.Group>
+              <Form.Group controlId="email">
+                <Form.Control
+                  type="email"
+                  name="email"
+                  defaultValue={!loadingUserApi ? apiSingleData.email : '...'}
+                  placeholder="Email"
+                  className={touched.email && errors.email ? 'error' : null}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isInvalid={!!errors.email || !!apiError}
+                />
+                {touched.email && errors.email ? (
+                  <Form.Control.Feedback type="invalid">
+                    {errors.email}
+                  </Form.Control.Feedback>
+                ) : null}
+              </Form.Group>
+              <Button type="submit" disabled={isSubmitting}>
+                {loadingUserApi ? (
+                  <Spinner as="span" animation="grow" size="sm" role="status" />
+                ) : (
+                  'Update'
+                )}
+              </Button>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 };
