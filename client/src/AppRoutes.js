@@ -46,7 +46,6 @@ const App = () => {
           <AuthRoute path="/admin/users/:params" exact type="private">
             <AdminNavbar />
             <Container fluid>
-              <AdminSecondNavbar />
               <AdminUserPage />
             </Container>
           </AuthRoute>
