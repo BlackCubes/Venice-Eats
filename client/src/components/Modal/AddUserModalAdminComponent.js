@@ -4,9 +4,9 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Form, Modal, Button, Alert } from 'react-bootstrap';
 
-import { postUser } from './../../actions/user';
+import { postOne } from './../../actions/handlerFactory';
 
-const PostUserModal = ({ apiError, postUser }) => {
+const PostUserModal = ({ apiError, postOne }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [apiErrorMsg, setApiErrorMsg] = React.useState(null);
 
@@ -46,7 +46,7 @@ const PostUserModal = ({ apiError, postUser }) => {
 
   const onSubmit = (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-    postUser(data);
+    postOne('admins', data);
     if (!apiError) {
       resetForm();
     }
@@ -179,5 +179,5 @@ export default connect(
   state => ({
     apiError: state.apiUser.error
   }),
-  { postUser }
+  { postOne }
 )(PostUserModal);

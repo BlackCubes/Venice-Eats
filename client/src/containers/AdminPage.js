@@ -2,20 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Table, Row, Col, Button, Spinner } from 'react-bootstrap';
 
-import { getUsers, deleteUser } from './../actions/user';
+import { getAll, deleteOne } from './../actions/handlerFactory';
 
 const AdminPage = ({
   apiData,
   apiError,
-  getUsers,
-  deleteUser,
+  getAll,
+  deleteOne,
   loadingUserApi
 }) => {
   React.useEffect(() => {
-    getUsers();
-  }, [getUsers]);
+    getAll('admins');
+  }, [getAll]);
 
-  const handleDelete = id => deleteUser(id);
+  const handleDelete = id => deleteOne('admin', id);
 
   return (
     <div>
@@ -136,5 +136,5 @@ export default connect(
     apiError: state.apiUser.error,
     loadingUserApi: state.apiUser.isLoading
   }),
-  { getUsers, deleteUser }
+  { getAll, deleteOne }
 )(AdminPage);
