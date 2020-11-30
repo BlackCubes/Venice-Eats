@@ -8,17 +8,12 @@ import {
 } from './../actions/api';
 import { LOGIN, tokenHeadersConfig } from './../actions/auth';
 import {
-  POST_USER,
-  GET_USERS,
-  GET_USER,
-  UPDATE_USER,
-  DELETE_USER
-} from './../actions/user';
-
-const FOODTRUCK_ROUTE = 'foodtrucks';
-const GEO_ROUTE = 'geos';
-const USER_ROUTE = 'admins';
-const VENICEEVENT_ROUTE = 'veniceevents';
+  POST_ONE,
+  GET_ALL,
+  GET_ONE,
+  UPDATE_ONE,
+  DELETE_ONE
+} from './../actions/handlerFactory';
 
 export const appMiddleware = ({ getState }) => next => action => {
   next(action);
@@ -26,48 +21,48 @@ export const appMiddleware = ({ getState }) => next => action => {
     case LOGIN: {
       next(
         apiAuthRequest({
-          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}/login`,
+          url: `${process.env.REACT_APP_SERVER_URL}/admins/login`,
           method: 'POST',
           data: action.payload
         })
       );
       break;
     }
-    case POST_USER: {
+    case POST_ONE: {
       next(
         apiPostRequest({
-          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}`,
+          url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}`,
           method: 'POST',
-          data: action.payload,
+          data: action.payload.data,
           headers: tokenHeadersConfig(getState)
         })
       );
       break;
     }
-    case GET_USERS: {
+    case GET_ALL: {
       next(
         apiGetAllRequest({
-          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}`,
+          url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}`,
           method: 'GET',
           headers: tokenHeadersConfig(getState)
         })
       );
       break;
     }
-    case GET_USER: {
+    case GET_ONE: {
       next(
         apiGetRequest({
-          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}/${action.payload}`,
+          url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}/${action.payload.params}`,
           method: 'GET',
           headers: tokenHeadersConfig(getState)
         })
       );
       break;
     }
-    case UPDATE_USER: {
+    case UPDATE_ONE: {
       next(
         apiUpdateRequest({
-          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}/${action.payload.id}`,
+          url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}/${action.payload.params}`,
           method: 'PATCH',
           data: action.payload.data,
           headers: tokenHeadersConfig(getState)
@@ -75,13 +70,13 @@ export const appMiddleware = ({ getState }) => next => action => {
       );
       break;
     }
-    case DELETE_USER: {
+    case DELETE_ONE: {
       next(
         apiDeleteRequest({
-          url: `${process.env.REACT_APP_SERVER_URL}/${USER_ROUTE}/${action.payload}`,
+          url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}/${action.payload.id}`,
           method: 'DELETE',
           headers: tokenHeadersConfig(getState),
-          id: action.payload
+          id: action.payload.id
         })
       );
       break;
