@@ -59,13 +59,15 @@ const PostUserModal = ({ apiError, postUser }) => {
 
   return (
     <div>
-      <Button
-        color="dark"
-        style={{ marginBottom: '2rem' }}
-        onClick={handleToggle}
-      >
-        Add User
-      </Button>
+      <div className="admin-create-button" style={{ float: 'right' }}>
+        <Button
+          color="dark"
+          style={{ marginBottom: '2rem' }}
+          onClick={handleToggle}
+        >
+          Add User
+        </Button>
+      </div>
 
       <Modal show={openModal} animation={false} onHide={handleToggle}>
         <Modal.Header onHide={handleToggle}>
