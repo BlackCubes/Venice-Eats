@@ -8,11 +8,6 @@ export default props => {
     return thValues.map((prop, key) => {
       return <th key={key}>{prop}</th>;
     });
-    // const th = [];
-    // for (var i = 0; i < thValues.length; i++) {
-    //   th.push(<th key={i}>{thValues[i]}</th>);
-    // }
-    // return th;
   };
 
   const trOutput = (trValues, apiDatas) => {
