@@ -4,6 +4,8 @@ import { Table, Row, Col, Button, Spinner } from 'react-bootstrap';
 
 import { getAll, deleteOne } from './../actions/handlerFactory';
 
+import AdminCustomTable from './../components/Table/AdminCustomTable';
+
 const AdminPage = ({
   apiDatas,
   apiError,
@@ -21,7 +23,13 @@ const AdminPage = ({
     <div>
       <Row>
         <Col md={12}>
-          <Table striped hover>
+          <AdminCustomTable
+            thValues={['ID', 'Name', 'Email', 'Role']}
+            trValues={['_id', 'name', 'email', 'role']}
+            loadingApi={loadingUserApi}
+            apiDatas={apiDatas}
+          />
+          {/* <Table striped hover>
             <thead>
               <tr>
                 <th>ID</th>
@@ -123,7 +131,7 @@ const AdminPage = ({
                 </tr>
               )}
             </tbody>
-          </Table>
+          </Table> */}
         </Col>
       </Row>
     </div>
