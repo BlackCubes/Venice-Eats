@@ -5,7 +5,9 @@ import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
 
 import { login } from './../actions/auth';
+
 import { Alert } from './../components/Alert';
+import FormCustomInputs from './../components/Inputs/FormCustomInputs';
 import { Modal } from './../components/Modal';
 
 import './Login.css';
@@ -84,7 +86,23 @@ export default connect(
           isSubmitting
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            <Form.Group size="lg" controlId="email">
+            <FormCustomInputs
+              type="email"
+              name="email"
+              placeholder="Email"
+              classname={touched.email && errors.email ? 'error' : null}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              isInvalid={!!errors.email || !!apiError}
+              errors={
+                touched.email && errors.email ? (
+                  <Form.Control.Feedback type="invalid">
+                    {errors.email}
+                  </Form.Control.Feedback>
+                ) : null
+              }
+            />
+            {/* <Form.Group size="lg" controlId="email">
               <Form.Control
                 type="email"
                 name="email"
@@ -99,8 +117,24 @@ export default connect(
                   {errors.email}
                 </Form.Control.Feedback>
               ) : null}
-            </Form.Group>
-            <Form.Group size="lg" controlId="password">
+            </Form.Group> */}
+            <FormCustomInputs
+              type="password"
+              name="password"
+              placeholder="Password"
+              className={touched.password && errors.password ? 'error' : null}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              isInvalid={!!errors.password || !!apiError}
+              errors={
+                touched.password && errors.password ? (
+                  <Form.Control.Feedback type="invalid">
+                    {errors.password}
+                  </Form.Control.Feedback>
+                ) : null
+              }
+            />
+            {/* <Form.Group size="lg" controlId="password">
               <Form.Control
                 type="password"
                 name="password"
@@ -115,7 +149,7 @@ export default connect(
                   {errors.password}
                 </Form.Control.Feedback>
               ) : null}
-            </Form.Group>
+            </Form.Group> */}
             <Button block size="lg" type="submit" disabled={isSubmitting}>
               Login
             </Button>
