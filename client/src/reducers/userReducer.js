@@ -10,7 +10,7 @@ import {
 
 export default (
   state = {
-    data: [],
+    datas: [],
     singleData: {},
     isLoading: false,
     error: null
@@ -21,12 +21,12 @@ export default (
     case API_POST_SUCCESS:
       return {
         ...state,
-        data: [...state.data, action.payload.data.data]
+        datas: [...state.datas, action.payload.data.data]
       };
     case API_GET_ALL_SUCCESS:
       return {
         ...state,
-        data: action.payload.data.data
+        datas: action.payload.data.data
       };
     case API_GET_SUCCESS:
     case API_UPDATE_SUCCESS:
@@ -37,7 +37,7 @@ export default (
     case API_DELETE_SUCCESS:
       return {
         ...state,
-        data: state.data.filter(el => el._id !== action.payload)
+        datas: state.datas.filter(el => el._id !== action.payload)
       };
     case API_ERROR:
       return { ...state, error: action.payload.message };
