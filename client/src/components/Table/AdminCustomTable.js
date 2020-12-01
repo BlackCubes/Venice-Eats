@@ -30,7 +30,18 @@ export default props => {
         <thead>
           <tr>{thOutput(thValues)}</tr>
         </thead>
-        <tbody>{!loadingApi ? trOutput(trValues, apiDatas) : ''}</tbody>
+        <tbody>
+          {!loadingApi ? (
+            trOutput(trValues, apiDatas)
+          ) : (
+            <tr>
+              <td>...</td>
+              <td>...</td>
+              <td>...</td>
+              <td>...</td>
+            </tr>
+          )}
+        </tbody>
       </Table>
     </React.Fragment>
   );
