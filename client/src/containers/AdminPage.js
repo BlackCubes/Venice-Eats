@@ -5,7 +5,7 @@ import { Table, Row, Col, Button, Spinner } from 'react-bootstrap';
 import { getAll, deleteOne } from './../actions/handlerFactory';
 
 const AdminPage = ({
-  apiData,
+  apiDatas,
   apiError,
   getAll,
   deleteOne,
@@ -34,7 +34,7 @@ const AdminPage = ({
             </thead>
             <tbody>
               {!loadingUserApi ? (
-                apiData.map(prop => (
+                apiDatas.map(prop => (
                   <tr key={prop._id}>
                     <td>{prop._id}</td>
                     <td>{prop.name}</td>
@@ -132,7 +132,7 @@ const AdminPage = ({
 
 export default connect(
   state => ({
-    apiData: state.apiUser.data,
+    apiDatas: state.apiUser.datas,
     apiError: state.apiUser.error,
     loadingUserApi: state.apiUser.isLoading
   }),
