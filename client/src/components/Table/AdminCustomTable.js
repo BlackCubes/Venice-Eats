@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Row, Col, Button, Spinner } from 'react-bootstrap';
 
 export default props => {
-  const { thValues, trValues, loadingApi, apiDatas, extraContents } = props;
+  const { thValues, trValues, loadingApi, apiDatas } = props;
 
   const thOutput = thValues => {
     return thValues.map((prop, key) => {
@@ -17,7 +17,6 @@ export default props => {
           {trValues.map((prop2, key2) => {
             return <td key={key2}>{prop1[prop2]}</td>;
           })}
-          {extraContents}
         </tr>
       );
     });
