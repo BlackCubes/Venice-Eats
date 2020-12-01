@@ -5,11 +5,11 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 
-import { getUser, updateUser } from './../actions/user';
+import { getOne, updateOne } from './../actions/handlerFactory';
 
 const AdminUserPage = ({
-  getUser,
-  updateUser,
+  getOne,
+  updateOne,
   apiSingleData,
   apiError,
   loadingUserApi
@@ -17,8 +17,8 @@ const AdminUserPage = ({
   const { params } = useParams();
 
   React.useEffect(() => {
-    getUser(params);
-  }, [getUser, params]);
+    getOne('admins', params);
+  }, [getOne, params]);
 
   const initialValues = {
     name: apiSingleData ? apiSingleData.name : '',
@@ -35,7 +35,7 @@ const AdminUserPage = ({
 
   const onSubmit = (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-    updateUser(params, data);
+    updateOne('admins', params, data);
     resetForm();
   };
 
@@ -118,5 +118,5 @@ export default connect(
     apiError: state.apiUser.error,
     loadingUserApi: state.apiUser.isLoading
   }),
-  { getUser, updateUser }
+  { getOne, updateOne }
 )(AdminUserPage);
