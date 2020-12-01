@@ -26,16 +26,12 @@ export default props => {
 
   return (
     <React.Fragment>
-      <Row>
-        <Col md={12}>
-          <Table striped hover>
-            <thead>
-              <tr>{thOutput(thValues)}</tr>
-            </thead>
-            <tbody>{!loadingApi ? trOutput(trValues, apiDatas) : ''}</tbody>
-          </Table>
-        </Col>
-      </Row>
+      <Table striped hover>
+        <thead>
+          <tr>{thOutput(thValues)}</tr>
+        </thead>
+        <tbody>{!loadingApi ? trOutput(trValues, apiDatas) : ''}</tbody>
+      </Table>
     </React.Fragment>
   );
 };
