@@ -13,7 +13,7 @@ export default props => {
   };
 
   const trOutput = (trValues, apiDatas) => {
-    apiDatas.map((prop1, key1) => {
+    return apiDatas.map((prop1, key1) => {
       return (
         <tr key={key1}>
           {trValues.map((prop2, key2) => {
