@@ -8,7 +8,6 @@ import { login } from './../actions/auth';
 
 import { Alert } from './../components/Alert';
 import FormCustomInputs from './../components/Inputs/FormCustomInputs';
-import { Modal } from './../components/Modal';
 
 import './Login.css';
 
@@ -18,9 +17,6 @@ export default connect(
     login
   }
 )(({ apiError, login }) => {
-  // const [apiError, setApiError] = React.useState(null);
-  // const [apiData, setApiData] = React.useState(null);
-
   const initialValues = {
     email: '',
     password: ''
@@ -44,17 +40,7 @@ export default connect(
 
   const onSubmit = async (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-
     login(data);
-
-    // const res = await props.loginApi(data);
-
-    // if (res.error) {
-    //   setApiError(res.error);
-    // } else {
-    //   setApiData(res.data.user.name.split(' ')[0]);
-    // }
-
     resetForm();
   };
 
@@ -67,9 +53,6 @@ export default connect(
           message={apiError}
         />
       )}
-      {/* {!props.error && (
-        <Modal size="sm" title={`Welcome back, ${props.user}!`} body="..." />
-      )} */}
 
       <Formik
         initialValues={initialValues}
@@ -102,22 +85,6 @@ export default connect(
                 ) : null
               }
             />
-            {/* <Form.Group size="lg" controlId="email">
-              <Form.Control
-                type="email"
-                name="email"
-                placeholder="Email"
-                className={touched.email && errors.email ? 'error' : null}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                isInvalid={!!errors.email || !!apiError}
-              />
-              {touched.email && errors.email ? (
-                <Form.Control.Feedback type="invalid">
-                  {errors.email}
-                </Form.Control.Feedback>
-              ) : null}
-            </Form.Group> */}
             <FormCustomInputs
               type="password"
               name="password"
@@ -134,22 +101,6 @@ export default connect(
                 ) : null
               }
             />
-            {/* <Form.Group size="lg" controlId="password">
-              <Form.Control
-                type="password"
-                name="password"
-                placeholder="Password"
-                className={touched.password && errors.password ? 'error' : null}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                isInvalid={!!errors.password || !!apiError}
-              />
-              {touched.password && errors.password ? (
-                <Form.Control.Feedback type="invalid">
-                  {errors.password}
-                </Form.Control.Feedback>
-              ) : null}
-            </Form.Group> */}
             <Button block size="lg" type="submit" disabled={isSubmitting}>
               Login
             </Button>
