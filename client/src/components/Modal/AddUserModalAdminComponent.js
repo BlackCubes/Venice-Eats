@@ -127,7 +127,7 @@ const PostUserModal = ({ apiError, postOne }) => {
                       type: 'password',
                       name: 'password_confirmation',
                       placeholder: 'Confirm Password',
-                      classname:
+                      className:
                         touched.password_confirmation &&
                         errors.password_confirmation
                           ? 'error'
