@@ -9,6 +9,8 @@ import { getOne, updateOne } from './../actions/handlerFactory';
 
 import FormCustomInputs from './../components/Inputs/FormCustomInputs';
 
+import customValidation from './../utils/customValidation';
+
 const AdminUserPage = ({
   getOne,
   updateOne,
@@ -28,11 +30,8 @@ const AdminUserPage = ({
   };
 
   const validationSchema = yup.object({
-    name: yup
-      .string()
-      .min(2, 'Must be at least 2 characters long')
-      .max(70, 'Must be at least 70 characters or less'),
-    email: yup.string().email('Must provide a valid email')
+    name: customValidation.name,
+    email: customValidation.email
   });
 
   const onSubmit = (data, { setSubmitting, resetForm }) => {
