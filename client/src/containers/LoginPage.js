@@ -98,7 +98,7 @@ export default connect(
                   </Form.Control.Feedback>
                 ) : null,
                 touched.password && errors.password ? (
-                  <Form.Control.Feedback type="invalud">
+                  <Form.Control.Feedback type="invalid">
                     {errors.password}
                   </Form.Control.Feedback>
                 ) : null
