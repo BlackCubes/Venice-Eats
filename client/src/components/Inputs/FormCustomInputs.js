@@ -9,7 +9,7 @@ export default props => {
       return (
         <FormGroup key={key} size="lg">
           <FormControl {...prop} />
-          {errors}
+          {errors[key]}
         </FormGroup>
       );
     });
