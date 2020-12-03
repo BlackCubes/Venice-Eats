@@ -30,7 +30,7 @@ const PostUserModal = ({ apiError, postOne }) => {
     email: yup
       .string()
       .email('Must provide a valid email')
-      .required('required'),
+      .required('Required'),
     password: yup
       .string()
       .min(8, 'Must be at least 8 characters long')
