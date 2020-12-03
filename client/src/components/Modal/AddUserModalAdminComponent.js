@@ -161,78 +161,7 @@ const PostUserModal = ({ apiError, postOne }) => {
                     ) : null
                   ]}
                 />
-                {/* <Form.Group controlId="name">
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    className={touched.name && errors.name ? 'error' : null}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={!!errors.name || !!apiError}
-                  />
-                  {touched.name && errors.name ? (
-                    <Form.Control.Feedback type="invalid">
-                      {errors.name}
-                    </Form.Control.Feedback>
-                  ) : null}
-                </Form.Group>
-                <Form.Group controlId="email">
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    className={touched.email && errors.email ? 'error' : null}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={!!errors.email || !!apiError}
-                  />
-                  {touched.email && errors.email ? (
-                    <Form.Control.Feedback type="invalid">
-                      {errors.email}
-                    </Form.Control.Feedback>
-                  ) : null}
-                </Form.Group>
-                <Form.Group controlId="password">
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    className={
-                      touched.password && errors.password ? 'error' : null
-                    }
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={!!errors.password || !!apiError}
-                  />
-                  {touched.password && errors.password ? (
-                    <Form.Control.Feedback type="invalid">
-                      {errors.password}
-                    </Form.Control.Feedback>
-                  ) : null}
-                </Form.Group>
-                <Form.Group controlId="password_confirmation">
-                  <Form.Control
-                    type="password"
-                    name="password_confirmation"
-                    placeholder="Confirm Password"
-                    className={
-                      touched.password_confirmation &&
-                      errors.password_confirmation
-                        ? 'error'
-                        : null
-                    }
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={!!errors.password_confirmation || !!apiError}
-                  />
-                  {touched.password_confirmation &&
-                  errors.password_confirmation ? (
-                    <Form.Control.Feedback type="invalid">
-                      {errors.password_confirmation}
-                    </Form.Control.Feedback>
-                  ) : null}
-                </Form.Group> */}
+
                 <Button type="submit" disabled={isSubmitting}>
                   Submit
                 </Button>
