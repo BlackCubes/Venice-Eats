@@ -6,6 +6,8 @@ import { Form, Modal, Button, Alert } from 'react-bootstrap';
 
 import { postOne } from './../../actions/handlerFactory';
 
+import FormCustomInputs from './../Inputs/FormCustomInputs';
+
 const PostUserModal = ({ apiError, postOne }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [apiErrorMsg, setApiErrorMsg] = React.useState(null);
@@ -91,7 +93,75 @@ const PostUserModal = ({ apiError, postOne }) => {
               isSubmitting
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                <Form.Group controlId="name">
+                <FormCustomInputs
+                  properties={[
+                    {
+                      type: 'text',
+                      name: 'name',
+                      placeholder: 'Name',
+                      className: touched.name && errors.name ? 'error' : null,
+                      onChange: handleChange,
+                      onBlur: handleBlur,
+                      isInvalid: !!errors.name || !!apiError
+                    },
+                    {
+                      type: 'email',
+                      name: 'email',
+                      placeholder: 'Email',
+                      className: touched.email && errors.email ? 'error' : null,
+                      onChange: handleChange,
+                      onBlur: handleBlur,
+                      isInvalid: !!errors.email || !!apiError
+                    },
+                    {
+                      type: 'password',
+                      name: 'password',
+                      placeholder: 'Password',
+                      className:
+                        touched.password && errors.password ? 'error' : null,
+                      onChange: handleChange,
+                      onBlur: handleBlur,
+                      isInvalid: !!errors.password || !!apiError
+                    },
+                    {
+                      type: 'password',
+                      name: 'password_confirmation',
+                      placeholder: 'Confirm Password',
+                      classname:
+                        touched.password_confirmation &&
+                        errors.password_confirmation
+                          ? 'error'
+                          : null,
+                      onChange: handleChange,
+                      onBlur: handleBlur,
+                      isInvalid: !!errors.password_confirmation || !!apiError
+                    }
+                  ]}
+                  errors={[
+                    touched.name && errors.name ? (
+                      <Form.Control.Feedback type="invalid">
+                        {errors.name}
+                      </Form.Control.Feedback>
+                    ) : null,
+                    touched.email && errors.email ? (
+                      <Form.Control.Feedback type="invalid">
+                        {errors.email}
+                      </Form.Control.Feedback>
+                    ) : null,
+                    touched.password && errors.password ? (
+                      <Form.Control.Feedback type="invalid">
+                        {errors.password}
+                      </Form.Control.Feedback>
+                    ) : null,
+                    touched.password_confirmation &&
+                    errors.password_confirmation ? (
+                      <Form.Control.Feedback type="invalid">
+                        {errors.password_confirmation}
+                      </Form.Control.Feedback>
+                    ) : null
+                  ]}
+                />
+                {/* <Form.Group controlId="name">
                   <Form.Control
                     type="text"
                     name="name"
@@ -162,7 +232,7 @@ const PostUserModal = ({ apiError, postOne }) => {
                       {errors.password_confirmation}
                     </Form.Control.Feedback>
                   ) : null}
-                </Form.Group>
+                </Form.Group> */}
                 <Button type="submit" disabled={isSubmitting}>
                   Submit
                 </Button>
