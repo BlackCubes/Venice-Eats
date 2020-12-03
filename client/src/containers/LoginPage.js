@@ -9,6 +9,8 @@ import { login } from './../actions/auth';
 import { Alert } from './../components/Alert';
 import FormCustomInputs from './../components/Inputs/FormCustomInputs';
 
+import customValidation from './../utils/customValidation';
+
 import './Login.css';
 
 export default connect(
@@ -23,19 +25,8 @@ export default connect(
   };
 
   const validationSchema = yup.object({
-    email: yup
-      .string()
-      .email('Must provide a valid email')
-      .required('Required'),
-    password: yup
-      .string()
-      .min(8, 'Must be at least 8 characteers long')
-      .max(60, 'Must be at least 60 characters or less')
-      .matches(
-        /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[.#?!@$%^&*\\-_]).{8,60}$/,
-        'Must use at least one number, one special character, and one capital letter'
-      )
-      .required('Required')
+    email: customValidation.email.required('Required'),
+    password: customValidation.password.required('Required')
   });
 
   const onSubmit = async (data, { setSubmitting, resetForm }) => {
