@@ -7,6 +7,8 @@ import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 
 import { getOne, updateOne } from './../actions/handlerFactory';
 
+import FormCustomInputs from './../components/Inputs/FormCustomInputs';
+
 const AdminUserPage = ({
   getOne,
   updateOne,
@@ -63,7 +65,43 @@ const AdminUserPage = ({
             <Form noValidate onSubmit={handleSubmit}>
               {apiError ? <Alert variant="danger">{apiError}</Alert> : null}
 
-              <Form.Group controlId="name">
+              <FormCustomInputs
+                properties={[
+                  {
+                    type: 'text',
+                    name: 'name',
+                    defaultValue: !loadingUserApi ? apiSingleData.name : '...',
+                    placeholder: 'Name',
+                    className: touched.name && errors.name ? 'error' : null,
+                    onChange: handleChange,
+                    onBlur: handleBlur,
+                    isInvalid: !!errors.name || !!apiError
+                  },
+                  {
+                    type: 'email',
+                    name: 'email',
+                    defaultValue: !loadingUserApi ? apiSingleData.email : '...',
+                    placeholder: 'Email',
+                    className: touched.email && errors.email ? 'error' : null,
+                    onChange: handleChange,
+                    onBlur: handleBlur,
+                    isInvalid: !!errors.email || !!apiError
+                  }
+                ]}
+                errors={[
+                  touched.name && errors.name ? (
+                    <Form.Control.Feedback type="invalid">
+                      {errors.name}
+                    </Form.Control.Feedback>
+                  ) : null,
+                  touched.email && errors.email ? (
+                    <Form.Control.Feedback type="invalid">
+                      {errors.email}
+                    </Form.Control.Feedback>
+                  ) : null
+                ]}
+              />
+              {/* <Form.Group controlId="name">
                 <Form.Control
                   type="text"
                   name="name"
@@ -96,7 +134,7 @@ const AdminUserPage = ({
                     {errors.email}
                   </Form.Control.Feedback>
                 ) : null}
-              </Form.Group>
+              </Form.Group> */}
               <Button type="submit" disabled={isSubmitting}>
                 {loadingUserApi ? (
                   <Spinner as="span" animation="grow" size="sm" role="status" />
