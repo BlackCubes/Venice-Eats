@@ -2,12 +2,18 @@ import React from 'react';
 import { FormGroup, FormControl } from 'react-bootstrap';
 
 export default props => {
-  const { errors, ...properties } = props;
+  const { errors, properties } = props;
 
-  return (
-    <FormGroup size="lg">
-      <FormControl {...properties} />
-      {errors}
-    </FormGroup>
-  );
+  const inputResult = (errors, properties) => {
+    return properties.map((prop, key) => {
+      return (
+        <FormGroup key={key} size="lg">
+          <FormControl {...prop} />
+          {errors}
+        </FormGroup>
+      );
+    });
+  };
+
+  return <>{inputResult(errors, properties)}</>;
 };
