@@ -70,6 +70,41 @@ export default connect(
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <FormCustomInputs
+              properties={[
+                {
+                  type: 'email',
+                  name: 'email',
+                  placeholder: 'Email',
+                  className: touched.email && errors.email ? 'error' : null,
+                  onChange: handleChange,
+                  onBlur: handleBlur,
+                  isInvalid: !!errors.email || !!apiError
+                },
+                {
+                  type: 'password',
+                  name: 'password',
+                  placeholder: 'Password',
+                  className:
+                    touched.password && errors.password ? 'error' : null,
+                  onChange: handleChange,
+                  onBlur: handleBlur,
+                  isInvalid: !!errors.password || !!apiError
+                }
+              ]}
+              errors={[
+                touched.email && errors.email ? (
+                  <Form.Control.Feedback type="invalid">
+                    {errors.email}
+                  </Form.Control.Feedback>
+                ) : null,
+                touched.password && errors.password ? (
+                  <Form.Control.Feedback type="invalud">
+                    {errors.password}
+                  </Form.Control.Feedback>
+                ) : null
+              ]}
+            />
+            {/* <FormCustomInputs
               type="email"
               name="email"
               placeholder="Email"
@@ -100,7 +135,7 @@ export default connect(
                   </Form.Control.Feedback>
                 ) : null
               }
-            />
+            /> */}
             <Button block size="lg" type="submit" disabled={isSubmitting}>
               Login
             </Button>
