@@ -8,6 +8,8 @@ import { postOne } from './../../actions/handlerFactory';
 
 import FormCustomInputs from './../Inputs/FormCustomInputs';
 
+import customValidation from './../../utils/customValidation';
+
 const PostUserModal = ({ apiError, postOne }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [apiErrorMsg, setApiErrorMsg] = React.useState(null);
@@ -22,28 +24,12 @@ const PostUserModal = ({ apiError, postOne }) => {
   };
 
   const validationSchema = yup.object({
-    name: yup
-      .string()
-      .min(2, 'Must be at least 2 characters long')
-      .max(70, 'Must be at least 70 characters or less')
-      .required('Required'),
-    email: yup
-      .string()
-      .email('Must provide a valid email')
-      .required('Required'),
-    password: yup
-      .string()
-      .min(8, 'Must be at least 8 characters long')
-      .max(60, 'Must be at least 60 charactersor less')
-      .matches(
-        /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[.#?!@$%^&*\\-_]).{8,60}$/,
-        'Must use at least one number, one special character, and one capital letter'
-      )
-      .required('Required'),
-    password_confirmation: yup
-      .string()
-      .oneOf([yup.ref('password'), null], 'Passwords must match')
-      .required('Required')
+    name: customValidation.name.required('Required'),
+    email: customValidation.email.required('Required'),
+    password: customValidation.password.required('Required'),
+    password_confirmation: customValidation.password_confirmation.required(
+      'Required'
+    )
   });
 
   const onSubmit = (data, { setSubmitting, resetForm }) => {
