@@ -104,38 +104,6 @@ export default connect(
                 ) : null
               ]}
             />
-            {/* <FormCustomInputs
-              type="email"
-              name="email"
-              placeholder="Email"
-              classname={touched.email && errors.email ? 'error' : null}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              isInvalid={!!errors.email || !!apiError}
-              errors={
-                touched.email && errors.email ? (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.email}
-                  </Form.Control.Feedback>
-                ) : null
-              }
-            />
-            <FormCustomInputs
-              type="password"
-              name="password"
-              placeholder="Password"
-              className={touched.password && errors.password ? 'error' : null}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              isInvalid={!!errors.password || !!apiError}
-              errors={
-                touched.password && errors.password ? (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.password}
-                  </Form.Control.Feedback>
-                ) : null
-              }
-            /> */}
             <Button block size="lg" type="submit" disabled={isSubmitting}>
               Login
             </Button>
