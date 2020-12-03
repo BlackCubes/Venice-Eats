@@ -17,7 +17,7 @@ const AdminPage = ({
     getAll('admins');
   }, [getAll]);
 
-  const handleDelete = id => deleteOne('admin', id);
+  const handleDelete = id => deleteOne('admins', id);
 
   return (
     <div>
