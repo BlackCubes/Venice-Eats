@@ -101,40 +101,7 @@ const AdminUserPage = ({
                   ) : null
                 ]}
               />
-              {/* <Form.Group controlId="name">
-                <Form.Control
-                  type="text"
-                  name="name"
-                  defaultValue={!loadingUserApi ? apiSingleData.name : '...'}
-                  placeholder="Name"
-                  className={touched.name && errors.name ? 'error' : null}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  isInvalid={!!errors.name || !!apiError}
-                />
-                {touched.name && errors.name ? (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.name}
-                  </Form.Control.Feedback>
-                ) : null}
-              </Form.Group>
-              <Form.Group controlId="email">
-                <Form.Control
-                  type="email"
-                  name="email"
-                  defaultValue={!loadingUserApi ? apiSingleData.email : '...'}
-                  placeholder="Email"
-                  className={touched.email && errors.email ? 'error' : null}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  isInvalid={!!errors.email || !!apiError}
-                />
-                {touched.email && errors.email ? (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.email}
-                  </Form.Control.Feedback>
-                ) : null}
-              </Form.Group> */}
+
               <Button type="submit" disabled={isSubmitting}>
                 {loadingUserApi ? (
                   <Spinner as="span" animation="grow" size="sm" role="status" />
