@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { getAll, deleteOne } from './../actions/handlerFactory';
 
-import AdminCustomTable from './../components/Table/AdminCustomTable';
+import AdminCustomTable from './../components/Tables/AdminCustomTable';
 
 const AdminPage = ({
   apiDatas,
