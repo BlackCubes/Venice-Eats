@@ -17,7 +17,7 @@ import { Test } from './containers/Test';
 import AdminNavbar from './components/Navbars/AdminMainNav';
 import AdminSecondNavbar from './components/Navbars/AdminSecondNav';
 import AuthRoute from './components/HOC/AuthRoute';
-import PostUserModal from './components/Modal/AddUserModalAdminComponent';
+import PostUserModal from './components/Modal/AdminPostModal';
 
 const createStoreWithMiddleware = applyMiddleware(
   appMiddleware,
