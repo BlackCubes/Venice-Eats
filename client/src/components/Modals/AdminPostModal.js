@@ -162,7 +162,7 @@ const PostUserModal = ({ apiError, postOne }) => {
 
 export default connect(
   state => ({
-    apiError: state.apiUser.error
+    apiError: state.apiError.error
   }),
   { postOne }
 )(PostUserModal);

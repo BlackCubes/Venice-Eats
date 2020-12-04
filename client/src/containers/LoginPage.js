@@ -14,7 +14,10 @@ import customValidation from './../utils/customValidation';
 import './Login.css';
 
 export default connect(
-  state => ({ isLoading: state.auth.isLoading, apiError: state.auth.error }),
+  state => ({
+    isLoading: state.auth.isLoading,
+    apiError: state.apiError.error
+  }),
   {
     login
   }

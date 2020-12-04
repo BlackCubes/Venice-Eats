@@ -119,7 +119,7 @@ const AdminUserPage = ({
 export default connect(
   state => ({
     apiSingleData: state.apiUser.singleData,
-    apiError: state.apiUser.error,
+    apiError: state.apiError.error,
     loadingUserApi: state.apiUser.isLoading
   }),
   { getOne, updateOne }

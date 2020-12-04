@@ -35,7 +35,7 @@ const AdminPage = ({
 export default connect(
   state => ({
     apiDatas: state.apiUser.datas,
-    apiError: state.apiUser.error,
+    apiError: state.apiError.error,
     loadingUserApi: state.apiUser.isLoading
   }),
   { getAll, deleteOne }
