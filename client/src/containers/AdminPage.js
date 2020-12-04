@@ -21,7 +21,7 @@ const AdminPage = ({
   return (
     <div>
       <AdminCustomTable
-        thValues={['ID', 'Name', 'Email', 'Role']}
+        thValues={['ID', 'Name', 'Email', 'Role', 'Delete', 'View']}
         trValues={['_id', 'name', 'email', 'role']}
         handleDelete={handleDelete}
         viewPath="users"

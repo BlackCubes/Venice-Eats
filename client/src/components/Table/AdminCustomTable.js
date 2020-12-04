@@ -69,6 +69,8 @@ export default props => {
                   <td>...</td>
                   <td>...</td>
                   <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
                 </tr>
               )}
             </tbody>
