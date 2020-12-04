@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from './../../actions/auth';
-
 import Nav from 'react-bootstrap/Nav';
+
+import { logout } from './../../actions/auth';
 
 const AdminNavbar = ({ logout }) => {
   return (
