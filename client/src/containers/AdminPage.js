@@ -24,6 +24,8 @@ const AdminPage = ({
       <AdminCustomTable
         thValues={['ID', 'Name', 'Email', 'Role']}
         trValues={['_id', 'name', 'email', 'role']}
+        handleDelete={handleDelete}
+        viewPath="users"
         loadingApi={loadingUserApi}
         apiDatas={apiDatas}
       />
