@@ -4,16 +4,16 @@ import {
   API_GET_ALL_SUCCESS,
   API_GET_SUCCESS,
   API_UPDATE_SUCCESS,
-  API_DELETE_SUCCESS,
-  API_ERROR
+  API_DELETE_SUCCESS
+  // API_ERROR
 } from './../actions/api';
 
 export default (
   state = {
     datas: [],
     singleData: {},
-    isLoading: false,
-    error: null
+    isLoading: false
+    // error: null
   },
   action
 ) => {
@@ -39,8 +39,8 @@ export default (
         ...state,
         datas: state.datas.filter(el => el._id !== action.payload)
       };
-    case API_ERROR:
-      return { ...state, error: action.payload.message };
+    // case API_ERROR:
+    //   return { ...state, error: action.payload.message };
     case SET_LOADER:
       return { ...state, isLoading: action.payload };
     default:

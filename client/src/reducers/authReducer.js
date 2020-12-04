@@ -1,5 +1,5 @@
 import { SET_LOADER } from './../actions/ui';
-import { API_AUTH_SUCCESS, API_ERROR } from './../actions/api';
+import { API_AUTH_SUCCESS } from './../actions/api';
 import { LOGOUT } from './../actions/auth';
 
 export default (
@@ -7,8 +7,8 @@ export default (
     isAuthUser: !!localStorage.getItem('jwt'),
     token: localStorage.getItem('jwt') || null,
     user: null,
-    isLoading: false,
-    error: null
+    isLoading: false
+    // error: null
   },
   action
 ) => {
@@ -21,8 +21,8 @@ export default (
         token: action.payload.token,
         user: action.payload.data.user
       };
-    case API_ERROR:
-      return { ...state, error: action.payload.message };
+    // case API_ERROR:
+    //   return { ...state, error: action.payload.message };
     case LOGOUT:
       localStorage.removeItem('jwt');
       return { ...state, isAuthUser: false, token: null, user: null };
