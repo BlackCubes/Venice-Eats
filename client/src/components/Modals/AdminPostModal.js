@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { Form, Modal, Button, Alert } from 'react-bootstrap';
+import { Form, Modal, Button, Alert, Row } from 'react-bootstrap';
 
 import { postOne } from './../../actions/handlerFactory';
 
@@ -47,7 +47,7 @@ const PostUserModal = ({ apiError, postOne }) => {
 
   return (
     <div>
-      <div className="admin-create-button" style={{ float: 'right' }}>
+      <Row>
         <Button
           color="dark"
           style={{ marginBottom: '2rem' }}
@@ -55,7 +55,7 @@ const PostUserModal = ({ apiError, postOne }) => {
         >
           Add User
         </Button>
-      </div>
+      </Row>
 
       <Modal show={openModal} animation={false} onHide={handleToggle}>
         <Modal.Header onHide={handleToggle}>
