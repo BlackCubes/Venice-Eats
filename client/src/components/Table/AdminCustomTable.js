@@ -2,7 +2,14 @@ import React from 'react';
 import { Table, Row, Col, Button, Spinner } from 'react-bootstrap';
 
 export default props => {
-  const { thValues, trValues, loadingApi, apiDatas } = props;
+  const {
+    thValues,
+    trValues,
+    handleDelete,
+    viewPath,
+    loadingApi,
+    apiDatas
+  } = props;
 
   const thOutput = thValues => {
     return thValues.map((prop, key) => {
@@ -10,13 +17,36 @@ export default props => {
     });
   };
 
-  const trOutput = (trValues, apiDatas) => {
+  const trOutput = (trValues, apiDatas, handleDelete, viewPath, loadingApi) => {
     return apiDatas.map((prop1, key1) => {
       return (
         <tr key={key1}>
           {trValues.map((prop2, key2) => {
             return <td key={key2}>{prop1[prop2]}</td>;
           })}
+          <td>
+            <Button
+              variant="danger"
+              size="sm"
+              disabled={loadingApi}
+              onClick={() => handleDelete(prop1._id)}
+            >
+              {loadingApi ? (
+                <Spinner as="span" animation="grow" size="sm" role="status" />
+              ) : (
+                'DEL'
+              )}
+            </Button>
+          </td>
+          <td>
+            <Button
+              variant="info"
+              href={`/admin/${viewPath}/${prop1._id}`}
+              type="button"
+            >
+              View
+            </Button>
+          </td>
         </tr>
       );
     });
@@ -32,7 +62,7 @@ export default props => {
             </thead>
             <tbody>
               {!loadingApi ? (
-                trOutput(trValues, apiDatas)
+                trOutput(trValues, apiDatas, handleDelete, viewPath, loadingApi)
               ) : (
                 <tr>
                   <td>...</td>
