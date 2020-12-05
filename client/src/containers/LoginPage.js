@@ -69,6 +69,7 @@ export default connect(
                   type: 'email',
                   name: 'email',
                   placeholder: 'Email',
+                  value: values.email,
                   className: touched.email && errors.email ? 'error' : null,
                   onChange: handleChange,
                   onBlur: handleBlur,
@@ -78,6 +79,7 @@ export default connect(
                   type: 'password',
                   name: 'password',
                   placeholder: 'Password',
+                  value: values.password,
                   className:
                     touched.password && errors.password ? 'error' : null,
                   onChange: handleChange,
