@@ -6,7 +6,14 @@ import { Form, Button } from 'react-bootstrap';
 
 import { login } from './../actions/auth';
 
+import withForm from './../components/HOC/withForm';
+import {
+  fieldInputProperties,
+  fieldInputErrors
+} from './../components/HOC/withField';
+
 import { Alert } from './../components/Alert';
+import CustomForm from './../components/Forms/CustomForm';
 import FormCustomInputs from './../components/Inputs/FormCustomInputs';
 
 import customValidation from './../utils/customValidation';
@@ -38,6 +45,20 @@ export default connect(
     resetForm();
   };
 
+  const inputProperties = [
+    fieldInputProperties('email', 'email', 'Email', apiError),
+    fieldInputProperties('password', 'password', 'Password', apiError)
+  ];
+
+  const inputErrors = [fieldInputErrors('email'), fieldInputErrors('password')];
+
+  const LoginForm = withForm(
+    initialValues,
+    validationSchema,
+    onSubmit,
+    CustomForm(inputProperties, inputErrors)
+  );
+
   return (
     <div className="Login">
       {apiError && (
@@ -48,7 +69,9 @@ export default connect(
         />
       )}
 
-      <Formik
+      {LoginForm}
+
+      {/* <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
@@ -105,7 +128,7 @@ export default connect(
             </Button>
           </Form>
         )}
-      </Formik>
+      </Formik> */}
     </div>
   );
 });
