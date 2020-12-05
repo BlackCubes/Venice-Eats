@@ -1,12 +1,16 @@
 import React from 'react';
 import FormControl from 'react-bootstrap/FormControl';
 
-export const fieldInputProperties = (type, name, placeholder, apiError) => ({
+export const fieldInputProperties = (
+  type,
+  name,
+  placeholder,
   touched,
   errors,
   handleChange,
-  handleBlur
-}) => {
+  handleBlur,
+  apiError
+) => {
   return {
     type,
     name,
@@ -18,7 +22,7 @@ export const fieldInputProperties = (type, name, placeholder, apiError) => ({
   };
 };
 
-export const fieldInputErrors = name => ({ touched, errors }) => {
+export const fieldInputErrors = (name, touched, errors) => {
   return touched[name] && errors[name] ? (
     <FormControl.Feedback type="invalid">{errors[name]}</FormControl.Feedback>
   ) : null;
