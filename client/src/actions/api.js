@@ -88,8 +88,9 @@ export const apiDeleteSuccess = ({ response }) => ({
   payload: response
 });
 
-export const apiSuccess = () => ({
-  type: API_SUCCESS
+export const apiSuccess = ({ error }) => ({
+  type: API_SUCCESS,
+  payload: error
 });
 
 export const apiError = ({ error }) => ({
