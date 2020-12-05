@@ -12,6 +12,7 @@ export const API_GET_ALL_SUCCESS = 'API_GET_ALL_SUCCESS';
 export const API_GET_SUCCESS = 'API_GET_SUCCESS';
 export const API_UPDATE_SUCCESS = 'API_UPDATE_SUCCESS';
 export const API_DELETE_SUCCESS = 'API_DELETE_SUCCESS';
+export const API_SUCCESS = 'API_SUCCESS';
 export const API_ERROR = 'API_ERROR';
 
 // ACTION CREATORS
@@ -85,6 +86,11 @@ export const apiUpdateSuccess = ({ response }) => ({
 export const apiDeleteSuccess = ({ response }) => ({
   type: API_DELETE_SUCCESS,
   payload: response
+});
+
+export const apiSuccess = ({ error }) => ({
+  type: API_SUCCESS,
+  payload: error
 });
 
 export const apiError = ({ error }) => ({
