@@ -69,7 +69,7 @@ export default connect(
         />
       )}
 
-      {LoginForm}
+      <LoginForm />
 
       {/* <Formik
         initialValues={initialValues}
