@@ -12,6 +12,7 @@ import {
   apiGetSuccess,
   apiUpdateSuccess,
   apiDeleteSuccess,
+  apiSuccess,
   apiError
 } from './../actions/api';
 import { setLoader } from './../actions/ui';
@@ -29,6 +30,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
       })
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
+          dispatch(apiSuccess({ error: null }));
           dispatch(apiAuthSuccess({ response: data }));
         })
         .catch(error => {
@@ -49,6 +51,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
       })
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
+          dispatch(apiSuccess({ error: null }));
           dispatch(apiPostSuccess({ response: data }));
         })
         .catch(error => {
@@ -68,6 +71,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
       })
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
+          dispatch(apiSuccess({ error: null }));
           dispatch(apiGetAllSuccess({ response: data }));
         })
         .catch(error => {
@@ -87,6 +91,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
       })
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
+          dispatch(apiSuccess({ error: null }));
           dispatch(apiGetSuccess({ response: data }));
         })
         .catch(error => {
@@ -107,6 +112,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
       })
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
+          dispatch(apiSuccess({ error: null }));
           dispatch(apiUpdateSuccess({ response: data }));
         })
         .catch(error => {
@@ -126,6 +132,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
       })
         .then(res => {
           dispatch(setLoader({ state: false }));
+          dispatch(apiSuccess({ error: null }));
           dispatch(apiDeleteSuccess({ response: id }));
         })
         .catch(error => {
