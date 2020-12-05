@@ -93,7 +93,6 @@ export const apiSuccess = ({ error }) => ({
   payload: error
 });
 
-export const apiError = ({ error }) => ({
-  type: API_ERROR,
-  payload: error
+export const apiError = () => ({
+  type: API_ERROR
 });
