@@ -6,19 +6,21 @@ export default (initialValues, validationSchema, onSubmit, Component) => ({
   form,
   fieldProps
 }) => {
-  <Formik
-    initialValues={initialValues}
-    validationSchema={validationSchema}
-    onSubmit={onSubmit}
-    children={props => (
-      <Component
-        {...props}
-        setFieldValue={form.setFieldValue}
-        setFieldError={form.setFieldError}
-        setErrors={form.setErrors}
-        name={field.name}
-        fieldProps={fieldProps}
-      />
-    )}
-  />;
+  return (
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+      children={props => (
+        <Component
+          {...props}
+          setFieldValue={form.setFieldValue}
+          setFieldError={form.setFieldError}
+          setErrors={form.setErrors}
+          name={field.name}
+          fieldProps={fieldProps}
+        />
+      )}
+    />
+  );
 };
