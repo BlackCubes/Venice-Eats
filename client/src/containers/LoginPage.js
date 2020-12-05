@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Formik } from 'formik';
+import { Formik, withFormik } from 'formik';
 import * as yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
 
@@ -39,7 +39,7 @@ export default connect(
     password: customValidation.password.required('Required')
   });
 
-  const onSubmit = async (data, { setSubmitting, resetForm }) => {
+  const onSubmit = (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
     login(data);
     resetForm();
@@ -52,12 +52,18 @@ export default connect(
 
   const inputErrors = [fieldInputErrors('email'), fieldInputErrors('password')];
 
-  const LoginForm = withForm(
-    initialValues,
-    validationSchema,
-    onSubmit,
-    CustomForm(inputProperties, inputErrors)
-  );
+  const LoginForm = withFormik({
+    mapPropsToValues: () => initialValues,
+    validationSchema: validationSchema,
+    handleSubmit: onSubmit
+  })(CustomForm(inputProperties, inputErrors));
+
+  // const LoginForm = withForm(
+  //   initialValues,
+  //   validationSchema,
+  //   onSubmit,
+  //   CustomForm(inputProperties, inputErrors)
+  // );
 
   return (
     <div className="Login">
@@ -70,6 +76,8 @@ export default connect(
       )}
 
       <LoginForm />
+
+      {/* <LoginForm /> */}
 
       {/* <Formik
         initialValues={initialValues}
