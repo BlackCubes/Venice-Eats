@@ -44,11 +44,11 @@ export default props => {
   };
 
   const inputProperties = inputPropList.map(prop => {
-    fieldInputProperties(prop.type, prop.name, prop.placeholder);
+    return fieldInputProperties(prop.type, prop.name, prop.placeholder);
   });
 
   const inputErrors = inputErrList.map(prop => {
-    fieldInputErrors(prop.name);
+    return fieldInputErrors(prop.name);
   });
 
   // const inputProperties = inputPropList.map(prop => {
