@@ -78,7 +78,7 @@ export default connect(
         />
       )}
 
-      <LoginForm inputPropList={inputPropList} />
+      <LoginForm inputPropList={inputPropList} inputErrList={inputErrList} />
 
       {/* <Formik
         initialValues={initialValues}
