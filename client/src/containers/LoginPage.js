@@ -65,13 +65,6 @@ export default connect(
     handleSubmit: onSubmit
   })(CustomForm(inputPropList, inputErrList));
 
-  // const LoginForm = withForm(
-  //   initialValues,
-  //   validationSchema,
-  //   onSubmit,
-  //   CustomForm(inputProperties, inputErrors)
-  // );
-
   return (
     <div className="Login">
       {apiError && (
@@ -83,8 +76,6 @@ export default connect(
       )}
 
       <LoginForm />
-
-      {/* <LoginForm /> */}
 
       {/* <Formik
         initialValues={initialValues}
