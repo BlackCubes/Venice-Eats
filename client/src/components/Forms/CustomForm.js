@@ -31,32 +31,6 @@ export default (inputPropList, inputErrList) => props => {
     fieldInputErrors(prop.name, touched, errors);
   });
 
-  // const inputProperties = [
-  //   fieldInputProperties(
-  //     'email',
-  //     'email',
-  //     'Email',
-  //     touched,
-  //     errors,
-  //     handleChange,
-  //     handleBlur
-  //   ),
-  //   fieldInputProperties(
-  //     'password',
-  //     'password',
-  //     'Password',
-  //     touched,
-  //     errors,
-  //     handleChange,
-  //     handleBlur
-  //   )
-  // ];
-
-  // const inputErrors = [
-  //   fieldInputErrors('email', touched, errors),
-  //   fieldInputErrors('password', touched, errors)
-  // ];
-
   return (
     <Form noValidate onSubmit={handleSubmit}>
       <FormCustomInputs properties={inputProperties} errors={inputErrors} />
