@@ -5,7 +5,7 @@ export const fieldInputProperties = (
   type,
   name,
   placeholder,
-  // apiError,
+  apiError,
   touched,
   errors,
   handleChange,
@@ -18,7 +18,7 @@ export const fieldInputProperties = (
     className: touched[name] && errors[name] ? 'error' : null,
     onChange: handleChange,
     onBlur: handleBlur,
-    isInvalid: !!errors[name]
+    isInvalid: !!errors[name] || !!apiError
   };
 };
 
