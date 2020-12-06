@@ -18,39 +18,6 @@ export default props => {
     inputErrList
   } = props;
 
-  // const fieldInputProperties = (
-  //   type,
-  //   name,
-  //   placeholder
-  //   // apiError
-  // ) => {
-  //   return {
-  //     type,
-  //     name,
-  //     placeholder,
-  //     className: touched[name] && errors[name] ? 'error' : null,
-  //     onChange: handleChange,
-  //     onBlur: handleBlur,
-  //     isInvalid: !!errors[name]
-  //   };
-  // };
-
-  // const fieldInputErrors = name => {
-  //   return touched[name] && errors[name] ? (
-  //     <Form.Control.Feedback type="invalid">
-  //       {errors[name]}
-  //     </Form.Control.Feedback>
-  //   ) : null;
-  // };
-
-  // const inputProperties = inputPropList.map(prop => {
-  //   return fieldInputProperties(prop.type, prop.name, prop.placeholder);
-  // });
-
-  // const inputErrors = inputErrList.map(prop => {
-  //   return fieldInputErrors(prop.name);
-  // });
-
   const inputProperties = inputPropList.map(prop => {
     return fieldInputProperties(
       prop.type,
