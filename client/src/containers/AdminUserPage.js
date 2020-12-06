@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Formik } from 'formik';
+import { Formik, withFormik } from 'formik';
 import * as yup from 'yup';
 import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 
 import { getOne, updateOne } from './../actions/handlerFactory';
 
 import FormCustomInputs from './../components/Inputs/FormCustomInputs';
+import CustomForm from './../components/Forms/CustomForm';
 
 import customValidation from './../utils/customValidation';
 
@@ -40,6 +41,21 @@ const AdminUserPage = ({
     resetForm();
   };
 
+  const inputPropList = [
+    { type: 'text', name: 'name', placeholder: 'Name', apiError: apiError },
+    { type: 'email', name: 'email', placeholder: 'Email', apiError: apiError }
+  ];
+
+  const inputErrList = [{ name: 'name' }, { name: 'email' }];
+
+  const UserUpdateForm = withFormik({
+    mapPropsToValues(props) {
+      return initialValues;
+    },
+    validationSchema: validationSchema,
+    handleSubmit: onSubmit
+  })(CustomForm);
+
   return (
     <div>
       <Button variant="outline-info" href="/admin" type="button">
@@ -47,7 +63,12 @@ const AdminUserPage = ({
       </Button>
 
       <div className="Login">
-        <Formik
+        <UserUpdateForm
+          inputPropList={inputPropList}
+          inputErrList={inputErrList}
+        />
+
+        {/* <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
@@ -110,7 +131,7 @@ const AdminUserPage = ({
               </Button>
             </Form>
           )}
-        </Formik>
+        </Formik> */}
       </div>
     </div>
   );
