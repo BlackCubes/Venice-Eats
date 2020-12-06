@@ -29,11 +29,6 @@ export default connect(
     login
   }
 )(({ apiError, login }) => {
-  const initialValues = {
-    email: '',
-    password: ''
-  };
-
   const validationSchema = yup.object({
     email: customValidation.email.required('Required'),
     password: customValidation.password.required('Required')
@@ -59,6 +54,13 @@ export default connect(
 
   const inputErrList = [{ name: 'email' }, { name: 'password' }];
 
+  const initialValues = {
+    email: '',
+    password: '',
+    inputPropList,
+    inputErrList
+  };
+
   const LoginForm = withFormik({
     mapPropsToValues: () => initialValues,
     validationSchema: validationSchema,
@@ -75,7 +77,7 @@ export default connect(
         />
       )}
 
-      <LoginForm inputPropList={inputPropList} inputErrList={inputErrList} />
+      <LoginForm />
 
       {/* <Formik
         initialValues={initialValues}

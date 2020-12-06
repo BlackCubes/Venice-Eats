@@ -7,17 +7,18 @@ import FormCustomInputs from './../Inputs/FormCustomInputs';
 
 export default props => {
   const {
+    values,
     touched,
     errors,
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting,
-    inputPropList,
-    inputErrList
+    isSubmitting
+    // inputPropList,
+    // inputErrList
   } = props;
 
-  const inputProperties = inputPropList.map(prop => {
+  const inputProperties = values.inputPropList.map(prop => {
     fieldInputProperties(
       prop.type,
       prop.name,
@@ -29,7 +30,7 @@ export default props => {
     );
   });
 
-  const inputErrors = inputErrList.map(prop => {
+  const inputErrors = values.inputErrList.map(prop => {
     fieldInputErrors(prop.name, touched, errors);
   });
 
