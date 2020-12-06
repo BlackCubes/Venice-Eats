@@ -52,11 +52,18 @@ export default connect(
 
   // const inputErrors = [fieldInputErrors('email'), fieldInputErrors('password')];
 
+  const inputPropList = [
+    { type: 'email', name: 'email', placeholder: 'Email' },
+    { type: 'password', name: 'password', placeholder: 'Password' }
+  ];
+
+  const inputErrList = [{ name: 'email' }, { name: 'password' }];
+
   const LoginForm = withFormik({
     mapPropsToValues: () => initialValues,
     validationSchema: validationSchema,
     handleSubmit: onSubmit
-  })(CustomForm);
+  })(CustomForm(inputPropList, inputErrList));
 
   // const LoginForm = withForm(
   //   initialValues,
