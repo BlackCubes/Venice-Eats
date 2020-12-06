@@ -5,7 +5,7 @@ import { fieldInputProperties, fieldInputErrors } from './../HOC/withField';
 
 import FormCustomInputs from './../Inputs/FormCustomInputs';
 
-export default props => {
+export default (inputPropList, inputErrList, props) => {
   const {
     touched,
     errors,
@@ -15,31 +15,47 @@ export default props => {
     isSubmitting
   } = props;
 
-  const inputProperties = [
+  const inputProperties = inputPropList.map(prop => {
     fieldInputProperties(
-      'email',
-      'email',
-      'Email',
+      prop.type,
+      prop.name,
+      prop.placeholder,
       touched,
       errors,
       handleChange,
       handleBlur
-    ),
-    fieldInputProperties(
-      'password',
-      'password',
-      'Password',
-      touched,
-      errors,
-      handleChange,
-      handleBlur
-    )
-  ];
+    );
+  });
 
-  const inputErrors = [
-    fieldInputErrors('email', touched, errors),
-    fieldInputErrors('password', touched, errors)
-  ];
+  const inputErrors = inputErrList.map(prop => {
+    fieldInputErrors(prop.name, touched, errors);
+  });
+
+  // const inputProperties = [
+  //   fieldInputProperties(
+  //     'email',
+  //     'email',
+  //     'Email',
+  //     touched,
+  //     errors,
+  //     handleChange,
+  //     handleBlur
+  //   ),
+  //   fieldInputProperties(
+  //     'password',
+  //     'password',
+  //     'Password',
+  //     touched,
+  //     errors,
+  //     handleChange,
+  //     handleBlur
+  //   )
+  // ];
+
+  // const inputErrors = [
+  //   fieldInputErrors('email', touched, errors),
+  //   fieldInputErrors('password', touched, errors)
+  // ];
 
   return (
     <Form noValidate onSubmit={handleSubmit}>
