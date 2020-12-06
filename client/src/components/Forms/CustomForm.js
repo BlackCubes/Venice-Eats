@@ -4,7 +4,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import {
   fieldInputProperties,
   fieldInputErrors
-} from './../../utils/fieldHandler';
+} from './../../utils/fieldPropHandler';
 
 import FormCustomInputs from './../Inputs/FormCustomInputs';
 
