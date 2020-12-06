@@ -33,8 +33,13 @@ export default connect(
   };
 
   const inputPropList = [
-    { type: 'email', name: 'email', placeholder: 'Email' },
-    { type: 'password', name: 'password', placeholder: 'Password' }
+    { type: 'email', name: 'email', placeholder: 'Email', apiError: apiError },
+    {
+      type: 'password',
+      name: 'password',
+      placeholder: 'Password',
+      apiError: apiError
+    }
   ];
 
   const inputErrList = [{ name: 'email' }, { name: 'password' }];
