@@ -1,12 +1,46 @@
 import React from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
+import { fieldInputProperties, fieldInputErrors } from './../HOC/withField';
+
 import FormCustomInputs from './../Inputs/FormCustomInputs';
 
-export default (inputProperties, inputErrors) => ({
-  handleSubmit,
-  isSubmitting
-}) => {
+export default props => {
+  const {
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting
+  } = props;
+
+  const inputProperties = [
+    fieldInputProperties(
+      'email',
+      'email',
+      'Email',
+      touched,
+      errors,
+      handleChange,
+      handleBlur
+    ),
+    fieldInputProperties(
+      'password',
+      'password',
+      'Password',
+      touched,
+      errors,
+      handleChange,
+      handleBlur
+    )
+  ];
+
+  const inputErrors = [
+    fieldInputErrors('email', touched, errors),
+    fieldInputErrors('password', touched, errors)
+  ];
+
   return (
     <Form noValidate onSubmit={handleSubmit}>
       <FormCustomInputs properties={inputProperties} errors={inputErrors} />
