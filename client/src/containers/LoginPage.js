@@ -56,13 +56,14 @@ export default connect(
 
   const initialValues = {
     email: '',
-    password: '',
-    inputPropList,
-    inputErrList
+    password: ''
   };
 
   const LoginForm = withFormik({
-    mapPropsToValues: () => initialValues,
+    mapPropsToValues(props) {
+      console.log(props);
+      return initialValues;
+    },
     validationSchema: validationSchema,
     handleSubmit: onSubmit
   })(CustomForm);
@@ -77,7 +78,7 @@ export default connect(
         />
       )}
 
-      <LoginForm />
+      <LoginForm inputPropList={inputPropList} />
 
       {/* <Formik
         initialValues={initialValues}

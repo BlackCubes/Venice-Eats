@@ -13,12 +13,12 @@ export default props => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting
-    // inputPropList,
-    // inputErrList
+    isSubmitting,
+    inputPropList,
+    inputErrList
   } = props;
 
-  const inputProperties = values.inputPropList.map(prop => {
+  const inputProperties = inputPropList.map(prop => {
     fieldInputProperties(
       prop.type,
       prop.name,
@@ -30,7 +30,7 @@ export default props => {
     );
   });
 
-  const inputErrors = values.inputErrList.map(prop => {
+  const inputErrors = inputErrList.map(prop => {
     fieldInputErrors(prop.name, touched, errors);
   });
 
