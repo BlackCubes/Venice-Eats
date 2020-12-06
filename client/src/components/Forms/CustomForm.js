@@ -1,7 +1,10 @@
 import React from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import { fieldInputProperties, fieldInputErrors } from './../HOC/withField';
+import {
+  fieldInputProperties,
+  fieldInputErrors
+} from './../../utils/fieldHandler';
 
 import FormCustomInputs from './../Inputs/FormCustomInputs';
 
