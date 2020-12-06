@@ -63,7 +63,7 @@ export default connect(
     mapPropsToValues: () => initialValues,
     validationSchema: validationSchema,
     handleSubmit: onSubmit
-  })(CustomForm(inputPropList, inputErrList));
+  })(CustomForm);
 
   return (
     <div className="Login">
@@ -75,7 +75,7 @@ export default connect(
         />
       )}
 
-      <LoginForm />
+      <LoginForm inputPropList={inputPropList} inputErrList={inputErrList} />
 
       {/* <Formik
         initialValues={initialValues}
