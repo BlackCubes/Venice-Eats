@@ -5,7 +5,7 @@ import { fieldInputProperties, fieldInputErrors } from './../HOC/withField';
 
 import FormCustomInputs from './../Inputs/FormCustomInputs';
 
-export default (inputPropList, inputErrList, props) => {
+export default (inputPropList, inputErrList) => props => {
   const {
     touched,
     errors,
