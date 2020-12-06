@@ -61,7 +61,6 @@ export default connect(
 
   const LoginForm = withFormik({
     mapPropsToValues(props) {
-      console.log(props);
       return initialValues;
     },
     validationSchema: validationSchema,
