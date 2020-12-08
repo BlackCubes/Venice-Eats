@@ -9,6 +9,7 @@ import { Alert } from './../components/Alert';
 import CustomForm from './../components/Forms/CustomForm';
 
 import customValidation from './../utils/customValidation';
+import useIsMountedRef from './../utils/useIsMountedRef';
 
 import './Login.css';
 
@@ -21,6 +22,8 @@ export default connect(
     login
   }
 )(({ apiError, login }) => {
+  const isMountedRef = useIsMountedRef();
+
   const initialValues = {
     email: '',
     password: ''
@@ -33,7 +36,7 @@ export default connect(
 
   const onSubmit = (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-    login(data);
+    login(data, isMountedRef);
     resetForm();
   };
 
