@@ -3,10 +3,10 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 
 // ACTION CREATORS
-export const login = user => {
+export const login = (user, isMountedRef) => {
   return {
     type: LOGIN,
-    payload: user
+    payload: { user, isMountedRef }
   };
 };
 
