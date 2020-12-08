@@ -5,6 +5,6 @@ export default () => {
   React.useEffect(() => {
     isMountedRef.current = true;
     return () => (isMountedRef.current = false);
-  });
+  }, []);
   return isMountedRef;
 };
