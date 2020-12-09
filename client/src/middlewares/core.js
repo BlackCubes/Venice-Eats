@@ -29,6 +29,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         data
       })
         .then(({ data }) => {
+          console.log('Mounted ref in codejs: ', isMountedRef);
           if (isMountedRef.current) {
             dispatch(setLoader({ state: false }));
             dispatch(apiSuccess({ error: null }));
