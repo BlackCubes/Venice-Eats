@@ -70,11 +70,7 @@ export default connect(
         />
       )}
 
-      <LoginForm
-        inputPropList={inputPropList}
-        inputErrList={inputErrList}
-        isMountedRef={isMountedRef}
-      />
+      <LoginForm inputPropList={inputPropList} inputErrList={inputErrList} />
     </div>
   );
 });

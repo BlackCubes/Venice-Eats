@@ -18,8 +18,7 @@ export default props => {
     handleSubmit,
     isSubmitting,
     inputPropList,
-    inputErrList,
-    isMountedRef
+    inputErrList
   } = props;
 
   const inputProperties = inputPropList.map(prop => {
@@ -38,8 +37,6 @@ export default props => {
   const inputErrors = inputErrList.map(prop => {
     return fieldInputErrors(prop.name, touched, errors);
   });
-
-  isMountedRef(values);
 
   return (
     <Form noValidate onSubmit={handleSubmit}>
