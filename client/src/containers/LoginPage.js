@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withFormik } from 'formik';
+import { withFormik, useFormikContext } from 'formik';
 import * as yup from 'yup';
 
 import { login } from './../actions/auth';
@@ -22,8 +22,6 @@ export default connect(
     login
   }
 )(({ apiError, login }) => {
-  const isMountedRef = useIsMountedRef();
-
   const initialValues = {
     email: '',
     password: ''
@@ -51,6 +49,10 @@ export default connect(
   ];
 
   const inputErrList = [{ name: 'email' }, { name: 'password' }];
+
+  const { values } = useFormikContext();
+
+  const isMountedRef = useIsMountedRef(values.name, values.email);
 
   const LoginForm = withFormik({
     mapPropsToValues(props) {
