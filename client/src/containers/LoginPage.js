@@ -45,7 +45,7 @@ export default connect(
 
   React.useEffect(() => {
     isMountedRef.current = true;
-    login(data, isMountedRef);
+    if (data) login(data, isMountedRef);
     return () => (isMountedRef.current = false);
   }, [data]);
 
