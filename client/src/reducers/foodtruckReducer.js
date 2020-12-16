@@ -22,6 +22,11 @@ export default (
         ...state,
         datas: [...state.datas, action.payload.data.data]
       };
+    case API_GET_ALL_SUCCESS:
+      return {
+        ...state,
+        datas: [...state.datas, action.payload.data.data]
+      };
     default:
       return state;
   }
