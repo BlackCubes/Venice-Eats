@@ -49,6 +49,7 @@ const foodtruckSchema = new mongoose.Schema(
     },
     menu: [
       {
+        menuId: mongoose.Types.ObjectId,
         productName: {
           type: String,
           required: [true, 'A foodtruck product needs to have a name!'],
