@@ -47,54 +47,56 @@ const foodtruckSchema = new mongoose.Schema(
         required: [true, 'A foodtruck image must have an image!']
       }
     },
-    menu: {
-      productName: {
-        type: String,
-        required: [true, 'A foodtruck product needs to have a name!'],
-        // unique: true,
-        trim: true,
-        maxlength: [
-          100,
-          'A foodtruck product name must be less than or equal to 100 characters!'
-        ],
-        minlength: [
-          2,
-          'A foodtruck product name must be greater than or equal to 2 characters!'
-        ]
-      },
-      slug: String,
-      description: {
-        type: String,
-        trim: true,
-        maxlength: [
-          183,
-          'A description for the foodtruck product must be less than or equal to 183 characters!'
-        ]
-      },
-      ingredients: [String],
-      cloudinaryPhoto: {
-        cloudinaryId: String,
-        cloudinaryUrl: String
-      },
-      price: {
-        type: Number,
-        required: [true, 'A foodtruck product needs to have a price!'],
-        min: [1, 'A foodtruck product must have a minimum price of 1 dollar!']
-      },
-      orderLimit: {
-        type: Number,
-        required: [true, 'A foodtruck product needs to have an order limit!'],
-        min: [5, 'A foodtruck product must have a minimum limit of 5 orders!']
-      },
-      orderSold: {
-        type: Number,
-        default: 0
-      },
-      availability: {
-        type: Boolean,
-        required: [true, 'A foodtruck product needs to have an availability!']
+    menu: [
+      {
+        productName: {
+          type: String,
+          required: [true, 'A foodtruck product needs to have a name!'],
+          // unique: true,
+          trim: true,
+          maxlength: [
+            100,
+            'A foodtruck product name must be less than or equal to 100 characters!'
+          ],
+          minlength: [
+            2,
+            'A foodtruck product name must be greater than or equal to 2 characters!'
+          ]
+        },
+        slug: String,
+        description: {
+          type: String,
+          trim: true,
+          maxlength: [
+            183,
+            'A description for the foodtruck product must be less than or equal to 183 characters!'
+          ]
+        },
+        ingredients: [String],
+        cloudinaryPhoto: {
+          cloudinaryId: String,
+          cloudinaryUrl: String
+        },
+        price: {
+          type: Number,
+          required: [true, 'A foodtruck product needs to have a price!'],
+          min: [1, 'A foodtruck product must have a minimum price of 1 dollar!']
+        },
+        orderLimit: {
+          type: Number,
+          required: [true, 'A foodtruck product needs to have an order limit!'],
+          min: [5, 'A foodtruck product must have a minimum limit of 5 orders!']
+        },
+        orderSold: {
+          type: Number,
+          default: 0
+        },
+        availability: {
+          type: Boolean,
+          required: [true, 'A foodtruck product needs to have an availability!']
+        }
       }
-    },
+    ],
     geo: {
       type: mongoose.Schema.ObjectId,
       ref: 'Geo'
