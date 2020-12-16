@@ -11,7 +11,7 @@ export default (
   state = {
     datas: [],
     singleData: {},
-    // menus: [],
+    menus: [],
     isLoading: false
   },
   action
@@ -26,6 +26,12 @@ export default (
       return {
         ...state,
         datas: [...state.datas, action.payload.data.data]
+      };
+    case API_GET_SUCCESS:
+      return {
+        ...state,
+        singleData: action.payload.data.data,
+        menus: [...state.menus, ...action.payload.data.data.menus]
       };
     default:
       return state;
