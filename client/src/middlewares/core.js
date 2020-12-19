@@ -99,7 +99,6 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
               response: data
             })
           );
-          dispatch();
         })
         .catch(error => {
           console.log(error.response.data);
