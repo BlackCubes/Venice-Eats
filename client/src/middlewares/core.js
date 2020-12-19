@@ -43,7 +43,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
     }
     case API_POST_REQUEST: {
       dispatch(setLoader({ state: true }));
-      const { url, method, data, headers } = action.meta;
+      const { url, method, data, headers, pathName } = action.meta;
       axios({
         method,
         url,
@@ -53,7 +53,12 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
           dispatch(apiSuccess({ error: null }));
-          dispatch(apiPostSuccess({ response: data }));
+          // dispatch(apiPostSuccess({ response: data }));
+          dispatch(
+            apiSuccessHandler(`API_POST_${pathName}_SUCCESS`)({
+              response: data
+            })
+          );
         })
         .catch(error => {
           console.log(error.response.data);
@@ -64,7 +69,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
     }
     case API_GET_ALL_REQUEST: {
       dispatch(setLoader({ state: true }));
-      const { url, method, headers } = action.meta;
+      const { url, method, headers, pathName } = action.meta;
       axios({
         method,
         url,
@@ -73,7 +78,12 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
           dispatch(apiSuccess({ error: null }));
-          dispatch(apiGetAllSuccess({ response: data }));
+          // dispatch(apiGetAllSuccess({ response: data }));
+          dispatch(
+            apiSuccessHandler(`API_GET_ALL_${pathName}_SUCCESS`)({
+              response: data
+            })
+          );
         })
         .catch(error => {
           console.log(error.response.data);
@@ -109,7 +119,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
     }
     case API_UPDATE_REQUEST: {
       dispatch(setLoader({ state: true }));
-      const { url, method, data, headers } = action.meta;
+      const { url, method, data, headers, pathName } = action.meta;
       axios({
         method,
         url,
@@ -119,7 +129,12 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
           dispatch(apiSuccess({ error: null }));
-          dispatch(apiUpdateSuccess({ response: data }));
+          // dispatch(apiUpdateSuccess({ response: data }));
+          dispatch(
+            apiSuccessHandler(`API_UPDATE_${pathName}_SUCCESS`)({
+              response: data
+            })
+          );
         })
         .catch(error => {
           console.log(error.response.data);
@@ -130,7 +145,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
     }
     case API_DELETE_REQUEST: {
       dispatch(setLoader({ state: true }));
-      const { url, method, headers, id } = action.meta;
+      const { url, method, headers, id, pathName } = action.meta;
       axios({
         method,
         url,
@@ -139,7 +154,12 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         .then(res => {
           dispatch(setLoader({ state: false }));
           dispatch(apiSuccess({ error: null }));
-          dispatch(apiDeleteSuccess({ response: id }));
+          // dispatch(apiDeleteSuccess({ response: id }));
+          dispatch(
+            apiSuccessHandler(`API_DELETE_${pathName}_SUCCESS`)({
+              response: id
+            })
+          );
         })
         .catch(error => {
           console.log(error.response.data);
