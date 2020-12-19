@@ -37,10 +37,10 @@ export const apiGetAllRequest = ({ url, method, headers }) => {
   };
 };
 
-export const apiGetRequest = ({ url, method, headers, collectionName }) => {
+export const apiGetRequest = ({ url, method, headers }) => {
   return {
     type: API_GET_REQUEST,
-    meta: { url, method, headers, collectionName }
+    meta: { url, method, headers }
   };
 };
 
@@ -73,10 +73,9 @@ export const apiGetAllSuccess = ({ response }) => ({
   payload: response
 });
 
-export const apiGetSuccess = ({ response, collectionName }) => ({
+export const apiGetSuccess = ({ response }) => ({
   type: API_GET_SUCCESS,
-  payload: response,
-  collectionName: collectionName
+  payload: response
 });
 
 export const apiUpdateSuccess = ({ response }) => ({
