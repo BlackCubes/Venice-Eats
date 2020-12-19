@@ -6,6 +6,7 @@ import {
   API_GET_REQUEST,
   API_UPDATE_REQUEST,
   API_DELETE_REQUEST,
+  apiSuccessHandler,
   apiAuthSuccess,
   apiPostSuccess,
   apiGetAllSuccess,
@@ -83,7 +84,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
     }
     case API_GET_REQUEST: {
       dispatch(setLoader({ state: true }));
-      const { url, method, headers } = action.meta;
+      const { url, method, headers, collectionName } = action.meta;
       axios({
         method,
         url,
@@ -92,7 +93,13 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
         .then(({ data }) => {
           dispatch(setLoader({ state: false }));
           dispatch(apiSuccess({ error: null }));
-          dispatch(apiGetSuccess({ response: data }));
+          // dispatch(apiGetSuccess({ response: data }));
+          dispatch(
+            apiSuccessHandler(`API_GET_${collectionName}_SUCCESS`)({
+              response: data
+            })
+          );
+          dispatch();
         })
         .catch(error => {
           console.log(error.response.data);
