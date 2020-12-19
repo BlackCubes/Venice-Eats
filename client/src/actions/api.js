@@ -58,6 +58,11 @@ export const apiDeleteRequest = ({ url, method, headers, id }) => {
   };
 };
 
+export const apiSuccessHandler = type => ({ response }) => ({
+  type,
+  payload: response
+});
+
 export const apiAuthSuccess = ({ response }) => ({
   type: API_AUTH_SUCCESS,
   payload: response
