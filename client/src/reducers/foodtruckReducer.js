@@ -17,17 +17,17 @@ export default (
   action
 ) => {
   switch (action.type) {
-    case API_POST_SUCCESS:
+    case 'API_POST_FOODTRUCKS_SUCCESS':
       return {
         ...state,
         datas: [...state.datas, action.payload.data.data]
       };
-    case API_GET_ALL_SUCCESS:
+    case 'API_GET_ALL_FOODTRUCKS_SUCCESS':
       return {
         ...state,
         datas: [...state.datas, action.payload.data.data]
       };
-    case API_GET_SUCCESS:
+    case 'API_GET_FOODTRUCKS_SUCCESS':
       return {
         ...state,
         singleData: action.payload.data.data,
