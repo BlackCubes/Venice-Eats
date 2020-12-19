@@ -23,8 +23,7 @@ export const appMiddleware = ({ getState }) => next => action => {
         apiAuthRequest({
           url: `${process.env.REACT_APP_SERVER_URL}/admins/login`,
           method: 'POST',
-          data: action.payload.user,
-          isMountedRef: action.payload.isMountedRef
+          data: action.payload.user
         })
       );
       break;

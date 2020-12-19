@@ -22,19 +22,16 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
   switch (action.type) {
     case API_AUTH_REQUEST: {
       dispatch(setLoader({ state: true }));
-      const { url, method, data, isMountedRef } = action.meta;
+      const { url, method, data } = action.meta;
       axios({
         method,
         url,
         data
       })
         .then(({ data }) => {
-          console.log('Mounted ref in codejs: ', isMountedRef);
-          if (isMountedRef.current) {
-            dispatch(setLoader({ state: false }));
-            dispatch(apiSuccess({ error: null }));
-            dispatch(apiAuthSuccess({ response: data }));
-          }
+          dispatch(setLoader({ state: false }));
+          dispatch(apiSuccess({ error: null }));
+          dispatch(apiAuthSuccess({ response: data }));
         })
         .catch(error => {
           console.log(error.response.data);

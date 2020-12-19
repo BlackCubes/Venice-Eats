@@ -16,10 +16,10 @@ export const API_SUCCESS = 'API_SUCCESS';
 export const API_ERROR = 'API_ERROR';
 
 // ACTION CREATORS
-export const apiAuthRequest = ({ url, method, data, isMountedRef }) => {
+export const apiAuthRequest = ({ url, method, data }) => {
   return {
     type: API_AUTH_REQUEST,
-    meta: { url, method, data, isMountedRef }
+    meta: { url, method, data }
   };
 };
 

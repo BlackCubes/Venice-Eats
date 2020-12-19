@@ -22,10 +22,6 @@ export default connect(
     login
   }
 )(({ apiError, login }) => {
-  // const isMountedRef = useIsMountedRef();
-  const [data, setData] = React.useState('');
-  const isMountedRef = React.useRef(false);
-
   const initialValues = {
     email: '',
     password: ''
@@ -38,16 +34,9 @@ export default connect(
 
   const onSubmit = (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-    // login(data, isMountedRef);
-    setData(data);
+    login(data);
     resetForm();
   };
-
-  React.useEffect(() => {
-    isMountedRef.current = true;
-    if (data) login(data, isMountedRef);
-    return () => (isMountedRef.current = false);
-  }, [data]);
 
   const inputPropList = [
     { type: 'email', name: 'email', placeholder: 'Email', apiError: apiError },
