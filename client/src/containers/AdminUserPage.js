@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Formik, withFormik } from 'formik';
+import { withFormik } from 'formik';
 import * as yup from 'yup';
-import { Form, Button, Alert, Spinner } from 'react-bootstrap';
+import { Alert, Button } from 'react-bootstrap';
 
 import { getOne, updateOne } from './../actions/handlerFactory';
 
-import FormCustomInputs from './../components/Inputs/FormCustomInputs';
 import CustomForm from './../components/Forms/CustomForm';
 
 import customValidation from './../utils/customValidation';
@@ -35,10 +34,9 @@ const AdminUserPage = ({
     email: customValidation.email
   });
 
-  const onSubmit = (data, { setSubmitting, resetForm }) => {
+  const onSubmit = (data, { setSubmitting }) => {
     setSubmitting(true);
     updateOne('admins', params, data);
-    resetForm();
   };
 
   const inputPropList = [
@@ -63,6 +61,14 @@ const AdminUserPage = ({
       </Button>
 
       <div className="Login">
+        {apiError && (
+          <Alert
+            variant="danger"
+            heading="Oh no! 😱 You got errors! 🙅‍♀️"
+            message={apiError}
+          />
+        )}
+
         <UserUpdateForm
           inputPropList={inputPropList}
           inputErrList={inputErrList}
