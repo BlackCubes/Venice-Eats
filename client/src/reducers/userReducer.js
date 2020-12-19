@@ -28,8 +28,10 @@ export default (
         ...state,
         datas: action.payload.data.data
       };
-    case API_GET_SUCCESS:
-    case API_UPDATE_SUCCESS:
+    // case API_GET_SUCCESS:
+    // case API_UPDATE_SUCCESS:
+    case 'API_GET_ADMINS_SUCCESS':
+    case 'API_UPDATE_ADMINS_SUCCESS':
       return {
         ...state,
         singleData: action.payload.data.data
