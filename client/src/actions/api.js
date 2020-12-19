@@ -23,17 +23,17 @@ export const apiAuthRequest = ({ url, method, data }) => {
   };
 };
 
-export const apiPostRequest = ({ url, method, data, headers }) => {
+export const apiPostRequest = ({ url, method, data, headers, pathName }) => {
   return {
     type: API_POST_REQUEST,
-    meta: { url, method, data, headers }
+    meta: { url, method, data, headers, pathName }
   };
 };
 
-export const apiGetAllRequest = ({ url, method, headers }) => {
+export const apiGetAllRequest = ({ url, method, headers, pathName }) => {
   return {
     type: API_GET_ALL_REQUEST,
-    meta: { url, method, headers }
+    meta: { url, method, headers, pathName }
   };
 };
 
@@ -44,17 +44,17 @@ export const apiGetRequest = ({ url, method, headers, pathName }) => {
   };
 };
 
-export const apiUpdateRequest = ({ url, method, data, headers }) => {
+export const apiUpdateRequest = ({ url, method, data, headers, pathName }) => {
   return {
     type: API_UPDATE_REQUEST,
-    meta: { url, method, data, headers }
+    meta: { url, method, data, headers, pathName }
   };
 };
 
-export const apiDeleteRequest = ({ url, method, headers, id }) => {
+export const apiDeleteRequest = ({ url, method, headers, id, pathName }) => {
   return {
     type: API_DELETE_REQUEST,
-    meta: { url, method, headers, id }
+    meta: { url, method, headers, id, pathName }
   };
 };
 
