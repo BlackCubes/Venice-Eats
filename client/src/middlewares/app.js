@@ -54,7 +54,8 @@ export const appMiddleware = ({ getState }) => next => action => {
         apiGetRequest({
           url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}/${action.payload.params}`,
           method: 'GET',
-          headers: tokenHeadersConfig(getState)
+          headers: tokenHeadersConfig(getState),
+          collectionName: action.payload.path.toUpperCase()
         })
       );
       break;
