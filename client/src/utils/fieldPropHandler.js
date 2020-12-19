@@ -6,6 +6,7 @@ export const fieldInputProperties = (
   name,
   placeholder,
   apiError,
+  values,
   touched,
   errors,
   handleChange,
@@ -14,6 +15,7 @@ export const fieldInputProperties = (
   return {
     type,
     name,
+    defaultValue: values[name],
     placeholder,
     className: touched[name] && errors[name] ? 'error' : null,
     onChange: handleChange,

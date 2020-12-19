@@ -27,6 +27,7 @@ export default props => {
       prop.name,
       prop.placeholder,
       prop.apiError,
+      values,
       touched,
       errors,
       handleChange,
