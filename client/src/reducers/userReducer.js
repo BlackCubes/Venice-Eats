@@ -28,7 +28,7 @@ export default (
         ...state,
         datas: action.payload.data.data
       };
-    case API_GET_SUCCESS:
+    case API_GET_SUCCESS && action.collectionName === 'admins':
     case API_UPDATE_SUCCESS:
       return {
         ...state,
