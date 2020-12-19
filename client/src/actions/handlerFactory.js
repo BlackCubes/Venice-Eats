@@ -20,10 +20,10 @@ export const getAll = path => {
   };
 };
 
-export const getOne = (path, params) => {
+export const getOne = (path, params, collectionName) => {
   return {
     type: GET_ONE,
-    payload: { path, params }
+    payload: { path, params, collectionName }
   };
 };
 
