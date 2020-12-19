@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Formik } from 'formik';
+import { Formik, withFormik } from 'formik';
 import * as yup from 'yup';
 import { Form, Modal, Button, Alert, Row } from 'react-bootstrap';
 
 import { postOne } from './../../actions/handlerFactory';
 
 import FormCustomInputs from './../Inputs/FormCustomInputs';
+
+import CustomForm from './../Forms/CustomForm';
 
 import customValidation from './../../utils/customValidation';
 
@@ -32,18 +34,52 @@ const PostUserModal = ({ apiError, postOne }) => {
     )
   });
 
-  const onSubmit = (data, { setSubmitting, resetForm }) => {
+  const onSubmit = (data, { setSubmitting }) => {
     setSubmitting(true);
     postOne('admins', data);
-    if (!apiError) {
-      resetForm();
-    }
   };
 
   React.useEffect(() => {
     if (apiError) setApiErrorMsg(apiError);
     else setApiErrorMsg(null);
   }, [apiError]);
+
+  const inputPropList = [
+    { type: 'text', name: 'name', placeholder: 'Name', apiError: apiErrorMsg },
+    {
+      type: 'email',
+      name: 'email',
+      placeholder: 'Email',
+      apiError: apiErrorMsg
+    },
+    {
+      type: 'password',
+      name: 'password',
+      placeholder: 'Password',
+      apiError: apiErrorMsg
+    },
+    {
+      type: 'password',
+      name: 'password_confirmation',
+      placeholder: 'Confirm Password',
+      apiError: apiErrorMsg
+    }
+  ];
+
+  const inputErrList = [
+    { name: 'name' },
+    { name: 'email' },
+    { name: 'password' },
+    { name: 'password_confirmation' }
+  ];
+
+  const UserPostForm = withFormik({
+    mapPropsToValues(props) {
+      return initialValues;
+    },
+    validationSchema: validationSchema,
+    handleSubmit: onSubmit
+  })(CustomForm);
 
   return (
     <div>
@@ -64,7 +100,12 @@ const PostUserModal = ({ apiError, postOne }) => {
         <Modal.Body>
           {apiErrorMsg ? <Alert variant="danger">{apiErrorMsg}</Alert> : null}
 
-          <Formik
+          <UserPostForm
+            inputPropList={inputPropList}
+            inputErrList={inputErrList}
+          />
+
+          {/* <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
@@ -153,7 +194,7 @@ const PostUserModal = ({ apiError, postOne }) => {
                 </Button>
               </Form>
             )}
-          </Formik>
+          </Formik> */}
         </Modal.Body>
       </Modal>
     </div>
