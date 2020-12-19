@@ -32,10 +32,9 @@ export default connect(
     password: customValidation.password.required('Required')
   });
 
-  const onSubmit = (data, { setSubmitting, resetForm }) => {
+  const onSubmit = (data, { setSubmitting }) => {
     setSubmitting(true);
     login(data);
-    resetForm();
   };
 
   const inputPropList = [
