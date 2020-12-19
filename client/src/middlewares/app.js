@@ -34,7 +34,8 @@ export const appMiddleware = ({ getState }) => next => action => {
           url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}`,
           method: 'POST',
           data: action.payload.data,
-          headers: tokenHeadersConfig(getState)
+          headers: tokenHeadersConfig(getState),
+          pathName: action.payload.path.toUpperCase()
         })
       );
       break;
@@ -44,7 +45,8 @@ export const appMiddleware = ({ getState }) => next => action => {
         apiGetAllRequest({
           url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}`,
           method: 'GET',
-          headers: tokenHeadersConfig(getState)
+          headers: tokenHeadersConfig(getState),
+          pathName: action.payload.path.toUpperCase()
         })
       );
       break;
@@ -66,7 +68,8 @@ export const appMiddleware = ({ getState }) => next => action => {
           url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}/${action.payload.params}`,
           method: 'PATCH',
           data: action.payload.data,
-          headers: tokenHeadersConfig(getState)
+          headers: tokenHeadersConfig(getState),
+          pathName: action.payload.path.toUpperCase()
         })
       );
       break;
@@ -77,7 +80,8 @@ export const appMiddleware = ({ getState }) => next => action => {
           url: `${process.env.REACT_APP_SERVER_URL}/${action.payload.path}/${action.payload.id}`,
           method: 'DELETE',
           headers: tokenHeadersConfig(getState),
-          id: action.payload.id
+          id: action.payload.id,
+          pathName: action.payload.path.toUpperCase()
         })
       );
       break;
