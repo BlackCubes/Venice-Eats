@@ -37,10 +37,10 @@ export const apiGetAllRequest = ({ url, method, headers }) => {
   };
 };
 
-export const apiGetRequest = ({ url, method, headers, collectionName }) => {
+export const apiGetRequest = ({ url, method, headers, pathName }) => {
   return {
     type: API_GET_REQUEST,
-    meta: { url, method, headers, collectionName }
+    meta: { url, method, headers, pathName }
   };
 };
 

@@ -84,7 +84,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
     }
     case API_GET_REQUEST: {
       dispatch(setLoader({ state: true }));
-      const { url, method, headers, collectionName } = action.meta;
+      const { url, method, headers, pathName } = action.meta;
       axios({
         method,
         url,
@@ -95,7 +95,7 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
           dispatch(apiSuccess({ error: null }));
           // dispatch(apiGetSuccess({ response: data }));
           dispatch(
-            apiSuccessHandler(`API_GET_${collectionName}_SUCCESS`)({
+            apiSuccessHandler(`API_GET_${pathName}_SUCCESS`)({
               response: data
             })
           );
