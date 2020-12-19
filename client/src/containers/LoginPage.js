@@ -9,7 +9,6 @@ import { Alert } from './../components/Alert';
 import CustomForm from './../components/Forms/CustomForm';
 
 import customValidation from './../utils/customValidation';
-import useIsMountedRef from './../utils/useIsMountedRef';
 
 import './Login.css';
 
