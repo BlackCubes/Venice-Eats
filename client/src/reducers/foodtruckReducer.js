@@ -31,7 +31,7 @@ export default (
       return {
         ...state,
         singleData: action.payload.data.data,
-        menus: [...state.menus, ...action.payload.data.data.menus]
+        menus: [...state.menus, action.payload.data.data.menus]
       };
     default:
       return state;
