@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Container } from 'react-bootstrap';
 
 import reducer from './reducers/index';
@@ -19,12 +20,17 @@ import AdminSecondNavbar from './components/Navbars/AdminSecondNav';
 import AuthRoute from './components/HOC/AuthRoute';
 import PostUserModal from './components/Modals/AdminPostModal';
 
-const createStoreWithMiddleware = applyMiddleware(
-  appMiddleware,
-  apiMiddleware
-)(createStore);
+// const createStoreWithMiddleware = applyMiddleware(
+//   appMiddleware,
+//   apiMiddleware
+// )(createStore);
 
-const store = createStoreWithMiddleware(reducer);
+// const store = createStoreWithMiddleware(reducer);
+
+const store = createStore(
+  reducer,
+  composeWithDevTools(applyMiddleware(appMiddleware, apiMiddleware))
+);
 
 const App = () => {
   return (
