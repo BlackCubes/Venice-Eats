@@ -73,9 +73,10 @@ export const apiGetAllSuccess = ({ response }) => ({
   payload: response
 });
 
-export const apiGetSuccess = ({ response }) => ({
+export const apiGetSuccess = ({ response, collectionName }) => ({
   type: API_GET_SUCCESS,
-  payload: response
+  payload: response,
+  collectionName: collectionName
 });
 
 export const apiUpdateSuccess = ({ response }) => ({
