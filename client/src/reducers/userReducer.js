@@ -18,11 +18,13 @@ export default (
   action
 ) => {
   switch (action.type) {
+    case action.collectionName === 'admins':
     case API_POST_SUCCESS:
       return {
         ...state,
         datas: [...state.datas, action.payload.data.data]
       };
+    case action.collectionName === 'admins':
     case API_GET_ALL_SUCCESS:
       return {
         ...state,
@@ -35,6 +37,7 @@ export default (
         ...state,
         singleData: action.payload.data.data
       };
+    case action.collectionName === 'admins':
     case API_DELETE_SUCCESS:
       return {
         ...state,
@@ -42,6 +45,7 @@ export default (
       };
     // case API_ERROR:
     //   return { ...state, error: action.payload.message };
+    case action.collectionName === 'admins':
     case SET_LOADER:
       return { ...state, isLoading: action.payload };
     default:
