@@ -27,7 +27,7 @@ export default (
         ...state,
         datas: [...state.datas, action.payload.data.data]
       };
-    case API_GET_SUCCESS:
+    case API_GET_SUCCESS && action.collectionName === 'foodtrucks':
       return {
         ...state,
         singleData: action.payload.data.data,
