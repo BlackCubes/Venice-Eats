@@ -18,12 +18,12 @@ export default (
   action
 ) => {
   switch (action.type) {
-    case API_POST_SUCCESS:
+    case 'API_POST_ADMINS_SUCCESS':
       return {
         ...state,
         datas: [...state.datas, action.payload.data.data]
       };
-    case API_GET_ALL_SUCCESS:
+    case 'API_GET_ALL_ADMINS_SUCCESS':
       return {
         ...state,
         datas: action.payload.data.data
@@ -36,7 +36,7 @@ export default (
         ...state,
         singleData: action.payload.data.data
       };
-    case API_DELETE_SUCCESS:
+    case 'API_DELETE_ADMINS_SUCCESS':
       return {
         ...state,
         datas: state.datas.filter(el => el._id !== action.payload)
