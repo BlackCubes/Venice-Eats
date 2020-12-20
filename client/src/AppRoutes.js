@@ -11,6 +11,7 @@ import { appMiddleware } from './middlewares/app';
 import { apiMiddleware } from './middlewares/core';
 
 import AdminPage from './containers/AdminPage';
+import AdminViewUsersPage from './containers/AdminViewUsersPage';
 import AdminUpdateUserPage from './containers/AdminUpdateUserPage';
 import LoginPage from './containers/LoginPage';
 import { Test } from './containers/Test';
@@ -47,6 +48,14 @@ const App = () => {
               <AdminSecondNavbar />
               <PostUserModal />
               <AdminPage />
+            </Container>
+          </AuthRoute>
+          <AuthRoute path="/admin/users" exact type="private">
+            <AdminNavbar />
+            <Container fluid>
+              <AdminSecondNavbar />
+              <PostUserModal />
+              <AdminViewUsersPage />
             </Container>
           </AuthRoute>
           <AuthRoute path="/admin/users/:params" exact type="private">
