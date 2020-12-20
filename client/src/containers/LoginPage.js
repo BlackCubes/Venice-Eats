@@ -8,7 +8,7 @@ import { login } from './../actions/auth';
 import { Alert } from './../components/Alert';
 import CustomForm from './../components/Forms/CustomForm';
 
-import customValidation from './../utils/customValidation';
+import { userValidator } from './../utils/customValidation';
 
 import './Login.css';
 
@@ -27,8 +27,8 @@ export default connect(
   };
 
   const validationSchema = yup.object({
-    email: customValidation.email.required('Required'),
-    password: customValidation.password.required('Required')
+    email: userValidator.email.required('Required'),
+    password: userValidator.password.required('Required')
   });
 
   const onSubmit = (data, { setSubmitting }) => {
