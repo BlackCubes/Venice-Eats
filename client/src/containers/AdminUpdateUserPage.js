@@ -9,7 +9,7 @@ import { getOne, updateOne } from './../actions/handlerFactory';
 
 import CustomForm from './../components/Forms/CustomForm';
 
-import customValidation from './../utils/customValidation';
+import { userValidator } from './../utils/customValidation';
 
 const AdminUpdateUserPage = ({
   getOne,
@@ -30,8 +30,8 @@ const AdminUpdateUserPage = ({
   };
 
   const validationSchema = yup.object({
-    name: customValidation.name,
-    email: customValidation.email
+    name: userValidator.name,
+    email: userValidator.email
   });
 
   const onSubmit = (data, { setSubmitting }) => {
