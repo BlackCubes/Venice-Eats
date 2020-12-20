@@ -60,49 +60,49 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     {
       type: 'text',
       name: 'name',
-      placeholder: 'Foodtruck Name',
+      placeholder: 'Foodtruck Name*',
       apiError: apiErrorMsg
     },
     {
       type: 'text',
       name: 'info',
-      placeholder: 'Foodtruck Info',
+      placeholder: 'Foodtruck Info (optional)',
       apiError: apiErrorMsg
     },
     {
       type: 'text',
       name: 'contact.phoneNumber',
-      placeholder: 'Phone Number',
+      placeholder: 'Phone Number (optional)',
       apiError: apiErrorMsg
     },
     {
       type: 'text',
       name: 'contact.email',
-      placeholder: 'Email',
+      placeholder: 'Email (optional)',
       apiError: apiErrorMsg
     },
     {
       type: 'text',
       name: 'contact.website',
-      placeholder: 'Website',
+      placeholder: 'Website (optional)',
       apiError: apiErrorMsg
     },
     {
       type: 'text',
       name: 'contact.social.url1',
-      placeholder: 'Url 1',
+      placeholder: 'Url 1 (optional)',
       apiError: apiErrorMsg
     },
     {
       type: 'text',
       name: 'contact.social.url2',
-      placeholder: 'Url 2',
+      placeholder: 'Url 2 (optional)',
       apiError: apiErrorMsg
     },
     {
       type: 'text',
       name: 'contact.social.url3',
-      placeholder: 'Url 3',
+      placeholder: 'Url 3 (optional)',
       apiError: apiErrorMsg
     }
   ];
