@@ -11,7 +11,7 @@ import { appMiddleware } from './middlewares/app';
 import { apiMiddleware } from './middlewares/core';
 
 import AdminPage from './containers/AdminPage';
-import AdminUserPage from './containers/AdminUserPage';
+import AdminUpdateUserPage from './containers/AdminUpdateUserPage';
 import LoginPage from './containers/LoginPage';
 import { Test } from './containers/Test';
 
@@ -52,7 +52,7 @@ const App = () => {
           <AuthRoute path="/admin/users/:params" exact type="private">
             <AdminNavbar />
             <Container fluid>
-              <AdminUserPage />
+              <AdminUpdateUserPage />
             </Container>
           </AuthRoute>
         </Switch>
