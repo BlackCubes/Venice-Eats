@@ -77,6 +77,8 @@ export default props => {
     });
   });
 
+  console.log('inputProperies: ', inputProperties);
+  console.log('inputErrors', inputErrors);
   console.log('inputTypes: ', inputTypes);
 
   return null;
