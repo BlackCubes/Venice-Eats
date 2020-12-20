@@ -5,7 +5,7 @@ export default () => {
   return (
     <Nav variant="tabs" defaultActiveKey="/admin">
       <Nav.Item>
-        <Nav.Link href="/admin">Users</Nav.Link>
+        <Nav.Link href="/admin/users">Users</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="#foodtrucks">Foodtrucks</Nav.Link>
