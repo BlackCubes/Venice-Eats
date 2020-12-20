@@ -77,9 +77,5 @@ export default props => {
     });
   });
 
-  console.log('inputProperies: ', inputProperties);
-  console.log('inputErrors', inputErrors);
-  console.log('inputTypes: ', inputTypes[0]);
-
   return <Form noValidate>{inputTypes[0]}</Form>;
 };
