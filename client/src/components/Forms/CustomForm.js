@@ -31,7 +31,8 @@ export default props => {
       touched,
       errors,
       handleChange,
-      handleBlur
+      handleBlur,
+      prop.as
     );
   });
 

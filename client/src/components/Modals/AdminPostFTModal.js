@@ -64,10 +64,10 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
       apiError: apiErrorMsg
     },
     {
-      type: 'text',
       name: 'info',
       placeholder: 'Foodtruck Info (optional)',
-      apiError: apiErrorMsg
+      apiError: apiErrorMsg,
+      as: 'textarea'
     },
     {
       type: 'text',
