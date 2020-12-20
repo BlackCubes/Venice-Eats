@@ -46,7 +46,6 @@ const App = () => {
             <AdminNavbar />
             <Container fluid>
               <AdminSecondNavbar />
-              <PostUserModal />
               <AdminPage />
             </Container>
           </AuthRoute>
