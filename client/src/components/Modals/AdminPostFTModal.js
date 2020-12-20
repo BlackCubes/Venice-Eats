@@ -8,6 +8,8 @@ import { postOne } from './../../actions/handlerFactory';
 
 import CustomForm from './../Forms/CustomForm';
 
+import { foodtruckValidator } from './../../utils/customValidation';
+
 const PostFoodtruckModal = ({ apiError, postOne }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [apiErrorMsg, setApiErrorMsg] = React.useState(null);
@@ -29,7 +31,20 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     }
   };
 
-  const validationSchema = '';
+  const validationSchema = yup.object({
+    name: foodtruckValidator.name.required('Required'),
+    info: foodtruckValidator.info,
+    contact: yup.object().shape({
+      phoneNumber: foodtruckValidator.phoneNumber,
+      email: foodtruckValidator.email,
+      website: foodtruckValidator.url,
+      social: yup.object().shape({
+        url1: foodtruckValidator.url,
+        url2: foodtruckValidator.url,
+        url3: foodtruckValidator.url
+      })
+    })
+  });
 
   const onSubmit = (data, { setSubmitting }) => {
     setSubmitting(true);
