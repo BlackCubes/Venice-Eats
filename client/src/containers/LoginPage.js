@@ -37,12 +37,11 @@ export default connect(
   };
 
   const inputPropList = [
-    { type: 'email', name: 'email', placeholder: 'Email', apiError: apiError },
+    { type: 'email', name: 'email', placeholder: 'Email' },
     {
       type: 'password',
       name: 'password',
-      placeholder: 'Password',
-      apiError: apiError
+      placeholder: 'Password'
     }
   ];
 
@@ -66,7 +65,11 @@ export default connect(
         />
       )}
 
-      <LoginForm inputPropList={inputPropList} inputErrList={inputErrList} />
+      <LoginForm
+        inputPropList={inputPropList}
+        inputErrList={inputErrList}
+        apiError={apiError}
+      />
     </div>
   );
 });
