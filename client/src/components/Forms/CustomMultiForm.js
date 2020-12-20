@@ -78,4 +78,6 @@ export default props => {
   });
 
   console.log('inputTypes: ', inputTypes);
+
+  return null;
 };
