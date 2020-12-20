@@ -1,42 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getAll, deleteOne } from './../actions/handlerFactory';
-
-import AdminCustomTable from './../components/Tables/AdminCustomTable';
-
-const AdminPage = ({
-  apiDatas,
-  apiError,
-  getAll,
-  deleteOne,
-  loadingUserApi
-}) => {
-  React.useEffect(() => {
-    getAll('admins');
-  }, [getAll]);
-
-  const handleDelete = id => deleteOne('admins', id);
-
+const AdminPage = ({ currentUser }) => {
   return (
     <div>
-      <AdminCustomTable
-        thValues={['ID', 'Name', 'Email', 'Role', 'Delete', 'View']}
-        trValues={['_id', 'name', 'email', 'role']}
-        handleDelete={handleDelete}
-        viewPath="users"
-        loadingApi={loadingUserApi}
-        apiDatas={apiDatas}
-      />
+      <h3>Hello {currentUser.name}! Sadly, nothing here yet.</h3>
     </div>
   );
 };
 
-export default connect(
-  state => ({
-    apiDatas: state.apiUser.datas,
-    apiError: state.apiError.error,
-    loadingUserApi: state.apiUser.isLoading
-  }),
-  { getAll, deleteOne }
-)(AdminPage);
+export default connect(state => ({
+  currentUser: state.auth.user
+}))(AdminPage);
