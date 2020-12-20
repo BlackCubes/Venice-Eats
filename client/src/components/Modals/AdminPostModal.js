@@ -43,24 +43,21 @@ const PostUserModal = ({ apiError, postOne }) => {
   }, [apiError]);
 
   const inputPropList = [
-    { type: 'text', name: 'name', placeholder: 'Name', apiError: apiErrorMsg },
+    { type: 'text', name: 'name', placeholder: 'Name' },
     {
       type: 'email',
       name: 'email',
-      placeholder: 'Email',
-      apiError: apiErrorMsg
+      placeholder: 'Email'
     },
     {
       type: 'password',
       name: 'password',
-      placeholder: 'Password',
-      apiError: apiErrorMsg
+      placeholder: 'Password'
     },
     {
       type: 'password',
       name: 'password_confirmation',
-      placeholder: 'Confirm Password',
-      apiError: apiErrorMsg
+      placeholder: 'Confirm Password'
     }
   ];
 
@@ -101,6 +98,7 @@ const PostUserModal = ({ apiError, postOne }) => {
           <UserPostForm
             inputPropList={inputPropList}
             inputErrList={inputErrList}
+            apiError={apiErrorMsg}
           />
         </Modal.Body>
       </Modal>
