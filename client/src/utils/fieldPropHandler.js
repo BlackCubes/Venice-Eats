@@ -27,17 +27,19 @@ import FormControl from 'react-bootstrap/FormControl';
 //   };
 // };
 
-export const fieldInputProperties = (changes, static) => {
+export const fieldInputProperties = (propChanges, propStatic) => {
   return {
-    defaultValue: getIn(changes.values, static.name),
+    defaultValue: getIn(propChanges.values, propStatic.name),
     className:
-      getIn(changes.touched, static.name) && getIn(changes.errors, static.name)
+      getIn(propChanges.touched, propStatic.name) &&
+      getIn(propChanges.errors, propStatic.name)
         ? 'error'
         : null,
-    onChange: changes.handleChange,
-    onBlur: changes.handleBlur,
-    isInvalid: !!getIn(changes.errors, static.name) || !!changes.apiError,
-    ...static
+    onChange: propChanges.handleChange,
+    onBlur: propChanges.handleBlur,
+    isInvalid:
+      !!getIn(propChanges.errors, propStatic.name) || !!propChanges.apiError,
+    ...propStatic
   };
 };
 
