@@ -7,6 +7,7 @@ import { Modal, Button, Alert, Row } from 'react-bootstrap';
 import { postOne } from './../../actions/handlerFactory';
 
 import CustomForm from './../Forms/CustomForm';
+import CustomMultiForm from './../Forms/CustomMultiForm';
 
 import { foodtruckValidator } from './../../utils/customValidation';
 
@@ -56,60 +57,133 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     else setApiErrorMsg(null);
   }, [apiError]);
 
+  // const inputPropList = [
+  //   {
+  //     type: 'text',
+  //     name: 'name',
+  //     placeholder: 'Foodtruck Name*'
+  //   },
+  //   {
+  //     name: 'info',
+  //     placeholder: 'Foodtruck Info (optional)',
+  //     as: 'textarea',
+  //     rows: 8
+  //   },
+  //   {
+  //     type: 'text',
+  //     name: 'contact.phoneNumber',
+  //     placeholder: 'Phone Number (optional)'
+  //   },
+  //   {
+  //     type: 'text',
+  //     name: 'contact.email',
+  //     placeholder: 'Email (optional)'
+  //   },
+  //   {
+  //     type: 'text',
+  //     name: 'contact.website',
+  //     placeholder: 'Website (optional)'
+  //   },
+  //   {
+  //     type: 'text',
+  //     name: 'contact.social.url1',
+  //     placeholder: 'Url 1 (optional)'
+  //   },
+  //   {
+  //     type: 'text',
+  //     name: 'contact.social.url2',
+  //     placeholder: 'Url 2 (optional)'
+  //   },
+  //   {
+  //     type: 'text',
+  //     name: 'contact.social.url3',
+  //     placeholder: 'Url 3 (optional)'
+  //   }
+  // ];
+
   const inputPropList = [
-    {
-      type: 'text',
-      name: 'name',
-      placeholder: 'Foodtruck Name*'
-    },
-    {
-      name: 'info',
-      placeholder: 'Foodtruck Info (optional)',
-      as: 'textarea',
-      rows: 8
-    },
-    {
-      type: 'text',
-      name: 'contact.phoneNumber',
-      placeholder: 'Phone Number (optional)'
-    },
-    {
-      type: 'text',
-      name: 'contact.email',
-      placeholder: 'Email (optional)'
-    },
-    {
-      type: 'text',
-      name: 'contact.website',
-      placeholder: 'Website (optional)'
-    },
-    {
-      type: 'text',
-      name: 'contact.social.url1',
-      placeholder: 'Url 1 (optional)'
-    },
-    {
-      type: 'text',
-      name: 'contact.social.url2',
-      placeholder: 'Url 2 (optional)'
-    },
-    {
-      type: 'text',
-      name: 'contact.social.url3',
-      placeholder: 'Url 3 (optional)'
-    }
+    [
+      {
+        type: 'text',
+        name: 'name',
+        placeholder: 'Foodtruck Name*'
+      },
+      {
+        name: 'info',
+        placeholder: 'Foodtruck Info (optional)',
+        as: 'textarea',
+        rows: 8
+      }
+    ],
+    [
+      {
+        type: 'text',
+        name: 'contact.phoneNumber',
+        placeholder: 'Phone Number (optional)'
+      },
+      {
+        type: 'text',
+        name: 'contact.email',
+        placeholder: 'Email (optional)'
+      },
+      {
+        type: 'text',
+        name: 'contact.website',
+        placeholder: 'Website (optional)'
+      },
+      {
+        type: 'text',
+        name: 'contact.social.url1',
+        placeholder: 'Url 1 (optional)'
+      },
+      {
+        type: 'text',
+        name: 'contact.social.url2',
+        placeholder: 'Url 2 (optional)'
+      },
+      {
+        type: 'text',
+        name: 'contact.social.url3',
+        placeholder: 'Url 3 (optional)'
+      }
+    ]
   ];
 
+  // const inputErrList = [
+  //   { name: 'name' },
+  //   { name: 'info' },
+  //   { name: 'contact.phoneNumber' },
+  //   { name: 'contact.email' },
+  //   { name: 'contact.website' },
+  //   { name: 'contact.social.url1' },
+  //   { name: 'contact.social.url2' },
+  //   { name: 'contact.social.url3' }
+  // ];
+
   const inputErrList = [
-    { name: 'name' },
-    { name: 'info' },
-    { name: 'contact.phoneNumber' },
-    { name: 'contact.email' },
-    { name: 'contact.website' },
-    { name: 'contact.social.url1' },
-    { name: 'contact.social.url2' },
-    { name: 'contact.social.url3' }
+    [{ name: 'name' }, { name: 'info' }],
+    [
+      { name: 'contact.phoneNumber' },
+      { name: 'contact.email' },
+      { name: 'contact.website' },
+      { name: 'contact.social.url1' },
+      { name: 'contact.social.url2' },
+      { name: 'contact.social.url3' }
+    ]
   ];
+
+  const inputTypeList = [
+    ['input', 'input'],
+    ['input', 'input', 'input', 'input', 'input', 'input']
+  ];
+
+  // const FoodtruckPostForm = withFormik({
+  //   mapPropsToValues(props) {
+  //     return initialValues;
+  //   },
+  //   validationSchema: validationSchema,
+  //   handleSubmit: onSubmit
+  // })(CustomForm);
 
   const FoodtruckPostForm = withFormik({
     mapPropsToValues(props) {
@@ -117,7 +191,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     },
     validationSchema: validationSchema,
     handleSubmit: onSubmit
-  })(CustomForm);
+  })(CustomMultiForm);
 
   return (
     <div>
@@ -141,8 +215,15 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
           <FoodtruckPostForm
             inputPropList={inputPropList}
             inputErrList={inputErrList}
-            apiError={apiErrorMsg}
+            inputTypeList={inputTypeList}
+            apiError
           />
+
+          {/* <FoodtruckPostForm
+            inputPropList={inputPropList}
+            inputErrList={inputErrList}
+            apiError={apiErrorMsg}
+          /> */}
         </Modal.Body>
       </Modal>
     </div>
