@@ -81,5 +81,5 @@ export default props => {
   console.log('inputErrors', inputErrors);
   console.log('inputTypes: ', inputTypes[0]);
 
-  return null;
+  return <Form noValidate>{inputTypes[0]}</Form>;
 };
