@@ -23,18 +23,6 @@ export default props => {
   } = props;
 
   const inputProperties = inputPropList.map(prop => {
-    // return fieldInputProperties(
-    //   prop.type,
-    //   prop.name,
-    //   prop.placeholder,
-    //   prop.apiError,
-    //   values,
-    //   touched,
-    //   errors,
-    //   handleChange,
-    //   handleBlur,
-    //   prop.as
-    // );
     return fieldInputProperties(
       {
         values,
