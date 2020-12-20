@@ -13,6 +13,7 @@ import { apiMiddleware } from './middlewares/core';
 import AdminPage from './containers/AdminPage';
 import AdminViewUsersPage from './containers/AdminViewUsersPage';
 import AdminUpdateUserPage from './containers/AdminUpdateUserPage';
+import AdminViewFoodtrucksPage from './containers/AdminViewFoodtrucksPage';
 import LoginPage from './containers/LoginPage';
 import { Test } from './containers/Test';
 
@@ -61,6 +62,14 @@ const App = () => {
             <AdminNavbar />
             <Container fluid>
               <AdminUpdateUserPage />
+            </Container>
+          </AuthRoute>
+          <AuthRoute path="/admin/foodtrucks" exact type="private">
+            <AdminNavbar />
+            <Container fluid>
+              <AdminSecondNavbar />
+              <PostUserModal />
+              <AdminViewFoodtrucksPage />
             </Container>
           </AuthRoute>
         </Switch>
