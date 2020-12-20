@@ -21,6 +21,7 @@ import AdminNavbar from './components/Navbars/AdminMainNav';
 import AdminSecondNavbar from './components/Navbars/AdminSecondNav';
 import AuthRoute from './components/HOC/AuthRoute';
 import PostUserModal from './components/Modals/AdminPostModal';
+import PostFoodtruckModal from './components/Modals/AdminPostFTModal';
 
 // const createStoreWithMiddleware = applyMiddleware(
 //   appMiddleware,
@@ -68,7 +69,7 @@ const App = () => {
             <AdminNavbar />
             <Container fluid>
               <AdminSecondNavbar />
-              <PostUserModal />
+              <PostFoodtruckModal />
               <AdminViewFoodtrucksPage />
             </Container>
           </AuthRoute>
