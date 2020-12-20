@@ -22,7 +22,7 @@ export const userValidator = {
 export const foodtruckValidator = {
   name: yup
     .string()
-    .min(2, 'Must be at least 6 characters long')
+    .min(6, 'Must be at least 6 characters long')
     .max(100, 'Must be at least 100 characters or less'),
   info: yup.string().max(1000, 'Must be 1000 characters or less'),
   phoneNumber: yup
