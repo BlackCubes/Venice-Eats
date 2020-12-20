@@ -25,19 +25,12 @@ export const foodtruckValidator = {
     .min(2, 'Must be at least 6 characters long')
     .max(100, 'Must be at least 100 characters or less'),
   info: yup.string().max(1000, 'Must be 1000 characters or less'),
-  contact: yup.object().shape({
-    phoneNumber: yup
-      .string()
-      .matches(
-        /^[(]\d{3}[)]\s?\d{3}[-]\d{4}$/,
-        'Must use a phone number in the form of (###)###-#### or (###) ###-####'
-      ),
-    email: yup.string().email('Must provide a valid email'),
-    website: yup.string().url('Must provide a valid url'),
-    social: yup.object().shape({
-      url1: yup.string().url('Must provide a valid url'),
-      url2: yup.string().url('Must provide a valid url'),
-      url3: yup.string().url('Must provide a valid url')
-    })
-  })
+  phoneNumber: yup
+    .string()
+    .matches(
+      /^[(]\d{3}[)]\s?\d{3}[-]\d{4}$/,
+      'Must use a phone number in the form of (###)###-#### or (###) ###-####'
+    ),
+  email: yup.string().email('Must provide a valid email'),
+  url: yup.string().url('Must provide a valid url')
 };
