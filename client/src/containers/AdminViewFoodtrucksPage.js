@@ -20,7 +20,7 @@ const AdminViewFoodtrucksPage = ({
 
   return (
     <div>
-      {!apiDatas ? (
+      {apiDatas === undefined || apiDatas.length === 0 ? (
         <h3>There are not Foodtrucks yet. Add one!</h3>
       ) : (
         <AdminCustomTable
