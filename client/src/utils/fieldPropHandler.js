@@ -23,7 +23,7 @@ export const fieldInputProperties = (
     onChange: handleChange,
     onBlur: handleBlur,
     isInvalid: !!getIn(errors, name) || !!apiError,
-    ...as
+    as
   };
 };
 
