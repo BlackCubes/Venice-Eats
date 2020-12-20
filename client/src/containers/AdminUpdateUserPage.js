@@ -40,8 +40,8 @@ const AdminUpdateUserPage = ({
   };
 
   const inputPropList = [
-    { type: 'text', name: 'name', placeholder: 'Name', apiError: apiError },
-    { type: 'email', name: 'email', placeholder: 'Email', apiError: apiError }
+    { type: 'text', name: 'name', placeholder: 'Name' },
+    { type: 'email', name: 'email', placeholder: 'Email' }
   ];
 
   const inputErrList = [{ name: 'name' }, { name: 'email' }];
@@ -72,6 +72,7 @@ const AdminUpdateUserPage = ({
         <UserUpdateForm
           inputPropList={inputPropList}
           inputErrList={inputErrList}
+          apiError={apiError}
         />
 
         {/* <Formik
