@@ -60,50 +60,42 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     {
       type: 'text',
       name: 'name',
-      placeholder: 'Foodtruck Name*',
-      apiError: apiErrorMsg
+      placeholder: 'Foodtruck Name*'
     },
     {
       name: 'info',
       placeholder: 'Foodtruck Info (optional)',
-      apiError: apiErrorMsg,
       as: 'textarea'
     },
     {
       type: 'text',
       name: 'contact.phoneNumber',
-      placeholder: 'Phone Number (optional)',
-      apiError: apiErrorMsg
+      placeholder: 'Phone Number (optional)'
     },
     {
       type: 'text',
       name: 'contact.email',
-      placeholder: 'Email (optional)',
-      apiError: apiErrorMsg
+      placeholder: 'Email (optional)'
     },
     {
       type: 'text',
       name: 'contact.website',
-      placeholder: 'Website (optional)',
-      apiError: apiErrorMsg
+      placeholder: 'Website (optional)'
     },
     {
       type: 'text',
       name: 'contact.social.url1',
-      placeholder: 'Url 1 (optional)',
-      apiError: apiErrorMsg
+      placeholder: 'Url 1 (optional)'
     },
     {
       type: 'text',
       name: 'contact.social.url2',
-      placeholder: 'Url 2 (optional)',
-      apiError: apiErrorMsg
+      placeholder: 'Url 2 (optional)'
     },
     {
       type: 'text',
       name: 'contact.social.url3',
-      placeholder: 'Url 3 (optional)',
-      apiError: apiErrorMsg
+      placeholder: 'Url 3 (optional)'
     }
   ];
 
@@ -148,6 +140,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
           <FoodtruckPostForm
             inputPropList={inputPropList}
             inputErrList={inputErrList}
+            apiError={apiErrorMsg}
           />
         </Modal.Body>
       </Modal>

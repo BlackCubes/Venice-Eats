@@ -18,7 +18,8 @@ export default props => {
     handleSubmit,
     isSubmitting,
     inputPropList,
-    inputErrList
+    inputErrList,
+    apiError
   } = props;
 
   const inputProperties = inputPropList.map(prop => {
@@ -41,7 +42,7 @@ export default props => {
         errors,
         handleChange,
         handleBlur,
-        apiError: prop.apiError
+        apiError
       },
       {
         ...prop
