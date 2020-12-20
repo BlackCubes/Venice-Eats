@@ -28,7 +28,8 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
         url2: '',
         url3: ''
       }
-    }
+    },
+    foodtruckPhoto: ''
   };
 
   const validationSchema = yup.object({
