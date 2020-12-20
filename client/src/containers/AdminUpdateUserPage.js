@@ -11,7 +11,7 @@ import CustomForm from './../components/Forms/CustomForm';
 
 import customValidation from './../utils/customValidation';
 
-const AdminUserPage = ({
+const AdminUpdateUserPage = ({
   getOne,
   updateOne,
   apiSingleData,
@@ -150,4 +150,4 @@ export default connect(
     loadingUserApi: state.apiUser.isLoading
   }),
   { getOne, updateOne }
-)(AdminUserPage);
+)(AdminUpdateUserPage);
