@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export default {
+export const userValidator = {
   name: yup
     .string()
     .min(2, 'Must be at least 2 characters long')
@@ -19,7 +19,7 @@ export default {
     .oneOf([yup.ref('password'), null], 'Passwords must match')
 };
 
-const foodtruckValidator = {
+export const foodtruckValidator = {
   name: yup
     .string()
     .min(2, 'Must be at least 6 characters long')
