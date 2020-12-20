@@ -8,7 +8,7 @@ import { postOne } from './../../actions/handlerFactory';
 
 import CustomForm from './../Forms/CustomForm';
 
-import customValidation from './../../utils/customValidation';
+import { userValidator } from './../../utils/customValidation';
 
 const PostUserModal = ({ apiError, postOne }) => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -24,10 +24,10 @@ const PostUserModal = ({ apiError, postOne }) => {
   };
 
   const validationSchema = yup.object({
-    name: customValidation.name.required('Required'),
-    email: customValidation.email.required('Required'),
-    password: customValidation.password.required('Required'),
-    password_confirmation: customValidation.password_confirmation.required(
+    name: userValidator.name.required('Required'),
+    email: userValidator.email.required('Required'),
+    password: userValidator.password.required('Required'),
+    password_confirmation: userValidator.password_confirmation.required(
       'Required'
     )
   });
