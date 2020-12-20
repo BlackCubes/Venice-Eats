@@ -11,7 +11,8 @@ export const fieldInputProperties = (
   touched,
   errors,
   handleChange,
-  handleBlur
+  handleBlur,
+  as
 ) => {
   return {
     type,
@@ -21,7 +22,8 @@ export const fieldInputProperties = (
     className: getIn(touched, name) && getIn(errors, name) ? 'error' : null,
     onChange: handleChange,
     onBlur: handleBlur,
-    isInvalid: !!getIn(errors, name) || !!apiError
+    isInvalid: !!getIn(errors, name) || !!apiError,
+    ...as
   };
 };
 
