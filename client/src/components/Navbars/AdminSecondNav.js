@@ -8,7 +8,7 @@ export default () => {
         <Nav.Link href="/admin/users">Users</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="#foodtrucks">Foodtrucks</Nav.Link>
+        <Nav.Link href="/admin/foodtrucks">Foodtrucks</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="#events">Events</Nav.Link>
