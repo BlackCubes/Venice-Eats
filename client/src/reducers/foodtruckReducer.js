@@ -25,7 +25,7 @@ export default (
     case 'API_GET_ALL_FOODTRUCKS_SUCCESS':
       return {
         ...state,
-        datas: [...state.datas, action.payload.data.data]
+        datas: action.payload.data.data
       };
     case 'API_GET_FOODTRUCKS_SUCCESS':
       return {
