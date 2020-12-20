@@ -65,7 +65,8 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     {
       name: 'info',
       placeholder: 'Foodtruck Info (optional)',
-      as: 'textarea'
+      as: 'textarea',
+      rows: 8
     },
     {
       type: 'text',
