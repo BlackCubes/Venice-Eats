@@ -6,6 +6,7 @@ import FormCustomInputs from './../Inputs/FormCustomInputs';
 import MultiStepButtons from './../Buttons/MultiStepButtons';
 
 import {
+  fieldFileInputProperties,
   fieldInputProperties,
   fieldInputErrors
 } from './../../utils/fieldPropHandler';
@@ -30,21 +31,52 @@ export default props => {
   const nextStep = () => setStep(step => step + 1);
   const prevStep = () => setStep(step => step - 1);
 
-  const inputProperties = inputPropList.map(prop1 => {
-    return prop1.map(prop2 => {
-      return fieldInputProperties(
-        {
-          values,
-          touched,
-          errors,
-          handleChange,
-          handleBlur,
-          apiError
-        },
-        {
-          ...prop2
-        }
-      );
+  const inputProperties = inputPropList.map((prop1, key1) => {
+    return prop1.map((prop2, key2) => {
+      switch (inputTypeList[key1][key2]) {
+        case 'input':
+          return fieldInputProperties(
+            {
+              values,
+              touched,
+              errors,
+              handleChange,
+              handleBlur,
+              apiError
+            },
+            {
+              ...prop2
+            }
+          );
+        case 'file':
+          return fieldFileInputProperties(
+            {
+              values,
+              touched,
+              errors,
+              handleChange,
+              handleBlur,
+              apiError
+            },
+            {
+              ...prop2
+            }
+          );
+        default:
+          return fieldInputProperties(
+            {
+              values,
+              touched,
+              errors,
+              handleChange,
+              handleBlur,
+              apiError
+            },
+            {
+              ...prop2
+            }
+          );
+      }
     });
   });
 
