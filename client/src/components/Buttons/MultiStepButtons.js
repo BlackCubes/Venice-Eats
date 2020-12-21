@@ -23,7 +23,11 @@ export default props => {
     multiStepAmount.forEach((val, key) => (multiRequired[key] = []));
     multiStepAmount.forEach((val1, key1) => {
       val1.forEach((val2, key2) => {
-        if (val2.props.properties[0].required)
+        if (
+          val2.props.properties[0].required &&
+          (val2.props.properties[0].isInvalid ||
+            val2.props.properties[0].defaultValue.length === 0)
+        )
           multiRequired[key1][key2] = val2.props.properties[0].required;
       });
     });
