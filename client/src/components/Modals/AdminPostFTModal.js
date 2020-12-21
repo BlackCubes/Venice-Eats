@@ -6,7 +6,6 @@ import { Modal, Button, Alert, Row } from 'react-bootstrap';
 
 import { postOne } from './../../actions/handlerFactory';
 
-import CustomForm from './../Forms/CustomForm';
 import CustomMultiForm from './../Forms/CustomMultiForm';
 
 import { foodtruckValidator } from './../../utils/customValidation';
@@ -29,7 +28,8 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
         url2: '',
         url3: ''
       }
-    }
+    },
+    foodtruckPhoto: ''
   };
 
   const validationSchema = yup.object({
@@ -44,7 +44,8 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
         url2: foodtruckValidator.url,
         url3: foodtruckValidator.url
       })
-    })
+    }),
+    foodtruckPhoto: foodtruckValidator.foodtruckPhoto.required()
   });
 
   const onSubmit = (data, { setSubmitting }) => {
@@ -56,50 +57,6 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     if (apiError) setApiErrorMsg(apiError);
     else setApiErrorMsg(null);
   }, [apiError]);
-
-  // const inputPropList = [
-  //   {
-  //     type: 'text',
-  //     name: 'name',
-  //     placeholder: 'Foodtruck Name*'
-  //   },
-  //   {
-  //     name: 'info',
-  //     placeholder: 'Foodtruck Info (optional)',
-  //     as: 'textarea',
-  //     rows: 8
-  //   },
-  //   {
-  //     type: 'text',
-  //     name: 'contact.phoneNumber',
-  //     placeholder: 'Phone Number (optional)'
-  //   },
-  //   {
-  //     type: 'text',
-  //     name: 'contact.email',
-  //     placeholder: 'Email (optional)'
-  //   },
-  //   {
-  //     type: 'text',
-  //     name: 'contact.website',
-  //     placeholder: 'Website (optional)'
-  //   },
-  //   {
-  //     type: 'text',
-  //     name: 'contact.social.url1',
-  //     placeholder: 'Url 1 (optional)'
-  //   },
-  //   {
-  //     type: 'text',
-  //     name: 'contact.social.url2',
-  //     placeholder: 'Url 2 (optional)'
-  //   },
-  //   {
-  //     type: 'text',
-  //     name: 'contact.social.url3',
-  //     placeholder: 'Url 3 (optional)'
-  //   }
-  // ];
 
   const inputPropList = [
     [
@@ -117,6 +74,11 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     ],
     [
       {
+        name: 'foodtruckPhoto',
+        label: 'Upload Photo'
+      }
+    ][
+      ({
         type: 'text',
         name: 'contact.phoneNumber',
         placeholder: 'Phone Number (optional)'
@@ -145,23 +107,13 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
         type: 'text',
         name: 'contact.social.url3',
         placeholder: 'Url 3 (optional)'
-      }
+      })
     ]
   ];
 
-  // const inputErrList = [
-  //   { name: 'name' },
-  //   { name: 'info' },
-  //   { name: 'contact.phoneNumber' },
-  //   { name: 'contact.email' },
-  //   { name: 'contact.website' },
-  //   { name: 'contact.social.url1' },
-  //   { name: 'contact.social.url2' },
-  //   { name: 'contact.social.url3' }
-  // ];
-
   const inputErrList = [
     [{ name: 'name' }, { name: 'info' }],
+    [{ name: 'foodtruckPhoto' }],
     [
       { name: 'contact.phoneNumber' },
       { name: 'contact.email' },
@@ -174,16 +126,9 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
 
   const inputTypeList = [
     ['input', 'input'],
+    ['file'],
     ['input', 'input', 'input', 'input', 'input', 'input']
   ];
-
-  // const FoodtruckPostForm = withFormik({
-  //   mapPropsToValues(props) {
-  //     return initialValues;
-  //   },
-  //   validationSchema: validationSchema,
-  //   handleSubmit: onSubmit
-  // })(CustomForm);
 
   const FoodtruckPostForm = withFormik({
     mapPropsToValues(props) {
@@ -218,12 +163,6 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
             inputTypeList={inputTypeList}
             apiError={apiErrorMsg}
           />
-
-          {/* <FoodtruckPostForm
-            inputPropList={inputPropList}
-            inputErrList={inputErrList}
-            apiError={apiErrorMsg}
-          /> */}
         </Modal.Body>
       </Modal>
     </div>
