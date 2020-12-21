@@ -20,7 +20,7 @@ export default props => {
 
   const multiStepRequired = multiStepAmount => {
     let multiRequired = [];
-    multiStepAmount.forEach((val, key) => (multiErrors[key] = []));
+    multiStepAmount.forEach((val, key) => (multiRequired[key] = []));
     multiStepAmount.forEach((val1, key1) => {
       val1.forEach((val2, key2) => {
         if (val2.props.properties[0].required)
