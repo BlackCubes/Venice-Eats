@@ -93,7 +93,7 @@ export default props => {
           return (
             <FormCustomInputs
               key={key2}
-              properties={[inputProperties[key1][key2].properties]}
+              properties={[inputProperties[key1][key2]]}
               errors={[inputErrors[key1][key2]]}
             />
           );
