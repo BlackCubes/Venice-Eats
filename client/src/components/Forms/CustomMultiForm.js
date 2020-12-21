@@ -93,7 +93,7 @@ export default props => {
           return (
             <FormCustomInputs
               key={key2}
-              properties={[inputProperties[key1][key2]]}
+              properties={[inputProperties[key1][key2].properties]}
               errors={[inputErrors[key1][key2]]}
             />
           );
@@ -101,8 +101,9 @@ export default props => {
           return (
             <CustomFileInputs
               key={key2}
-              properties={[inputProperties[key1][key2]]}
+              properties={[inputProperties[key1][key2].properties]}
               errors={[inputErrors[key1][key2]]}
+              previewSource={inputProperties[key1][key2].previewSource}
             />
           );
         default:
