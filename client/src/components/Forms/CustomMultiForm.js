@@ -9,6 +9,46 @@ import {
   fieldInputErrors
 } from './../../utils/fieldPropHandler';
 
+const MultiStepButton = props => {
+  const { multiStepAmount, nextStep, prevStep, isSubmitting } = props;
+
+  return multiStepAmount.map((val, key) => {
+    if (key === 0) {
+      return (
+        <>
+          <Button onClick={nextStep} disabled={isSubmitting}>
+            Continue
+          </Button>
+        </>
+      );
+    } else if (key === multiStepAmount.length - 1) {
+      return (
+        <>
+          <Button onClick={prevStep} disabled={isSubmitting}>
+            Previous
+          </Button>
+          <Button type="submit" disabled={isSubmitting}>
+            Submit
+          </Button>
+        </>
+      );
+    } else if (key > 0 && key < multiStepAmount.length - 1) {
+      return (
+        <>
+          <Button onClick={prevStep} disabled={isSubmitting}>
+            Previous
+          </Button>
+          <Button onClick={nextStep} disabled={isSubmitting}>
+            Next
+          </Button>
+        </>
+      );
+    } else {
+      return <></>;
+    }
+  });
+};
+
 export default props => {
   const {
     values,
@@ -21,9 +61,13 @@ export default props => {
     inputPropList,
     inputErrList,
     inputTypeList,
-    apiError,
-    step
+    apiError
   } = props;
+
+  const [step, setStep] = React.useState(0);
+
+  const nextStep = () => setStep(step => step + 1);
+  const prevStep = () => setStep(step => step - 1);
 
   const inputProperties = inputPropList.map(prop1 => {
     return prop1.map(prop2 => {
@@ -80,5 +124,13 @@ export default props => {
     });
   });
 
-  return <Form noValidate>{inputTypes[0]}</Form>;
+  return (
+    <Form noValidate onSubmit={handleSubmit}>
+      {inputTypes[step]}
+
+      {console.log(
+        MultiStepButton(inputTypes, nextStep, prevStep, isSubmitting)
+      )}
+    </Form>
+  );
 };
