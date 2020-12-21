@@ -131,7 +131,13 @@ export default props => {
       {inputTypes[step]}
 
       {console.log(
-        MultiStepButton(inputTypes, nextStep, prevStep, isSubmitting, step)
+        <MultiStepButton
+          multiStepAmount={inputTypes}
+          nextStep={nextStep}
+          prevStep={prevStep}
+          isSubmitting={isSubmitting}
+          step={step}
+        />
       )}
     </Form>
   );
