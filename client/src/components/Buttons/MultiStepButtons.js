@@ -5,6 +5,7 @@ export default props => {
   const { multiStepAmount, nextStep, prevStep, isSubmitting, step } = props;
 
   const multiStepBtnArray = multiStepAmount.map((val, key) => {
+    console.log(val);
     if (key === 0) {
       return (
         <>
