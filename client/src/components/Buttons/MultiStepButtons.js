@@ -18,6 +18,20 @@ export default props => {
 
   console.log('multiStepAmount: ', multiStepAmount);
 
+  const multiStepRequired = multiStepAmount => {
+    let multiRequired = [];
+    multiStepAmount.forEach((val, key) => (multiErrors[key] = []));
+    multiStepAmount.forEach((val1, key1) => {
+      val1.forEach((val2, key2) => {
+        if (val2.props.properties[0].required)
+          multiRequired[key1][key2] = val2.props.properties[0].required;
+      });
+    });
+    return multiRequired;
+  };
+
+  console.log('multiStepRequired: ', multiStepRequired(multiStepAmount));
+
   const multiStepBtnArray = multiStepAmount.map((val, key) => {
     if (key === 0) {
       return (
