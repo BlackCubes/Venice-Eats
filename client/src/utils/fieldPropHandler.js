@@ -23,6 +23,7 @@ export const FieldFileInputProperties = (propChanges, propStatic) => {
   const handleFileInputChange = e => {
     const file = e.target.files[0];
     console.log(file);
+    propChanges.values[propStatic.name] = file.name;
   };
 
   return {
