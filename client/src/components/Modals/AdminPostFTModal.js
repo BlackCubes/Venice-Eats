@@ -216,7 +216,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
             inputPropList={inputPropList}
             inputErrList={inputErrList}
             inputTypeList={inputTypeList}
-            apiError
+            apiError={apiErrorMsg}
           />
 
           {/* <FoodtruckPostForm
