@@ -20,25 +20,37 @@ export const fieldInputProperties = (propChanges, propStatic) => {
 
 export const FieldFileInputProperties = (propChanges, propStatic) => {
   const [fileName, setFileName] = React.useState('');
+  const [previewSource, setPreviewSource] = React.useState('');
+
   const handleFileInputChange = e => {
     const file = e.target.files[0];
     console.log(file);
+    previewFile(file);
     propChanges.values[propStatic.name] = file.name;
   };
 
+  const previewFile = file => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => setPreviewSource(reader.result);
+  };
+
   return {
-    defaultValue: getIn(propChanges.values, propStatic.name),
-    className:
-      getIn(propChanges.touched, propStatic.name) &&
-      getIn(propChanges.errors, propStatic.name)
-        ? 'error'
-        : null,
-    // onChange: propChanges.handleChange,
-    onChange: handleFileInputChange,
-    onBlur: propChanges.handleBlur,
-    isInvalid:
-      !!getIn(propChanges.errors, propStatic.name) || !!propChanges.apiError,
-    ...propStatic
+    properties: {
+      defaultValue: getIn(propChanges.values, propStatic.name),
+      className:
+        getIn(propChanges.touched, propStatic.name) &&
+        getIn(propChanges.errors, propStatic.name)
+          ? 'error'
+          : null,
+      // onChange: propChanges.handleChange,
+      onChange: handleFileInputChange,
+      onBlur: propChanges.handleBlur,
+      isInvalid:
+        !!getIn(propChanges.errors, propStatic.name) || !!propChanges.apiError,
+      ...propStatic
+    },
+    previewSource
   };
 };
 
