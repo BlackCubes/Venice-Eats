@@ -1,71 +1,14 @@
 import React from 'react';
-import { Form, Button, ButtonToolbar, ButtonGroup } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 import CustomFileInputs from './../Inputs/CustomFileInputs';
 import FormCustomInputs from './../Inputs/FormCustomInputs';
+import MultiStepButtons from './../Buttons/MultiStepButtons';
 
 import {
   fieldInputProperties,
   fieldInputErrors
 } from './../../utils/fieldPropHandler';
-
-const MultiStepButton = props => {
-  const { multiStepAmount, nextStep, prevStep, isSubmitting, step } = props;
-
-  const multiStepBtnArray = multiStepAmount.map((val, key) => {
-    if (key === 0) {
-      return (
-        <>
-          <ButtonToolbar className="float-right">
-            <ButtonGroup>
-              <Button onClick={nextStep} disabled={isSubmitting}>
-                Continue
-              </Button>
-            </ButtonGroup>
-          </ButtonToolbar>
-        </>
-      );
-    } else if (key === multiStepAmount.length - 1) {
-      return (
-        <>
-          <ButtonToolbar className="justify-content-between">
-            <ButtonGroup>
-              <Button onClick={prevStep} disabled={isSubmitting}>
-                Previous
-              </Button>
-            </ButtonGroup>
-            <ButtonGroup>
-              <Button type="submit" disabled={isSubmitting}>
-                Submit
-              </Button>
-            </ButtonGroup>
-          </ButtonToolbar>
-        </>
-      );
-    } else if (key > 0 && key < multiStepAmount.length - 1) {
-      return (
-        <>
-          <ButtonToolbar className="justify-content-between">
-            <ButtonGroup>
-              <Button onClick={prevStep} disabled={isSubmitting}>
-                Previous
-              </Button>
-            </ButtonGroup>
-            <ButtonGroup>
-              <Button onClick={nextStep} disabled={isSubmitting}>
-                Next
-              </Button>
-            </ButtonGroup>
-          </ButtonToolbar>
-        </>
-      );
-    } else {
-      return <></>;
-    }
-  });
-
-  return multiStepBtnArray[step];
-};
 
 export default props => {
   const {
@@ -146,7 +89,7 @@ export default props => {
     <Form noValidate onSubmit={handleSubmit}>
       {inputTypes[step]}
 
-      <MultiStepButton
+      <MultiStepButtons
         multiStepAmount={inputTypes}
         nextStep={nextStep}
         prevStep={prevStep}
