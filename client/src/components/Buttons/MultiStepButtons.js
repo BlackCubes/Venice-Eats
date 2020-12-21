@@ -70,7 +70,8 @@ export default props => {
                 type="submit"
                 disabled={
                   isSubmitting ||
-                  multiStepErrors(multiStepAmount)[key].length > 0
+                  multiStepErrors(multiStepAmount)[key].length > 0 ||
+                  multiStepRequired(multiStepAmount)[key].length > 0
                 }
               >
                 Submit
@@ -93,7 +94,8 @@ export default props => {
                 onClick={nextStep}
                 disabled={
                   isSubmitting ||
-                  multiStepErrors(multiStepAmount)[key].length > 0
+                  multiStepErrors(multiStepAmount)[key].length > 0 ||
+                  multiStepRequired(multiStepAmount)[key].length > 0
                 }
               >
                 Next
