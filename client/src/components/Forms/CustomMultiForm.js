@@ -55,22 +55,22 @@ export default props => {
         case 'input':
           return (
             <FormCustomInputs
-              properties={inputProperties[key1]}
-              errors={inputErrors[key1]}
+              properties={[inputProperties[key1][key2]]}
+              errors={[inputErrors[key1][key2]]}
             />
           );
         case 'file':
           return (
             <CustomFileInputs
-              properties={inputProperties[key1]}
-              errors={inputErrors[key1]}
+              properties={[inputProperties[key1][key2]]}
+              errors={[inputErrors[key1][key2]]}
             />
           );
         default:
           return (
             <FormCustomInputs
-              properties={inputProperties[key1]}
-              errors={inputErrors[key1]}
+              properties={[inputProperties[key1][key2]]}
+              errors={[inputErrors[key1][key2]]}
             />
           );
       }
