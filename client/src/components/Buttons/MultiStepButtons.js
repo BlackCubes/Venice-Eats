@@ -14,6 +14,7 @@ export default props => {
     let multiErrors = [];
     multiStepAmount.forEach((val1, key1) => {
       val1.forEach((val2, key2) => {
+        console.log(val2.props.errors[0]);
         if (val2.props.errors[0] !== null)
           multiErrors[key1][key2] = val2.props.errors[0].props.type;
       });
