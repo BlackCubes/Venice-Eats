@@ -29,7 +29,13 @@ export default props => {
         <>
           <ButtonToolbar className="float-right">
             <ButtonGroup>
-              <Button onClick={nextStep} disabled={isSubmitting}>
+              <Button
+                onClick={nextStep}
+                disabled={
+                  isSubmitting ||
+                  multiStepErrors(multiStepAmount)[key].length > 0
+                }
+              >
                 Continue
               </Button>
             </ButtonGroup>
