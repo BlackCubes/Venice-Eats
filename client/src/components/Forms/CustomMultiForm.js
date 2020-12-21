@@ -130,15 +130,13 @@ export default props => {
     <Form noValidate onSubmit={handleSubmit}>
       {inputTypes[step]}
 
-      {console.log(
-        <MultiStepButton
-          multiStepAmount={inputTypes}
-          nextStep={nextStep}
-          prevStep={prevStep}
-          isSubmitting={isSubmitting}
-          step={step}
-        />
-      )}
+      <MultiStepButton
+        multiStepAmount={inputTypes}
+        nextStep={nextStep}
+        prevStep={prevStep}
+        isSubmitting={isSubmitting}
+        step={step}
+      />
     </Form>
   );
 };
