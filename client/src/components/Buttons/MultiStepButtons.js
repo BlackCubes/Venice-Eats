@@ -11,12 +11,11 @@ export default props => {
   // });
 
   const multiStepErrors = multiStepAmount => {
-    let multiErrors = [];
-    multiStepAmount.forEach((val1, key1) => {
-      val1.forEach((val2, key2) => {
-        console.log(val2.props.errors[0]);
+    let multiErrors = multiStepAmount.map(val1 => {
+      return val1.map(val2 => {
         if (val2.props.errors[0] !== null)
-          multiErrors[key1][key2] = val2.props.errors[0].props.type;
+          return val2.props.errors[0].props.type;
+        return val2.props.errors[0];
       });
     });
     return multiErrors;
