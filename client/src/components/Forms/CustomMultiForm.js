@@ -6,7 +6,7 @@ import FormCustomInputs from './../Inputs/FormCustomInputs';
 import MultiStepButtons from './../Buttons/MultiStepButtons';
 
 import {
-  fieldFileInputProperties,
+  FieldFileInputProperties,
   fieldInputProperties,
   fieldInputErrors
 } from './../../utils/fieldPropHandler';
@@ -49,7 +49,7 @@ export default props => {
             }
           );
         case 'file':
-          return fieldFileInputProperties(
+          return FieldFileInputProperties(
             {
               values,
               touched,

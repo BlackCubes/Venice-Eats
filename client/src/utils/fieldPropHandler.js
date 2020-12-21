@@ -18,7 +18,7 @@ export const fieldInputProperties = (propChanges, propStatic) => {
   };
 };
 
-export const fieldFileInputProperties = (propChanges, propStatic) => {
+export const FieldFileInputProperties = (propChanges, propStatic) => {
   const [fileName, setFileName] = React.useState('');
   const handleFileInputChange = e => {
     const file = e.target.files[0];
