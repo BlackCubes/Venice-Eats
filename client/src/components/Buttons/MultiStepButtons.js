@@ -18,6 +18,11 @@ export default props => {
         return val2.props.errors[0];
       });
     });
+
+    multiErrors.forEach(val1 => {
+      val1.filter(valType => valType !== null);
+    });
+
     return multiErrors;
   };
   console.log('multiStepErrors: ', multiStepErrors(multiStepAmount));
