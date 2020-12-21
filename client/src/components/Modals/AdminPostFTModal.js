@@ -79,7 +79,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
       }
     ],
     [
-      ({
+      {
         type: 'text',
         name: 'contact.phoneNumber',
         placeholder: 'Phone Number (optional)'
@@ -108,7 +108,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
         type: 'text',
         name: 'contact.social.url3',
         placeholder: 'Url 3 (optional)'
-      })
+      }
     ]
   ];
 
