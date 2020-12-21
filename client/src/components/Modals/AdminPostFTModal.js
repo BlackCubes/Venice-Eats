@@ -63,7 +63,8 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
       {
         type: 'text',
         name: 'name',
-        placeholder: 'Foodtruck Name*'
+        placeholder: 'Foodtruck Name*',
+        required: true
       },
       {
         name: 'info',
@@ -75,7 +76,8 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     [
       {
         name: 'foodtruckPhoto',
-        label: 'Upload Photo'
+        label: 'Upload Photo',
+        required: true
       }
     ],
     [
