@@ -16,9 +16,13 @@ const MultiStepButton = props => {
     if (key === 0) {
       return (
         <>
-          <Button onClick={nextStep} disabled={isSubmitting}>
-            Continue
-          </Button>
+          <ButtonToolbar className="float-right">
+            <ButtonGroup>
+              <Button onClick={nextStep} disabled={isSubmitting}>
+                Continue
+              </Button>
+            </ButtonGroup>
+          </ButtonToolbar>
         </>
       );
     } else if (key === multiStepAmount.length - 1) {
