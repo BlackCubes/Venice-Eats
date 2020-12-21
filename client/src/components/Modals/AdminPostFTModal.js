@@ -70,7 +70,8 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
         name: 'info',
         placeholder: 'Foodtruck Info (optional)',
         as: 'textarea',
-        rows: 8
+        rows: 8,
+        required: false
       }
     ],
     [
@@ -84,32 +85,38 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
       {
         type: 'text',
         name: 'contact.phoneNumber',
-        placeholder: 'Phone Number (optional)'
+        placeholder: 'Phone Number (optional)',
+        required: false
       },
       {
         type: 'text',
         name: 'contact.email',
-        placeholder: 'Email (optional)'
+        placeholder: 'Email (optional)',
+        required: false
       },
       {
         type: 'text',
         name: 'contact.website',
-        placeholder: 'Website (optional)'
+        placeholder: 'Website (optional)',
+        required: false
       },
       {
         type: 'text',
         name: 'contact.social.url1',
-        placeholder: 'Url 1 (optional)'
+        placeholder: 'Url 1 (optional)',
+        required: false
       },
       {
         type: 'text',
         name: 'contact.social.url2',
-        placeholder: 'Url 2 (optional)'
+        placeholder: 'Url 2 (optional)',
+        required: false
       },
       {
         type: 'text',
         name: 'contact.social.url3',
-        placeholder: 'Url 3 (optional)'
+        placeholder: 'Url 3 (optional)',
+        required: false
       }
     ]
   ];
