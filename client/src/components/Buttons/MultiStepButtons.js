@@ -21,7 +21,8 @@ export default props => {
     });
     return multiErrors;
   };
-  console.log('multiStepErrors: ', multiStepErrors(multiStepAmount));
+
+  console.log('multiStepAmount: ', multiStepAmount);
 
   const multiStepBtnArray = multiStepAmount.map((val, key) => {
     if (key === 0) {
