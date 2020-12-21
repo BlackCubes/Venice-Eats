@@ -10,7 +10,11 @@ export default props => {
         <FormGroup key={key} size="lg">
           <FormFile {...prop} />
           {previewSource && (
-            <img src={previewSource} style={{ width: '400px' }} />
+            <img
+              src={previewSource}
+              alt="Selected Upload"
+              style={{ width: '400px' }}
+            />
           )}
           {errors[key]}
         </FormGroup>
