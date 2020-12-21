@@ -52,7 +52,13 @@ export default props => {
               </Button>
             </ButtonGroup>
             <ButtonGroup>
-              <Button type="submit" disabled={isSubmitting}>
+              <Button
+                type="submit"
+                disabled={
+                  isSubmitting ||
+                  multiStepErrors(multiStepAmount)[key].length > 0
+                }
+              >
                 Submit
               </Button>
             </ButtonGroup>
@@ -69,7 +75,13 @@ export default props => {
               </Button>
             </ButtonGroup>
             <ButtonGroup>
-              <Button onClick={nextStep} disabled={isSubmitting}>
+              <Button
+                onClick={nextStep}
+                disabled={
+                  isSubmitting ||
+                  multiStepErrors(multiStepAmount)[key].length > 0
+                }
+              >
                 Next
               </Button>
             </ButtonGroup>
