@@ -16,8 +16,6 @@ export default props => {
     return multiErrors;
   };
 
-  console.log('multiStepAmount: ', multiStepAmount);
-
   const multiStepRequired = multiStepAmount => {
     let multiRequired = [];
     multiStepAmount.forEach((val, key) => (multiRequired[key] = []));
@@ -33,8 +31,6 @@ export default props => {
     });
     return multiRequired;
   };
-
-  console.log('multiStepRequired: ', multiStepRequired(multiStepAmount));
 
   const multiStepBtnArray = multiStepAmount.map((val, key) => {
     if (key === 0) {
