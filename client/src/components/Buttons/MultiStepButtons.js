@@ -4,6 +4,16 @@ import { Button, ButtonToolbar, ButtonGroup } from 'react-bootstrap';
 export default props => {
   const { multiStepAmount, nextStep, prevStep, isSubmitting, step } = props;
 
+  const next = e => {
+    e.preventDefault();
+    nextStep();
+  };
+
+  const previous = e => {
+    e.preventDefault();
+    prevStep();
+  };
+
   const multiStepErrors = multiStepAmount => {
     let multiErrors = [];
     multiStepAmount.forEach((val, key) => (multiErrors[key] = []));
@@ -39,7 +49,7 @@ export default props => {
           <ButtonToolbar className="float-right">
             <ButtonGroup>
               <Button
-                onClick={nextStep}
+                onClick={next}
                 disabled={
                   isSubmitting ||
                   multiStepErrors(multiStepAmount)[key].length > 0 ||
@@ -57,7 +67,7 @@ export default props => {
         <>
           <ButtonToolbar className="justify-content-between">
             <ButtonGroup>
-              <Button onClick={prevStep} disabled={isSubmitting}>
+              <Button onClick={previous} disabled={isSubmitting}>
                 Previous
               </Button>
             </ButtonGroup>
@@ -81,13 +91,13 @@ export default props => {
         <>
           <ButtonToolbar className="justify-content-between">
             <ButtonGroup>
-              <Button onClick={prevStep} disabled={isSubmitting}>
+              <Button onClick={previous} disabled={isSubmitting}>
                 Previous
               </Button>
             </ButtonGroup>
             <ButtonGroup>
               <Button
-                onClick={nextStep}
+                onClick={next}
                 disabled={
                   isSubmitting ||
                   multiStepErrors(multiStepAmount)[key].length > 0 ||
