@@ -19,6 +19,12 @@ export const fieldInputProperties = (propChanges, propStatic) => {
 };
 
 export const fieldFileInputProperties = (propChanges, propStatic) => {
+  const [fileName, setFileName] = React.useState('');
+  const handleFileInputChange = e => {
+    const file = e.target.files[0];
+    console.log(file);
+  };
+
   return {
     defaultValue: getIn(propChanges.values, propStatic.name),
     className:
@@ -26,7 +32,8 @@ export const fieldFileInputProperties = (propChanges, propStatic) => {
       getIn(propChanges.errors, propStatic.name)
         ? 'error'
         : null,
-    onChange: propChanges.handleChange,
+    // onChange: propChanges.handleChange,
+    onChange: handleFileInputChange,
     onBlur: propChanges.handleBlur,
     isInvalid:
       !!getIn(propChanges.errors, propStatic.name) || !!propChanges.apiError,
