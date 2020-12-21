@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, ButtonToolbar, ButtonGroup } from 'react-bootstrap';
 
 import CustomFileInputs from './../Inputs/CustomFileInputs';
 import FormCustomInputs from './../Inputs/FormCustomInputs';
@@ -24,23 +24,35 @@ const MultiStepButton = props => {
     } else if (key === multiStepAmount.length - 1) {
       return (
         <>
-          <Button onClick={prevStep} disabled={isSubmitting}>
-            Previous
-          </Button>
-          <Button type="submit" disabled={isSubmitting}>
-            Submit
-          </Button>
+          <ButtonToolbar className="justify-content-between">
+            <ButtonGroup>
+              <Button onClick={prevStep} disabled={isSubmitting}>
+                Previous
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button type="submit" disabled={isSubmitting}>
+                Submit
+              </Button>
+            </ButtonGroup>
+          </ButtonToolbar>
         </>
       );
     } else if (key > 0 && key < multiStepAmount.length - 1) {
       return (
         <>
-          <Button onClick={prevStep} disabled={isSubmitting}>
-            Previous
-          </Button>
-          <Button onClick={nextStep} disabled={isSubmitting}>
-            Next
-          </Button>
+          <ButtonToolbar className="justify-content-between">
+            <ButtonGroup>
+              <Button onClick={prevStep} disabled={isSubmitting}>
+                Previous
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button onClick={nextStep} disabled={isSubmitting}>
+                Next
+              </Button>
+            </ButtonGroup>
+          </ButtonToolbar>
         </>
       );
     } else {
