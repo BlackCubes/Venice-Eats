@@ -10,9 +10,9 @@ import {
 } from './../../utils/fieldPropHandler';
 
 const MultiStepButton = props => {
-  const { multiStepAmount, nextStep, prevStep, isSubmitting } = props;
+  const { multiStepAmount, nextStep, prevStep, isSubmitting, step } = props;
 
-  return multiStepAmount.map((val, key) => {
+  const multiStepBtnArray = multiStepAmount.map((val, key) => {
     if (key === 0) {
       return (
         <>
@@ -47,6 +47,8 @@ const MultiStepButton = props => {
       return <></>;
     }
   });
+
+  return multiStepBtnArray[step];
 };
 
 export default props => {
@@ -129,7 +131,7 @@ export default props => {
       {inputTypes[step]}
 
       {console.log(
-        MultiStepButton(inputTypes, nextStep, prevStep, isSubmitting)
+        MultiStepButton(inputTypes, nextStep, prevStep, isSubmitting, step)
       )}
     </Form>
   );
