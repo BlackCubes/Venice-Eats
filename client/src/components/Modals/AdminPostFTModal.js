@@ -77,7 +77,8 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
         name: 'foodtruckPhoto',
         label: 'Upload Photo'
       }
-    ][
+    ],
+    [
       ({
         type: 'text',
         name: 'contact.phoneNumber',
