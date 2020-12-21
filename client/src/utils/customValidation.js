@@ -32,5 +32,6 @@ export const foodtruckValidator = {
       'Must use a phone number in the form of (###)###-#### or (###) ###-####'
     ),
   email: yup.string().email('Must provide a valid email'),
-  url: yup.string().url('Must provide a valid url')
+  url: yup.string().url('Must provide a valid url'),
+  foodtruckPhoto: yup.string()
 };
