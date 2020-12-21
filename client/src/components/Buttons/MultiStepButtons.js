@@ -4,12 +4,23 @@ import { Button, ButtonToolbar, ButtonGroup } from 'react-bootstrap';
 export default props => {
   const { multiStepAmount, nextStep, prevStep, isSubmitting, step } = props;
 
-  const multiStepErrors = multiStepAmount.map(val1 => {
-    return val1.map(val2 => {
-      if (val2.props.errors[0] !== null) return val2.props.errors[0].props.type;
+  // const multiStepErrors = multiStepAmount.map(val1 => {
+  //   return val1.map(val2 => {
+  //     if (val2.props.errors[0] !== null) return val2.props.errors[0].props.type;
+  //   });
+  // });
+
+  const multiStepErrors = multiStepAmount => {
+    let multiErrors = [];
+    multiStepAmount.forEach((val1, key1) => {
+      val1.forEach((val2, key2) => {
+        if (val2.props.errors[0] !== null)
+          multiErrors[key1][key2] = val2.props.errors[0];
+      });
     });
-  });
-  console.log('multiStepErrors: ', multiStepErrors);
+    return multiErrors;
+  };
+  console.log('multiStepErrors: ', multiStepErrors(multiStepAmount));
 
   const multiStepBtnArray = multiStepAmount.map((val, key) => {
     if (key === 0) {
