@@ -7,7 +7,6 @@ export default props => {
   const multiStepErrors = multiStepAmount.map(val1 => {
     return val1.map(val2 => {
       if (val2.props.errors[0] !== null) return val2.props.errors[0].props.type;
-      continue;
     });
   });
   console.log('multiStepErrors: ', multiStepErrors);
