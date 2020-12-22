@@ -41,6 +41,7 @@ export default props => {
     });
     return multiRequired;
   };
+  console.log(multiStepAmount);
 
   const multiStepBtnArray = multiStepAmount.map((val, key) => {
     if (key === 0) {
