@@ -9,7 +9,7 @@ export default props => {
     return properties.map((prop, key) => {
       return (
         <FormGroup key={key} size="lg">
-          <FormFile {...prop} />
+          {/* <FormFile {...prop} />
           {previewSource && (
             <img
               src={previewSource}
@@ -17,7 +17,25 @@ export default props => {
               style={{ width: '400px' }}
             />
           )}
-          {errors[key]}
+          {errors[key]} */}
+          <FormFile custom={prop.custom}>
+            <FormFile.Input
+              name={prop.name}
+              isInvalid={prop.isInvalid}
+              onBlur={prop.onBlur}
+              onChange={prop.onChange}
+              required={prop.required}
+            />
+            <FormFile.Label>{prop.label}</FormFile.Label>
+            {errors[key]}
+          </FormFile>
+          {previewSource && (
+            <img
+              src={previewSource}
+              alt="Selected Upload"
+              style={{ width: '400px' }}
+            />
+          )}
         </FormGroup>
       );
     });
