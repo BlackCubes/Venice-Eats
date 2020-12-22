@@ -37,7 +37,7 @@ export const FieldFileInputProperties = (propChanges, propStatic) => {
 
   return {
     properties: {
-      defaultValue: getIn(propChanges.values, propStatic.name),
+      // defaultValue: getIn(propChanges.values, propStatic.name),
       className:
         getIn(propChanges.touched, propStatic.name) &&
         getIn(propChanges.errors, propStatic.name)
