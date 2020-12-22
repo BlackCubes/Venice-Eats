@@ -33,7 +33,6 @@ export const FieldFileInputProperties = (propChanges, propStatic) => {
     reader.readAsDataURL(file);
     reader.onloadend = () => setPreviewSource(reader.result);
   };
-  console.log(propChanges.values);
 
   return {
     properties: {
