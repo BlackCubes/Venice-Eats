@@ -33,14 +33,5 @@ export const foodtruckValidator = {
     ),
   email: yup.string().email('Must provide a valid email'),
   url: yup.string().url('Must provide a valid url'),
-  foodtruckPhoto: yup
-    .string()
-    .test('photoRegex', 'Must be jpg, jpeg, or png', val => {
-      const regexPhoto = /^\b(jpeg|jpg|png)\b$/;
-      const extName = val.type
-        .split('/')
-        .pop()
-        .toLowerCase();
-      return regexPhoto.test(extName);
-    })
+  foodtruckPhoto: yup.string()
 };
