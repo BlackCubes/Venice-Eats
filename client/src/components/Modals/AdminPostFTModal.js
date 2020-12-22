@@ -63,7 +63,10 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
 
     const keyNames = Object.keys(data);
     const form = new FormData();
-    keyNames.forEach(val => form.append(val, data[val]));
+    keyNames.forEach(val => {
+      if (val === 'foodtruckPhoto') form.append(val, data[val]);
+    });
+    form.append('foodtruckPhoto') = data.foodtruckPhoto;
 
     postOne('foodtrucks', data);
   };
