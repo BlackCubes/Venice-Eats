@@ -122,7 +122,7 @@ export default props => {
     <Form
       noValidate
       onSubmit={handleSubmit}
-      enctype={
+      encType={
         props.enctype ? props.enctype : 'application/x-www-form-urlencoded'
       }
     >
