@@ -45,7 +45,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
         url3: foodtruckValidator.url
       })
     }),
-    foodtruckPhoto: foodtruckValidator.foodtruckPhoto.required()
+    foodtruckPhoto: foodtruckValidator.foodtruckPhoto.required('Required')
   });
 
   const onSubmit = (data, { setSubmitting }) => {
