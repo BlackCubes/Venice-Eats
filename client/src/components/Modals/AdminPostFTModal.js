@@ -57,11 +57,11 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
       .toLowerCase();
     if (!regexPhoto.test(fileExt))
       return setApiErrorMsg(
-        'Photo upload must be either jpg, jpeg, or png. Exit out and start again'
+        'Photo upload must be either jpg, jpeg, or png. Exit out and start again.'
       );
     if (data.foodtruckPhoto.size > 1024000)
       return setApiErrorMsg(
-        'Max photo upload size is 1MB only. Exit out and start again'
+        'Max photo upload size is 1MB only. Exit out and start again.'
       );
 
     console.log('Success!');
