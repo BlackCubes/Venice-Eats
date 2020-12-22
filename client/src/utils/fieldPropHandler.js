@@ -26,7 +26,7 @@ export const FieldFileInputProperties = (propChanges, propStatic) => {
     const file = e.target.files[0];
     console.log(file);
     previewFile(file);
-    propChanges.values[propStatic.name] = file.name;
+    propChanges.values[propStatic.name] = file;
   };
 
   const previewFile = file => {
