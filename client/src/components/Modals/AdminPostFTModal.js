@@ -73,6 +73,13 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     else setApiErrorMsg(null);
   }, [apiError]);
 
+  React.useEffect(() => {
+    if (apiErrorMsg)
+      setTimeout(() => {
+        setApiErrorMsg(null);
+      }, 5000);
+  }, [apiErrorMsg]);
+
   const inputPropList = [
     [
       {
