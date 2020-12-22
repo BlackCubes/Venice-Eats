@@ -14,6 +14,7 @@ const multerFilter = (req, file, cb) => {
   const fileTypes = /jpeg|jpg|png/;
   const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
+  console.log(file);
 
   if (file.mimetype.startsWith('image') && extName && mimeType) {
     cb(null, true);
