@@ -3,6 +3,7 @@ import { FormGroup, FormFile } from 'react-bootstrap';
 
 export default props => {
   const { errors, properties, previewSource } = props;
+  console.log(properties);
 
   const fileInputResult = (errors, properties) => {
     return properties.map((prop, key) => {
