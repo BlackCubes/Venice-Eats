@@ -16,7 +16,7 @@ router
     photoController.bufferSingle('foodtruckPhoto'),
     validationController.validateFoodtruck,
     // photoController.uploadArrayPhotos,
-    photoController.uploadSinglePhoto('foodtrucks'),
+    photoController.uploadSinglePhoto('veniceeats-foodtrucks'),
     foodtruckController.createFoodtruck
   );
 
