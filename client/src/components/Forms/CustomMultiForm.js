@@ -119,7 +119,13 @@ export default props => {
   });
 
   return (
-    <Form noValidate onSubmit={handleSubmit}>
+    <Form
+      noValidate
+      onSubmit={handleSubmit}
+      enctype={
+        props.enctype ? props.enctype : 'application/x-www-form-urlencoded'
+      }
+    >
       {inputTypes[step]}
 
       <MultiStepButtons

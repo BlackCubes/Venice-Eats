@@ -195,6 +195,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
             inputErrList={inputErrList}
             inputTypeList={inputTypeList}
             apiError={apiErrorMsg}
+            enctype="multipart/form-data"
           />
         </Modal.Body>
       </Modal>
