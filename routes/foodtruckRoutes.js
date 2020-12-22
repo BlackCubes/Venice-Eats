@@ -13,7 +13,7 @@ router
     authController.protect,
     authController.restrictTo('admin'),
     photoController.bufferArray,
-    // validationController.validateFoodtruck,
+    validationController.validateFoodtruck,
     photoController.uploadArrayPhotos,
     foodtruckController.createFoodtruck
   );
