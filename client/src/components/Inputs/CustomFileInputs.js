@@ -9,15 +9,6 @@ export default props => {
     return properties.map((prop, key) => {
       return (
         <FormGroup key={key} size="lg">
-          {/* <FormFile {...prop} />
-          {previewSource && (
-            <img
-              src={previewSource}
-              alt="Selected Upload"
-              style={{ width: '400px' }}
-            />
-          )}
-          {errors[key]} */}
           <FormFile custom={prop.custom}>
             <FormFile.Input
               name={prop.name}
