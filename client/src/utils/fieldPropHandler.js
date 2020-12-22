@@ -48,6 +48,7 @@ export const FieldFileInputProperties = (propChanges, propStatic) => {
       return (propChanges.errors[propStatic.name] =
         'Max upload size is 1MB only');
   };
+  console.log(propChanges.errors);
 
   return {
     properties: {
