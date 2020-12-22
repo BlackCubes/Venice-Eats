@@ -11,6 +11,7 @@ export default props => {
           <FormFile custom={prop.custom}>
             <FormFile.Input
               name={prop.name}
+              accept="image/*"
               isInvalid={prop.isInvalid}
               onBlur={prop.onBlur}
               onChange={prop.onChange}
