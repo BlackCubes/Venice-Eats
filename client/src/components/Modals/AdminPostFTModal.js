@@ -50,7 +50,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
 
   const onSubmit = (data, { setSubmitting }) => {
     setSubmitting(true);
-    postOne('foodtrucks', data);
+    // postOne('foodtrucks', data);
   };
 
   React.useEffect(() => {
