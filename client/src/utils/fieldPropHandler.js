@@ -19,7 +19,6 @@ export const fieldInputProperties = (propChanges, propStatic) => {
 };
 
 export const FieldFileInputProperties = (propChanges, propStatic) => {
-  const [fileName, setFileName] = React.useState('');
   const [previewSource, setPreviewSource] = React.useState('');
 
   const handleFileInputChange = e => {
