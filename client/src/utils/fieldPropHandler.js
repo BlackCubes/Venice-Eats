@@ -24,6 +24,7 @@ export const FieldFileInputProperties = (propChanges, propStatic) => {
   const handleFileInputChange = e => {
     const file = e.target.files[0];
     console.log(file);
+    photoValidation(file);
     previewFile(file);
     propChanges.values[propStatic.name] = file;
   };
@@ -32,6 +33,20 @@ export const FieldFileInputProperties = (propChanges, propStatic) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => setPreviewSource(reader.result);
+  };
+
+  const photoValidation = file => {
+    const regexPhoto = /^\b(jpeg|jpg|png)\b$/;
+    const fileExt = file.type
+      .split('/')
+      .pop()
+      .toLowerCase();
+    if (!regexPhoto.test(fileExt))
+      return (propChanges.errors[propStatic.name] =
+        'Must be jpg, jpeg, or png');
+    if (file.size > 1024000)
+      return (propChanges.errors[propStatic.name] =
+        'Max upload size is 1MB only');
   };
 
   return {
