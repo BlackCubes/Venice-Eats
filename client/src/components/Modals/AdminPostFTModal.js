@@ -50,6 +50,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
 
   const onSubmit = (data, { setSubmitting }) => {
     setSubmitting(true);
+
     const regexPhoto = /^\b(jpg|jpeg|png)\b$/;
     const fileExt = data.foodtruckPhoto.type
       .split('/')
@@ -60,7 +61,11 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     if (data.foodtruckPhoto.size > 1024000)
       return setApiErrorMsg('Max photo upload size is 1MB only.');
 
-    console.log('Success!');
+    const keyNames = Object.keys(data);
+    const form = new FormData();
+    keyNames.forEach(val => form.append(val, data[val]));
+
+    console.log('Success! FormData: ', form);
     // postOne('foodtrucks', data);
   };
 
