@@ -77,7 +77,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     [
       {
         name: 'foodtruckPhoto',
-        label: 'Upload Photo',
+        label: 'Upload Photo*',
         required: true
       }
     ],
