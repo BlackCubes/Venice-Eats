@@ -65,7 +65,7 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
     const form = new FormData();
     keyNames.forEach(val => form.append(val, data[val]));
 
-    // postOne('foodtrucks', data);
+    postOne('foodtrucks', data);
   };
 
   React.useEffect(() => {
