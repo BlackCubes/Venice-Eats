@@ -53,6 +53,7 @@ const foodtruckSchema = new mongoose.Schema(
         productName: {
           type: String,
           required: [true, 'A foodtruck product needs to have a name!'],
+          default: 'Pepsi-Cola',
           // unique: true,
           trim: true,
           maxlength: [
@@ -81,11 +82,13 @@ const foodtruckSchema = new mongoose.Schema(
         price: {
           type: Number,
           required: [true, 'A foodtruck product needs to have a price!'],
+          default: 3,
           min: [1, 'A foodtruck product must have a minimum price of 1 dollar!']
         },
         orderLimit: {
           type: Number,
           required: [true, 'A foodtruck product needs to have an order limit!'],
+          default: 100,
           min: [5, 'A foodtruck product must have a minimum limit of 5 orders!']
         },
         orderSold: {
@@ -94,7 +97,11 @@ const foodtruckSchema = new mongoose.Schema(
         },
         availability: {
           type: Boolean,
-          required: [true, 'A foodtruck product needs to have an availability!']
+          required: [
+            true,
+            'A foodtruck product needs to have an availability!'
+          ],
+          default: true
         }
       }
     ],
