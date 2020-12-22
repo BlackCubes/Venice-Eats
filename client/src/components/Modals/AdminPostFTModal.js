@@ -51,13 +51,13 @@ const PostFoodtruckModal = ({ apiError, postOne }) => {
   const onSubmit = (data, { setSubmitting }) => {
     setSubmitting(true);
     const regexPhoto = /^\b(jpg|jpeg|png)\b$/;
-    const fileExt = data.file.type
+    const fileExt = data.foodtruckPhoto.type
       .split('/')
       .pop()
       .toLowerCase();
     if (!regexPhoto.test(fileExt))
       return setApiErrorMsg('Photo upload must be either jpg, jpeg, or png!');
-    if (data.file.size > 1024000)
+    if (data.foodtruckPhoto.size > 1024000)
       return setApiErrorMsg('Max upload size is 1MB only');
 
     console.log('Success!');
