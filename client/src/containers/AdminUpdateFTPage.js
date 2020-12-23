@@ -84,7 +84,7 @@ const AdminUpdateFTPage = ({
         &laquo;
       </Button>
 
-      <Card className="text-center">
+      <Card className="text-center" style={{ width: '500px' }}>
         <Card.Img
           src={
             objExist(apiSingleData, 'cloudinaryPhoto')
