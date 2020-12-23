@@ -96,7 +96,7 @@ const AdminUpdateFTPage = ({
               ? apiSingleData.name + ' Photo'
               : 'No Photo'
           }
-          style={{ opacity: 0.6 }}
+          style={{ opacity: 0.3 }}
         />
         <Card.ImgOverlay className="text-white">
           <Card.Title>Title</Card.Title>
