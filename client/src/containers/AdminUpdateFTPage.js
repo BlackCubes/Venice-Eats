@@ -25,20 +25,32 @@ const AdminUpdateFTPage = ({
     getOne('foodtrucks', params);
   }, [getOne, params]);
 
+  let objectExist = obj => Object.keys(obj).length > 0;
+
   const initialValues = {
-    name: apiSingleData ? apiSingleData.name : '',
-    info: apiSingleData ? apiSingleData.info : '',
+    name: objectExist(apiSingleData) ? apiSingleData.name : '',
+    info: objectExist(apiSingleData) ? apiSingleData.info : '',
     contact: {
-      phoneNumber: apiSingleData ? apiSingleData.contact.phoneNumber : '',
-      email: apiSingleData ? apiSingleData.contact.email : '',
-      website: apiSingleData ? apiSingleData.contact.website : '',
+      phoneNumber: objectExist(apiSingleData)
+        ? apiSingleData.contact.phoneNumber
+        : '',
+      email: objectExist(apiSingleData) ? apiSingleData.contact.email : '',
+      website: objectExist(apiSingleData) ? apiSingleData.contact.website : '',
       social: {
-        url1: apiSingleData ? apiSingleData.contact.social.url1 : '',
-        url2: apiSingleData ? apiSingleData.contact.social.url2 : '',
-        url3: apiSingleData ? apiSingleData.contact.social.url3 : ''
+        url1: objectExist(apiSingleData)
+          ? apiSingleData.contact.social.url1
+          : '',
+        url2: objectExist(apiSingleData)
+          ? apiSingleData.contact.social.url2
+          : '',
+        url3: objectExist(apiSingleData)
+          ? apiSingleData.contact.social.url3
+          : ''
       }
     },
-    foodtruckPhoto: apiSingleData ? apiSingleData.cloudinaryPhoto : ''
+    foodtruckPhoto: objectExist(apiSingleData)
+      ? apiSingleData.cloudinaryPhoto
+      : ''
   };
 
   const validationSchema = yup.object({
