@@ -84,7 +84,7 @@ const AdminUpdateFTPage = ({
         &laquo;
       </Button>
 
-      <Card className="text-center" style={{ width: '500px' }}>
+      <Card className="bg-dark text-center" style={{ width: '500px' }}>
         <Card.Img
           src={
             objExist(apiSingleData, 'cloudinaryPhoto')
@@ -96,6 +96,7 @@ const AdminUpdateFTPage = ({
               ? apiSingleData.name + ' Photo'
               : 'No Photo'
           }
+          style={{ opacity: 0.6 }}
         />
         <Card.ImgOverlay>
           <Card.Title>Title</Card.Title>
