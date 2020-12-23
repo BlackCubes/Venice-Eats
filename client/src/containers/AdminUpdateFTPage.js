@@ -84,9 +84,15 @@ const AdminUpdateFTPage = ({
         &laquo;
       </Button>
 
-      <pre style={{color: '#6495ED'}}>Initial Values: {JSON.stringify(initialValues, undefined, 4)}</pre>
-      <pre style={{color: '##FF7F50'}}>apiSingleData: {JSON.stringify(apiSingleData, undefined, 4)}</pre>
-      <pre style={{#DE3163}}>apiMenus: {JSON.stringify(apiMenus, undefined, 4)}</pre>
+      <pre style={{ color: '#6495ED' }}>
+        Initial Values: {JSON.stringify(initialValues, undefined, 4)}
+      </pre>
+      <pre style={{ color: '#FF7F50' }}>
+        apiSingleData: {JSON.stringify(apiSingleData, undefined, 4)}
+      </pre>
+      <pre style={{ color: '#DE3163' }}>
+        apiMenus: {JSON.stringify(apiMenus, undefined, 4)}
+      </pre>
     </div>
   );
 };
