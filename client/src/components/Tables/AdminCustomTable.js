@@ -40,11 +40,11 @@ export default props => {
           </td>
           <td>
             <Button
-              variant="info"
+              variant="outline-info"
               href={`/admin/${viewPath}/${prop1._id}`}
               type="button"
             >
-              View
+              &raquo;
             </Button>
           </td>
         </tr>
