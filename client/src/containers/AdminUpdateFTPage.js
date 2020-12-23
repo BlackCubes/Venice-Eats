@@ -98,7 +98,7 @@ const AdminUpdateFTPage = ({
           }
           style={{ opacity: 0.6 }}
         />
-        <Card.ImgOverlay>
+        <Card.ImgOverlay className="text-white">
           <Card.Title>Title</Card.Title>
           <Card.Text>Text</Card.Text>
         </Card.ImgOverlay>
