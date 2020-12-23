@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { withFormik } from 'formik';
 import * as yup from 'yup';
-import { Alert, Button } from 'react-bootstrap';
+import { Alert, Button, Card } from 'react-bootstrap';
 
 import { getOne, updateOne } from './../actions/handlerFactory';
 
@@ -83,6 +83,15 @@ const AdminUpdateFTPage = ({
       <Button variant="outline-info" href="/admin/foodtrucks">
         &laquo;
       </Button>
+
+      <Card className="text-center">
+        <Card.Header>Header</Card.Header>
+        <Card.Body>
+          <Card.Title>Title</Card.Title>
+          <Card.Text>Text</Card.Text>
+        </Card.Body>
+        <Card.Footer className="text-muted">Footer</Card.Footer>
+      </Card>
 
       <pre style={{ color: '#6495ED' }}>
         Initial Values: {JSON.stringify(initialValues, undefined, 4)}
