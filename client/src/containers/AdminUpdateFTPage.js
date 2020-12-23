@@ -110,7 +110,11 @@ const AdminUpdateFTPage = ({
               : 'No info'}
           </Card.Text>
         </Card.ImgOverlay>
-        <Card.Footer className="text-muted">Footer</Card.Footer>
+        <Card.Footer className="text-muted">
+          {objExist(apiSingleData, 'updatedAt')
+            ? apiSingleData.updatedAt
+            : 'No recent update'}
+        </Card.Footer>
       </Card>
 
       <pre style={{ color: '#6495ED' }}>
