@@ -84,9 +84,9 @@ const AdminUpdateFTPage = ({
         &laquo;
       </Button>
 
-      <pre>Initial Values: {JSON.stringify(initialValues)}</pre>
-      <pre>apiSingleData: {JSON.stringify(apiSingleData)}</pre>
-      <pre>apiMenus: {JSON.stringify(apiMenus)}</pre>
+      <pre>Initial Values: {JSON.stringify(initialValues, undefined, 4)}</pre>
+      <pre>apiSingleData: {JSON.stringify(apiSingleData, undefined, 4)}</pre>
+      <pre>apiMenus: {JSON.stringify(apiMenus, undefined, 4)}</pre>
     </div>
   );
 };
