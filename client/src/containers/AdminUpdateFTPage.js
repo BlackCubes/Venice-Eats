@@ -25,30 +25,39 @@ const AdminUpdateFTPage = ({
     getOne('foodtrucks', params);
   }, [getOne, params]);
 
-  let objectExist = obj => Object.keys(obj).length > 0;
+  let objExist = (obj, level, ...rest) => {
+    if (obj === undefined) return false;
+    if (!level) return Object.keys(obj).length > 0;
+    if (rest.length === 0 && obj.hasOwnProperty(level)) return true;
+    return objExist(obj[level], ...rest);
+  };
 
   const initialValues = {
-    name: objectExist(apiSingleData) ? apiSingleData.name : '',
-    info: objectExist(apiSingleData) ? apiSingleData.info : '',
+    name: objExist(apiSingleData, 'name') ? apiSingleData.name : '',
+    info: objExist(apiSingleData, 'info') ? apiSingleData.info : '',
     contact: {
-      phoneNumber: objectExist(apiSingleData)
+      phoneNumber: objExist(apiSingleData, 'contact', 'phoneNumber')
         ? apiSingleData.contact.phoneNumber
         : '',
-      email: objectExist(apiSingleData) ? apiSingleData.contact.email : '',
-      website: objectExist(apiSingleData) ? apiSingleData.contact.website : '',
+      email: objExist(apiSingleData, 'contact', 'email')
+        ? apiSingleData.contact.email
+        : '',
+      website: objExist(apiSingleData, 'contact', 'website')
+        ? apiSingleData.contact.website
+        : '',
       social: {
-        url1: objectExist(apiSingleData)
+        url1: objExist(apiSingleData, 'contact', 'social', 'url1')
           ? apiSingleData.contact.social.url1
           : '',
-        url2: objectExist(apiSingleData)
+        url2: objExist(apiSingleData, 'contact', 'social', 'url2')
           ? apiSingleData.contact.social.url2
           : '',
-        url3: objectExist(apiSingleData)
+        url3: objExist(apiSingleData, 'contact', 'social', 'url3')
           ? apiSingleData.contact.social.url3
           : ''
       }
     },
-    foodtruckPhoto: objectExist(apiSingleData)
+    foodtruckPhoto: objExist(apiSingleData, 'foodtruckPhoto')
       ? apiSingleData.cloudinaryPhoto
       : ''
   };
