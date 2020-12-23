@@ -113,6 +113,7 @@ const foodtruckSchema = new mongoose.Schema(
       startDateTime: Date,
       endDateTime: Date
     },
+    updatedAt: Date,
     createdAt: {
       type: Date,
       default: Date.now(),
@@ -170,6 +171,13 @@ foodtruckSchema.pre(/^find/, function(next) {
     select: '-__v -id'
   });
 
+  next();
+});
+
+// -- update the date if the document has been changed
+foodtruckSchema.pre('save', async function(next) {
+  if (this.isNew) return next();
+  this.updatedAt = Date.now() - 1000;
   next();
 });
 
