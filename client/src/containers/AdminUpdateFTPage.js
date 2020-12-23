@@ -57,7 +57,7 @@ const AdminUpdateFTPage = ({
           : ''
       }
     },
-    foodtruckPhoto: objExist(apiSingleData, 'cloudindaryPhoto')
+    foodtruckPhoto: objExist(apiSingleData, 'cloudinaryPhoto')
       ? apiSingleData.cloudinaryPhoto
       : ''
   };
