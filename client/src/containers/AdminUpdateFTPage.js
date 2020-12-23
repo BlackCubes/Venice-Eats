@@ -102,7 +102,13 @@ const AdminUpdateFTPage = ({
           <Card.Title>
             {objExist(apiSingleData, 'name') ? apiSingleData.name : 'Name'}
           </Card.Title>
-          <Card.Text>Text</Card.Text>
+          <Card.Text>
+            {!objExist(apiSingleData, 'info')
+              ? 'No info'
+              : apiSingleData.info.length > 0
+              ? apiSingleData.info
+              : 'No info'}
+          </Card.Text>
         </Card.ImgOverlay>
         <Card.Footer className="text-muted">Footer</Card.Footer>
       </Card>
