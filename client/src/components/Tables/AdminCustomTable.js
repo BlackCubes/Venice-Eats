@@ -28,6 +28,7 @@ export default props => {
                   <img
                     src={prop1[prop2].cloudinaryUrl}
                     alt={prop1['name'] + ' Photo'}
+                    style={{ width: '300px' }}
                   />
                 </td>
               );
