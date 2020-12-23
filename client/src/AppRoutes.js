@@ -14,6 +14,7 @@ import AdminPage from './containers/AdminPage';
 import AdminViewUsersPage from './containers/AdminViewUsersPage';
 import AdminUpdateUserPage from './containers/AdminUpdateUserPage';
 import AdminViewFoodtrucksPage from './containers/AdminViewFoodtrucksPage';
+import AdminUpdateFTPage from './containers/AdminUpdateFTPage';
 import LoginPage from './containers/LoginPage';
 import { Test } from './containers/Test';
 
@@ -77,7 +78,7 @@ const App = () => {
             <AdminNavbar />
             <Container fluid>
               <AdminSecondNavbar />
-              <h2>Create this views page!</h2>
+              <AdminUpdateFTPage />
             </Container>
           </AuthRoute>
         </Switch>
