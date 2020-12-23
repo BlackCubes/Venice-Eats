@@ -22,6 +22,15 @@ export default props => {
       return (
         <tr key={key1}>
           {trValues.map((prop2, key2) => {
+            if (prop2 === 'cloudinaryPhoto')
+              return (
+                <td key={key2}>
+                  <img
+                    src={prop1[prop2].cloudinaryUrl}
+                    alt={prop1['name'] + ' Photo'}
+                  />
+                </td>
+              );
             return <td key={key2}>{prop1[prop2]}</td>;
           })}
           <td>

@@ -24,8 +24,8 @@ const AdminViewFoodtrucksPage = ({
         <h3>There are not Foodtrucks yet. Add one!</h3>
       ) : (
         <AdminCustomTable
-          thValues={['ID', 'Name', 'Delete', 'View']}
-          trValues={['_id', 'name']}
+          thValues={['ID', 'Name', 'Image', 'Delete', 'View']}
+          trValues={['_id', 'name', 'cloudinaryPhoto']}
           handleDelete={handleDelete}
           viewPath="foodtrucks"
           loadingApi={loadingFoodtruckApi}
