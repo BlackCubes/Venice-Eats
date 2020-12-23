@@ -85,11 +85,22 @@ const AdminUpdateFTPage = ({
       </Button>
 
       <Card className="text-center">
-        <Card.Header>Header</Card.Header>
-        <Card.Body>
+        <Card.Img
+          src={
+            objExist(apiSingleData, 'cloudinaryPhoto')
+              ? apiSingleData.cloudinaryPhoto.cloudinaryUrl
+              : null
+          }
+          alt={
+            objExist(apiSingleData, 'name')
+              ? apiSingleData.name + ' Photo'
+              : 'No Photo'
+          }
+        />
+        <Card.ImgOverlay>
           <Card.Title>Title</Card.Title>
           <Card.Text>Text</Card.Text>
-        </Card.Body>
+        </Card.ImgOverlay>
         <Card.Footer className="text-muted">Footer</Card.Footer>
       </Card>
 
