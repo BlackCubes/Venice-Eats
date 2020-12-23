@@ -205,18 +205,18 @@ foodtruckSchema.statics.valueExists = function(query) {
 };
 
 // MIDDLEWARE FOR CURRENT FOODTRUCK/GEO-MODEL
-foodtruckSchema.post('save', function() {
-  this.constructor.spotAvailable(this.geo);
-});
+// foodtruckSchema.post('save', function() {
+//   this.constructor.spotAvailable(this.geo);
+// });
 
 foodtruckSchema.pre(/^findOneAnd/, async function(next) {
   this.s = await this.findOne();
   next();
 });
 
-foodtruckSchema.post(/^findOneAnd/, async function() {
-  await this.s.constructor.spotAvailable(this.s.geo);
-});
+// foodtruckSchema.post(/^findOneAnd/, async function() {
+//   await this.s.constructor.spotAvailable(this.s.geo);
+// });
 
 const Foodtrucks = mongoose.model('Foodtrucks', foodtruckSchema);
 
