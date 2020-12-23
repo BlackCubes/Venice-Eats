@@ -175,29 +175,29 @@ foodtruckSchema.pre(/^find/, function(next) {
 
 // STATIC METHODS
 // -- update the geo model if the spot has been taken
-foodtruckSchema.statics.spotAvailable = async function(geoId) {
-  const spotAvailability = await this.aggregate([
-    {
-      $match: { geo: geoId }
-    },
-    {
-      $group: {
-        _id: '$geo',
-        boolSpot: { $toBool: !!this.geo }
-      }
-    }
-  ]);
+// foodtruckSchema.statics.spotAvailable = async function(geoId) {
+//   const spotAvailability = await this.aggregate([
+//     {
+//       $match: { geo: geoId }
+//     },
+//     {
+//       $group: {
+//         _id: '$geo',
+//         boolSpot: { $toBool: !!this.geo }
+//       }
+//     }
+//   ]);
 
-  if (spotAvailability.length > 0) {
-    await Geos.findByIdAndUpdate(geoId, {
-      free: spotAvailability[0].boolSpot
-    });
-  } else {
-    await Geos.findByIdAndUpdate(geoId, {
-      free: !!this.geo
-    });
-  }
-};
+//   if (spotAvailability.length > 0) {
+//     await Geos.findByIdAndUpdate(geoId, {
+//       free: spotAvailability[0].boolSpot
+//     });
+//   } else {
+//     await Geos.findByIdAndUpdate(geoId, {
+//       free: !!this.geo
+//     });
+//   }
+// };
 
 // -- find query in DB
 foodtruckSchema.statics.valueExists = function(query) {
