@@ -73,6 +73,13 @@ const App = () => {
               <AdminViewFoodtrucksPage />
             </Container>
           </AuthRoute>
+          <AuthRoute path="/admin/foodtrucks/:params" exact type="private">
+            <AdminNavbar />
+            <Container fluid>
+              <AdminSecondNavbar />
+              <h2>Create this views page!</h2>
+            </Container>
+          </AuthRoute>
         </Switch>
       </Router>
     </Provider>
