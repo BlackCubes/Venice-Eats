@@ -99,7 +99,9 @@ const AdminUpdateFTPage = ({
           style={{ opacity: 0.3 }}
         />
         <Card.ImgOverlay className="text-white">
-          <Card.Title>Title</Card.Title>
+          <Card.Title>
+            {objExist(apiSingleData, 'name') ? apiSingleData.name : 'Name'}
+          </Card.Title>
           <Card.Text>Text</Card.Text>
         </Card.ImgOverlay>
         <Card.Footer className="text-muted">Footer</Card.Footer>
